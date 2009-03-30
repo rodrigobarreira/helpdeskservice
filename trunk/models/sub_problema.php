@@ -1,6 +1,7 @@
 <?php
 class SubProblema extends AppModel {
-
+	
+	var $useTable = 'sub_problemas';
 	var $name = 'SubProblema';
 	var $validate = array(
 		'problema_id' => array('numeric'),
