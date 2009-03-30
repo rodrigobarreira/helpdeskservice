@@ -3,7 +3,9 @@ class Prioridade extends AppModel {
 
 	var $name = 'Prioridade';
 	var $validate = array(
-		'descricao' => array('notempty')
+		'descricao' => array('notempty'),
+		'tempo_maximo' => array('numeric'),
+		'unidade_tempo' => array('alphanumeric')
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed

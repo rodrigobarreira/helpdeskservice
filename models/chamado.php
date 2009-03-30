@@ -4,16 +4,18 @@ class Chamado extends AppModel {
 	var $name = 'Chamado';
 	var $validate = array(
 		'sub_problema_id' => array('numeric'),
+		'usuario_id' => array('notempty'),
 		'data_abertura' => array('date'),
-		'usuario_id' => array('numeric'),
 		'hora_abertura' => array('time'),
-		'descricao' => array('notempty'),
+		'descricao_problema' => array('notempty'),
+		'descricao_solucao' => array('notempty'),
 		'prioridade_id' => array('numeric'),
-		'status_id' => array('numeric'),
+		'status_id' => array('notempty'),
 		'data_limite' => array('date'),
 		'hora_limite' => array('time'),
 		'data_fechamento' => array('date'),
-		'hora_fechamento' => array('time')
+		'hora_fechamento' => array('time'),
+		'responsavel_id' => array('notempty')
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -41,22 +43,26 @@ class Chamado extends AppModel {
 								'conditions' => '',
 								'fields' => '',
 								'order' => ''
+			),
+			'Responsavel' => array('className' => 'Usuario',
+								'foreignKey' => 'responsavel_id',
+								'conditions' => '',
+								'fields' => '',
+								'order' => ''
 			)
 	);
 
-	var $hasMany = array(
+	var $hasOne = array(
 			'Avaliacao' => array('className' => 'Avaliacao',
 								'foreignKey' => 'chamado_id',
 								'dependent' => false,
 								'conditions' => '',
 								'fields' => '',
-								'order' => '',
-								'limit' => '',
-								'offset' => '',
-								'exclusive' => '',
-								'finderQuery' => '',
-								'counterQuery' => ''
-			),
+								'order' => ''
+			)
+	);
+
+	var $hasMany = array(
 			'ChamadoHistorico' => array('className' => 'ChamadoHistorico',
 								'foreignKey' => 'chamado_id',
 								'dependent' => false,
