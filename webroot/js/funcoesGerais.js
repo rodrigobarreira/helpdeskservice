@@ -10,8 +10,8 @@
  */
 function ValidaEmail(mailValue)
 {
-	//declaraçao da expressao regular
-	var email = /^([a-z0-9_\.]{1,}@[a-z0-9_]{3,}\.[a-z]{2,5})(\.[a-z0-9_]{2,})?$/
+	//declaraçao da expressao regular 
+	var email = /^([a-z0-9_\.]{1,}@[a-z0-9_]{2,}\.[a-z]{2,5})(\.[a-z0-9_]{2,})?$/
 
 	//teste
 	if (email.test(mailValue))
