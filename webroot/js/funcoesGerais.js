@@ -84,11 +84,11 @@ function VerificaVazio(value)
 	if ((value==null)||(value==""))
 	{
 		//alert("Vazio");
-		return false;
+		return true;
 	}
 	else
 	{
 		//alert("tem gente");
-		return true;
+		return false;
 	}
 }
