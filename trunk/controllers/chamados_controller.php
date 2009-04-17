@@ -2,7 +2,6 @@
 class ChamadosController extends AppController {
 
 	var $name = 'Chamados';
-	var $helpers = array('Html', 'Form');
 
 	function index() {
 		$this->Chamado->recursive = 0;
