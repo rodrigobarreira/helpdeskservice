@@ -3,9 +3,11 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>HELPDESK SYSTEM <?php echo $title_for_layout; ?></</title>
+	<title>HELPDESK SYSTEM <?php echo $title_for_layout; ?></title>
 	<?php echo $html->css('css_helpdesk') ?>
 	<?php echo $html->css('cake.generic') ?>
+	<?php echo $html->css('menu') ?>
+	<?php echo $html->css('style') ?>
 	<?php e($scripts_for_layout); ?>
 </head>
 
@@ -18,13 +20,20 @@
 	
 		<div id="topo_pagina">
 			<div id="topo_logo"><h1 id="logo_sistema"><a href="#"><span>Logo sistema</span></a></h1></div>
-			<div id="div_menu_topo">		
 			
+			<div id="div_menu_topo">
+				<ul>
+				<li><a href="#"><span><img align="left" src="../img/menu/add.gif" alt="add new" />Add New</span></a></li>
+				<li><a href="#"><span><img align="left" src="../img/menu/mail.gif" alt="check mail" />Check	Mail</span></a></li>
+				<li><a href="#"><span><img align="left" src="../img/menu/chart.gif" alt="statistic" />Statistic</span></a></li>
+				<li><a href="#"><span><img align="left" src="../img/menu/mona.gif" alt="my pictures" />MyPictures</span></a></li>
+				<li><a href="#"><span><img align="left" src="../img/menu/sos.gif" alt="help" />Help</span></a></li>
+				</ul>
 			</div>
 			
-			<div id="sombra_bar_sec">
+			<div id="row_topo">
 				<div id="div_titulos_secoes"><h1>TITULOS DA PAGINAS</h1></div>
-				<div id="sombra_bar_sec_cont"><p class="txt_geral_pq">Quarta-feira, 18 de fevereiro de 2009</p></div>
+				<div id="data"><p class="txt_geral_pq">Quarta-feira, 18 de fevereiro de 2009</p></div>
 			</div>			
 			
 		</div>
@@ -32,50 +41,51 @@
 		<!-- conteudo -->
 		<div id="conteudo_pagina">
 		
-			<div id="navegacao"><p class="txt_geral_pq"><strong>Você está em: </strong>nome da pagina</p></div>
+			<div id="navegacao"><p class="txt_geral_pq"><strong>VocÃª estÃ¡ em: </strong>nome da pagina</p></div>
 			
 			<div id="main">
 			
 				<div id="col_conteudo">
 					<p class="txt_geral">
-					Bem-vindo:
-					<br />
-					<strong>NOME DO USUÁRIO</strong>					
+					Bem-vindo: 
+					<strong><?php e($usuarioNome)?></strong>					
 					</p>
 					<br />
-					<a href="#"><img src="img/bt_sair.jpg" alt="Clique aqui para fazer logout" border="0"/></a>
+					<a href="<?php echo "/helpdeskservice/usuarios/logout"?>"><img src="../img/bt_sair.jpg" alt="Clique aqui para fazer logout" border="0"/></a>
 				</div>
 				
 				<!-- paginas internas -->
 				<div id="main_conteudo">
 				
-					<p class="txt_geral">
 					<?php
 			if ($session->check('Message.flash')){
 				$session->flash();
 			}
 
 			echo $content_for_layout;
-			?>
-
+			?>	
 				
 				</div>
-				<!-- fim paginas internas -->		
+				<!-- fim paginas internas -->	
+					
 			</div>
-			
+			<!-- fim conteudo -->		
+	
+	
 		</div>
-		<!-- fim conteudo -->
-	
-	</div>
-	
+		
+		
+	</div>	
+	<!-- fim main -->
+
+
 	<!-- rodape -->
 	<div id="base_pagina">
-		<p>©2009 helpdesk | Todos os direitos reservados </p>
+		<p>Â©2009 helpdesk | Todos os direitos reservados</p>
 	</div>
 	<!-- fim rodape -->
-	
-	
-	<!-- fim main -->
+
+
 
 </div>
 
