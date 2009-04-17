@@ -2,11 +2,13 @@
 class UsuariosController extends AppController {
 
 	var $name = 'Usuarios';
-	var $helpers = array('Html', 'Form');
 	
 	function index() {
-		$this->Usuario->recursive = 0;
-		$this->set('usuarios', $this->paginate());
+		if(!$this->Auth->user('id')){
+			$this->redirect(array('controller'=>'usuarios', 'action'=> 'login'));
+		}else{
+			$this->redirect(array('controller'=>'chamados', 'action'=> 'index'));
+		}
 	}
 
 	function view($id = null) {
@@ -65,33 +67,22 @@ class UsuariosController extends AppController {
 	}
 	
 	function login(){
-		pr($this->Auth);
+			
+		
 	}
 	
 	function logout(){
 		$this->redirect($this->Auth->logout());
 	}
 	
+	function beforeFilter(){
+		
+		parent::beforeFilter();
+		
+	}
+	
 	function isAuthorized() {
-		if ($this->Auth->user('nivel_de_permissao') == 1){
-			if($this->action == 'edit'){
-				$id = $this->params['pass'][0];
-				if($this->Auth->user('id') == $id){
-
-					return true	;
-				}else{
-					return false;
-				}
-			}elseif($this->action == 'delete' || $this->action == 'add'){
-				return false;
-			}
-
-			return true;
-		}elseif($this->Auth->user('nivel_de_permissao') == 2){
-			return true;
-		}else{
-			return false;
-		}
+		return true;
 	}
 
 }
