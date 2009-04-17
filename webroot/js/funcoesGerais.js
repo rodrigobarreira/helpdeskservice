@@ -26,11 +26,11 @@ function ValidaEmail(mailValue)
 	}
 }
 
-/* 
-*	Nome:  ValidaTelFixo
-*	Função: Verificar se telefone está no formato correto
-*	parametro: telValue
-*	retorno: true ou false 
+/*  
+ *	Nome:  ValidaTelFixo
+ *	Função: Verificar se telefone está no formato correto
+ *	parametro: telValue
+ *	retorno: true ou false 
 */
 function ValidaTelFixo(telValue)
 {
@@ -49,12 +49,11 @@ function ValidaTelFixo(telValue)
 	}
 }
 /*
-"
-*	Nome:  ValidaTel
-*	Função: Verificar se telefone está no formato correto
-*	parametro: telValue
-*	retorno: true ou false
-*/
+ * 	Nome:  ValidaTel
+ *	Função: Verificar se telefone está no formato correto
+ *	parametro: telValue
+ *	retorno: true ou false
+ */
 function ValidaTel(telValue)
 {
 	var tel = /^([0-9]{7,8})$/;
@@ -72,5 +71,22 @@ function ValidaTel(telValue)
 }
 
 /***** 
-*funções para:
+*funções para verificar formularios
 *****/
+/*
+ * Nome: VerificaVazio
+ * Função: Verificar se valor de campo passado no formulario esta nulo
+ * parametro: value
+ * Retorno: true ou false 
+ */
+function VerificaVazio(value)
+{
+	if (value==null)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
