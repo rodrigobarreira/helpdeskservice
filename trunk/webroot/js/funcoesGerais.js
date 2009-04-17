@@ -72,7 +72,5 @@ function ValidaTel(telValue)
 }
 
 /***** 
-* 
-* 
-*
+*funções para:
 *****/
