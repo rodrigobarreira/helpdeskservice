@@ -81,12 +81,14 @@ function ValidaTel(telValue)
  */
 function VerificaVazio(value)
 {
-	if (value==null)
+	if ((value==null)||(value==""))
 	{
+		//alert("Vazio");
 		return false;
 	}
 	else
 	{
+		//alert("tem gente");
 		return true;
 	}
 }
