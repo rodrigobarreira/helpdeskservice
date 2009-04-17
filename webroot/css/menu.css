@@ -1,0 +1,46 @@
+img {
+	border: 0pt;
+}
+#bottom_div {
+	width: 520px;
+	height: 150px;
+	background-color: #b9d1ea;
+	clear:both;
+}
+#div_menu_topo ul {
+	background-repeat:repeat-x;
+	float:left;
+	line-height:32px;
+	list-style:none;
+	margin:0;
+	width:800px;
+}
+#div_menu_topo li {
+	display:inline;
+	padding:0;
+}
+#div_menu_topo a {
+	color:#FFF; /* need because it will use default link color */
+	float:left;
+	padding:0 3px 0 3px; /* left 3 px because of left.png image */
+	text-decoration:none;
+}
+#div_menu_topo a span {
+	display:block;
+	float:none;
+	padding:0 10px 0 7px;
+}
+#div_menu_topo a span img {
+	border:none;
+	margin:8px 5px 0 0;
+}
+/* show picture when mouse over link */
+#div_menu_topo a:hover {
+	background: url(../img/menu/left.png) no-repeat left center;
+}
+#div_menu_topo a:hover span {
+	background:url(../img/menu/right.png) no-repeat right center;
+}
+#div_menu_topo a.right {
+	float:right; /* for help button - just add class "right" ->  <a class="right"... */
+}
