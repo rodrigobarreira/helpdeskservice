@@ -21,9 +21,9 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>webroot/js/RfFuncoes.js</name>
+			<name>webroot/js/jscharts.js</name>
 			<type>1</type>
-			<location>C:/Documents and Settings/Rafael/Desktop/RfFuncoes.js</location>
+			<location>C:/xampp/htdocs/helpdeskservice/webroot/js/jscharts.js</location>
 		</link>
 	</linkedResources>
 </projectDescription>
