@@ -67,6 +67,7 @@ class UsuariosController extends AppController {
 	}
 	
 	function login(){
+		$this->layout = 'login';
 			
 		
 	}
