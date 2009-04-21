@@ -2,6 +2,15 @@
 class ChamadosController extends AppController {
 
 	var $name = 'Chamados';
+	var $paginate = array('limit' => 10, 'fields' => array(
+					// campos do resultado
+					'Chamado.id', 
+					'Chamado.data_abertura',
+					'Chamado.hora_abertura',
+					'Chamado.descricao_problema',
+					'Prioridade.descricao',
+					'Status.descricao'
+				)); 
 
 	function index() {
 		$this->Chamado->recursive = 0;
@@ -67,6 +76,24 @@ class ChamadosController extends AppController {
 			$this->Session->setFlash(__('Chamado deleted', true));
 			$this->redirect(array('action'=>'index'));
 		}
+	}
+	
+	// função que lista os chamados de um determinado solicitante
+	function listaChamados($usuarioId = null){
+		
+		if ($usuarioId == null){
+			$usuarioId = $this->Auth->user('id');
+		}
+		
+		$this->Chamado->recursive = 1;
+		
+		$this->set(
+			'chamados', 
+			$this->paginate('Chamado', array(
+				array('Chamado.usuario_id' => $usuarioId),
+				
+			))			
+		);
 	}
 
 }
