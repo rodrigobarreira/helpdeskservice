@@ -89,20 +89,4 @@ foreach ($chamados as $chamado):
  | 	<?php echo $paginator->numbers();?>
 	<?php echo $paginator->next(__('next', true).' >>', array(), null, array('class'=>'disabled'));?>
 </div>
-<div class="actions">
-	<ul>
-		<li><?php echo $html->link(__('New Chamado', true), array('action'=>'add')); ?></li>
-		<li><?php echo $html->link(__('List Sub Problemas', true), array('controller'=> 'sub_problemas', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Sub Problema', true), array('controller'=> 'sub_problemas', 'action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Usuarios', true), array('controller'=> 'usuarios', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Usuario', true), array('controller'=> 'usuarios', 'action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Prioridades', true), array('controller'=> 'prioridades', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Prioridade', true), array('controller'=> 'prioridades', 'action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Status', true), array('controller'=> 'status', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Status', true), array('controller'=> 'status', 'action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Avaliacoes', true), array('controller'=> 'avaliacoes', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Avaliacao', true), array('controller'=> 'avaliacoes', 'action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Chamado Historicos', true), array('controller'=> 'chamado_historicos', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Chamado Historico', true), array('controller'=> 'chamado_historicos', 'action'=>'add')); ?> </li>
-	</ul>
-</div>
+
