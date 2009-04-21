@@ -15,7 +15,6 @@ class Chamado extends AppModel {
 		'hora_limite' => array('time'),
 		'data_fechamento' => array('date'),
 		'hora_fechamento' => array('time'),
-		'responsavel_id' => array('notempty')
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
