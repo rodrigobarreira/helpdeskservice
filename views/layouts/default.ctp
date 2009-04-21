@@ -33,7 +33,7 @@
 			
 			<div id="row_topo">
 				<div id="div_titulos_secoes"><h1>TITULOS DA PAGINAS</h1></div>
-				<div id="data"><p class="txt_geral_pq">Quarta-feira, 18 de fevereiro de 2009</p></div>
+				<div id="data"><p class="txt_geral_pq"><?php echo $time->dataCompleta()?></p></div>
 			</div>			
 			
 		</div>
@@ -51,19 +51,21 @@
 					<strong><?php e($usuarioNome)?></strong>					
 					</p>
 					<br />
-					<a href="<?php echo "/helpdeskservice/usuarios/logout"?>"><img src="../img/bt_sair.jpg" alt="Clique aqui para fazer logout" border="0"/></a>
+					<?php 
+					echo $this->renderElement('menu');
+					?>
 				</div>
 				
 				<!-- paginas internas -->
 				<div id="main_conteudo">
 				
 					<?php
-			if ($session->check('Message.flash')){
-				$session->flash();
-			}
-
-			echo $content_for_layout;
-			?>	
+					if ($session->check('Message.flash')){
+						$session->flash();
+					}
+		
+					echo $content_for_layout;
+					?>	
 				
 				</div>
 				<!-- fim paginas internas -->	
