@@ -11,18 +11,21 @@
  */
 
 ?>
-
+<p style="color: black;">Menu Provisório para teste das funcionalidades</p>
+<br />
 <ul class="menu">
 	<li><?php echo $html->link('Página Inicial','/'); ?></li>
 	<li><?php echo $html->link('Abrir Chamado','/chamados/add/'); ?></li>
 	<li><?php echo $html->link('Meus Chamados','/chamados/listaChamados'); ?></li>
 	<?php 
-	if ($usuarioGrupo == 3){ // grupo atendente
+	if ($usuarioGrupo == 3 || $usuarioGrupo == 2){ // grupo atendente ou admin
 	?>
+		<li>Atendente</li>
 		<li><?php echo $html->link('Consultar Chamados','/chamados/index'); ?></li>
 		<?php 
 		if ($usuarioGrupo == 2){ // grupo administrador
 			?>
+			<li>Admin</li>
 			<li><?php echo $html->link('Grupos','/grupos/index'); ?></li>
 			<li><?php echo $html->link('Usuários','/usuarios/add/'); ?></li>
 			<li><?php echo $html->link('Prioridades','/prioridades/index'); ?></li>
@@ -34,4 +37,7 @@
 	<?php 
 	}
 	?>
+	<li>-</li>
+	<li><?php echo $html->link('Alterar Senha','/usuarios/alterarSenha'); ?></li>
+	<li><?php echo $html->link('Logout','/usuarios/logout'); ?></li>
 </ul>
