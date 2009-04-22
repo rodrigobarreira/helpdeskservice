@@ -2,6 +2,20 @@
 class UsuariosController extends AppController {
 
 	var $name = 'Usuarios';
+	var $paginate = array('limit' => 10, 'fields' => array(
+					// campos do resultado
+					'Usuario.id', 
+					'Grupo.descricao',
+					'Setor.descricao',
+					'Usuario.nome',
+					'Usuario.senha',
+					'Usuario.email',
+					'Usuario.celular',
+					'Usuario.celular',
+					'Usuario.telefone',
+					'Usuario.ramal',
+					'Usuario.ativo'
+				)); 
 	
 	function index() {
 		if(!$this->Auth->user('id')){
@@ -29,8 +43,8 @@ class UsuariosController extends AppController {
 				$this->Session->setFlash(__('The Usuario could not be saved. Please, try again.', true));
 			}
 		}
-		$grupos = $this->Usuario->Grupo->find('list');
-		$setores = $this->Usuario->Setor->find('list');
+		$grupos = $this->Usuario->Grupo->find('list', array('fields' => array('Grupo.descricao')));
+		$setores = $this->Usuario->Setor->find('list', array('fields' => array('Setor.descricao')));
 		$this->set(compact('grupos', 'setores'));
 	}
 
@@ -64,6 +78,28 @@ class UsuariosController extends AppController {
 			$this->Session->setFlash(__('Usuario deleted', true));
 			$this->redirect(array('action'=>'index'));
 		}
+	}
+	
+	/* função que altera a senha atual do usuário
+	 * deve ser informada a senha atual e a nova senha
+	 * sendo a nova senha deve ser informada duas vezes
+	 * para verificação da mesma
+	 */
+	function alterarSenha(){
+		// verifica se foi informado o campo senha atual
+		if ($this->data['Usuario']['senha_atual'] == null){
+			$this->Session->setFlash('Informe a senha atual.');
+		}elseif($this->data['Usuario']['senha_nova'] == null){
+			$this->Session->setFlash('Informe a nova senha.');
+		}elseif($this->data['Usuario']['senha_confirmar'] == null){
+			$this->Session->setFlash('Informe a senha de confirmação.');
+		}else{
+			// apllica-se a função de hash na senha atual informada
+			//$this->
+			
+			
+		}
+		pr($this->data);
 	}
 	
 	function login(){
