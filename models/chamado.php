@@ -3,24 +3,19 @@ class Chamado extends AppModel {
 
 	var $name = 'Chamado';
 	var $validate = array(
-		'sub_problema_id' => array('numeric'),
+		'problema_id' => array('numeric'),
 		'usuario_id' => array('notempty'),
-		'data_abertura' => array('date'),
-		'hora_abertura' => array('time'),
+		'data_hora_abertura' => array('date'),
 		'descricao_problema' => array('notempty'),
-		'descricao_solucao' => array('notempty'),
 		'prioridade_id' => array('numeric'),
 		'status_id' => array('notempty'),
-		'data_limite' => array('date'),
-		'hora_limite' => array('time'),
-		'data_fechamento' => array('date'),
-		'hora_fechamento' => array('time'),
+		'data_hora_limite' => array('date'),
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 	var $belongsTo = array(
-			'SubProblema' => array('className' => 'SubProblema',
-								'foreignKey' => 'sub_problema_id',
+			'Problema' => array('className' => 'Problema',
+								'foreignKey' => 'problema_id',
 								'conditions' => '',
 								'fields' => '',
 								'order' => ''
