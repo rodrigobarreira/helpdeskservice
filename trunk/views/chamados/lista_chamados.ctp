@@ -1,5 +1,5 @@
 <div class="chamados index">
-<h2><?php __('Chamados');?></h2>
+<h2><?php __('Meus Chamados');?></h2>
 <p>
 <?php
 echo $paginator->counter(array(
@@ -9,9 +9,8 @@ echo $paginator->counter(array(
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th><?php echo $paginator->sort('id');?></th>
-	<th><?php echo $paginator->sort('data_abertura');?></th>
-	<th><?php echo $paginator->sort('hora_abertura');?></th>
-	<th><?php echo $paginator->sort('descricao_problema');?></th>
+	<th><?php echo $paginator->sort('problema_id');?></th>
+	<th><?php echo $paginator->sort('data_hora_abertura');?></th>
 	<th><?php echo $paginator->sort('prioridade_id');?></th>
 	<th><?php echo $paginator->sort('status_id');?></th>
 	
@@ -30,13 +29,10 @@ foreach ($chamados as $chamado):
 			<?php echo $chamado['Chamado']['id']; ?>
 		</td>
 		<td>
-			<?php echo $chamado['Chamado']['data_abertura']; ?>
+			<?php echo $chamado['Problema']['descricao']; ?>
 		</td>
 		<td>
-			<?php echo $chamado['Chamado']['hora_abertura']; ?>
-		</td>
-		<td>
-			<?php echo $chamado['Chamado']['descricao_problema']; ?>
+			<?php echo $chamado['Chamado']['data_hora_abertura']; ?>
 		</td>
 		<td>
 			<?php echo $chamado['Prioridade']['descricao']?>
@@ -46,6 +42,7 @@ foreach ($chamados as $chamado):
 		</td>
 		<td class="actions">
 			<?php echo $html->link(__('View', true), array('action'=>'view', $chamado['Chamado']['id'])); ?>
+			<?php // estes links serão removidos, porém primeiro serão feitos testes?>
 			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $chamado['Chamado']['id'])); ?>
 			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $chamado['Chamado']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $chamado['Chamado']['id'])); ?>
 		</td>
