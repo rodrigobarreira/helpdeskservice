@@ -2,11 +2,13 @@
 class ChamadosController extends AppController {
 
 	var $name = 'Chamados';
+	var $uses = array('Chamado');
 	var $paginate = array('limit' => 10, 'fields' => array(
 					// campos do resultado
 					'Chamado.id', 
-					'Chamado.data_abertura',
-					'Chamado.hora_abertura',
+					'Problema.descricao',
+					'Usuario.nome',
+					'Chamado.data_hora_abertura',
 					'Chamado.descricao_problema',
 					'Prioridade.descricao',
 					'Status.descricao'
@@ -35,12 +37,12 @@ class ChamadosController extends AppController {
 				$this->Session->setFlash(__('The Chamado could not be saved. Please, try again.', true));
 			}
 		}
-		$subProblemas = $this->Chamado->SubProblema->find('list');
-		$usuarios = $this->Chamado->Usuario->find('list');
-		$prioridades = $this->Chamado->Prioridade->find('list');
-		$status = $this->Chamado->Status->find('list');
-		$responsaveis = $this->Chamado->Responsavel->find('list');
-		$this->set(compact('subProblemas', 'usuarios', 'prioridades', 'status', 'responsaveis'));
+		
+		$problemas = $this->Chamado->Problema->find('list', array('fields' => array('Problema.descricao')));
+		$usuarios = $this->Chamado->Usuario->find('list', array('fields' => array('Usuario.nome')));
+		$prioridades = $this->Chamado->Prioridade->find('list', array('fields' => array('Prioridade.descricao')));
+		$status = $this->Chamado->Status->find('list', array('fields' => array('Status.descricao')));
+		$this->set(compact('problemas', 'usuarios', 'prioridades', 'status'));
 	}
 
 	function edit($id = null) {
