@@ -12,11 +12,4 @@
 	</fieldset>
 <?php echo $form->end('Submit');?>
 </div>
-<div class="actions">
-	<ul>
-		<li><?php echo $html->link(__('Delete', true), array('action'=>'delete', $form->value('Avaliacao.id')), null, sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Avaliacao.id'))); ?></li>
-		<li><?php echo $html->link(__('List Avaliacoes', true), array('action'=>'index'));?></li>
-		<li><?php echo $html->link(__('List Chamados', true), array('controller'=> 'chamados', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Chamado', true), array('controller'=> 'chamados', 'action'=>'add')); ?> </li>
-	</ul>
-</div>
+

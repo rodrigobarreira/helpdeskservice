@@ -28,13 +28,4 @@
 		</dd>
 	</dl>
 </div>
-<div class="actions">
-	<ul>
-		<li><?php echo $html->link(__('Edit Avaliacao', true), array('action'=>'edit', $avaliacao['Avaliacao']['id'])); ?> </li>
-		<li><?php echo $html->link(__('Delete Avaliacao', true), array('action'=>'delete', $avaliacao['Avaliacao']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $avaliacao['Avaliacao']['id'])); ?> </li>
-		<li><?php echo $html->link(__('List Avaliacoes', true), array('action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Avaliacao', true), array('action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Chamados', true), array('controller'=> 'chamados', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Chamado', true), array('controller'=> 'chamados', 'action'=>'add')); ?> </li>
-	</ul>
-</div>
+
