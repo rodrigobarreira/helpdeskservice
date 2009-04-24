@@ -92,11 +92,6 @@
 	</table>
 <?php endif; ?>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $html->link(__('New Chamado Historico', true), array('controller'=> 'chamado_historicos', 'action'=>'add'));?> </li>
-		</ul>
-	</div>
 </div>
 <div class="related">
 	<h3><?php __('Related Chamados');?></h3>
