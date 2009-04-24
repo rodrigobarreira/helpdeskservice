@@ -13,16 +13,7 @@
 		</dd>
 	</dl>
 </div>
-<div class="actions">
-	<ul>
-		<li><?php echo $html->link(__('Edit Grupo', true), array('action'=>'edit', $grupo['Grupo']['id'])); ?> </li>
-		<li><?php echo $html->link(__('Delete Grupo', true), array('action'=>'delete', $grupo['Grupo']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $grupo['Grupo']['id'])); ?> </li>
-		<li><?php echo $html->link(__('List Grupos', true), array('action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Grupo', true), array('action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Usuarios', true), array('controller'=> 'usuarios', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Usuario', true), array('controller'=> 'usuarios', 'action'=>'add')); ?> </li>
-	</ul>
-</div>
+
 <div class="related">
 	<h3><?php __('Related Usuarios');?></h3>
 	<?php if (!empty($grupo['Usuario'])):?>
@@ -68,10 +59,4 @@
 	<?php endforeach; ?>
 	</table>
 <?php endif; ?>
-
-	<div class="actions">
-		<ul>
-			<li><?php echo $html->link(__('New Usuario', true), array('controller'=> 'usuarios', 'action'=>'add'));?> </li>
-		</ul>
-	</div>
 </div>
