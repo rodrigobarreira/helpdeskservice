@@ -13,16 +13,7 @@
 		</dd>
 	</dl>
 </div>
-<div class="actions">
-	<ul>
-		<li><?php echo $html->link(__('Edit Problema', true), array('action'=>'edit', $problema['Problema']['id'])); ?> </li>
-		<li><?php echo $html->link(__('Delete Problema', true), array('action'=>'delete', $problema['Problema']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $problema['Problema']['id'])); ?> </li>
-		<li><?php echo $html->link(__('List Problemas', true), array('action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Problema', true), array('action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Sub Problemas', true), array('controller'=> 'sub_problemas', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Sub Problema', true), array('controller'=> 'sub_problemas', 'action'=>'add')); ?> </li>
-	</ul>
-</div>
+
 <div class="related">
 	<h3><?php __('Related Sub Problemas');?></h3>
 	<?php if (!empty($problema['SubProblema'])):?>
@@ -55,9 +46,4 @@
 	</table>
 <?php endif; ?>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $html->link(__('New Sub Problema', true), array('controller'=> 'sub_problemas', 'action'=>'add'));?> </li>
-		</ul>
-	</div>
 </div>

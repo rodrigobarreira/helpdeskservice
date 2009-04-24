@@ -13,16 +13,7 @@
 		</dd>
 	</dl>
 </div>
-<div class="actions">
-	<ul>
-		<li><?php echo $html->link(__('Edit Setor', true), array('action'=>'edit', $setor['Setor']['id'])); ?> </li>
-		<li><?php echo $html->link(__('Delete Setor', true), array('action'=>'delete', $setor['Setor']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $setor['Setor']['id'])); ?> </li>
-		<li><?php echo $html->link(__('List Setores', true), array('action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Setor', true), array('action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Usuarios', true), array('controller'=> 'usuarios', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Usuario', true), array('controller'=> 'usuarios', 'action'=>'add')); ?> </li>
-	</ul>
-</div>
+
 <div class="related">
 	<h3><?php __('Related Usuarios');?></h3>
 	<?php if (!empty($setor['Usuario'])):?>
@@ -68,10 +59,4 @@
 	<?php endforeach; ?>
 	</table>
 <?php endif; ?>
-
-	<div class="actions">
-		<ul>
-			<li><?php echo $html->link(__('New Usuario', true), array('controller'=> 'usuarios', 'action'=>'add'));?> </li>
-		</ul>
-	</div>
 </div>

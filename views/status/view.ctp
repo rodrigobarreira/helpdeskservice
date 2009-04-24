@@ -13,16 +13,7 @@
 		</dd>
 	</dl>
 </div>
-<div class="actions">
-	<ul>
-		<li><?php echo $html->link(__('Edit Status', true), array('action'=>'edit', $status['Status']['id'])); ?> </li>
-		<li><?php echo $html->link(__('Delete Status', true), array('action'=>'delete', $status['Status']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $status['Status']['id'])); ?> </li>
-		<li><?php echo $html->link(__('List Status', true), array('action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Status', true), array('action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Chamados', true), array('controller'=> 'chamados', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Chamado', true), array('controller'=> 'chamados', 'action'=>'add')); ?> </li>
-	</ul>
-</div>
+
 <div class="related">
 	<h3><?php __('Related Chamados');?></h3>
 	<?php if (!empty($status['Chamado'])):?>
@@ -73,9 +64,4 @@
 	</table>
 <?php endif; ?>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $html->link(__('New Chamado', true), array('controller'=> 'chamados', 'action'=>'add'));?> </li>
-		</ul>
-	</div>
 </div>
