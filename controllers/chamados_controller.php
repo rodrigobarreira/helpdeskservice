@@ -61,12 +61,12 @@ class ChamadosController extends AppController {
 		if (empty($this->data)) {
 			$this->data = $this->Chamado->read(null, $id);
 		}
-		$subProblemas = $this->Chamado->SubProblema->find('list');
+		$problemas = $this->Chamado->Problema->find('list');
 		$usuarios = $this->Chamado->Usuario->find('list');
 		$prioridades = $this->Chamado->Prioridade->find('list');
 		$status = $this->Chamado->Status->find('list');
 		$responsaveis = $this->Chamado->Responsavel->find('list');
-		$this->set(compact('subProblemas','usuarios','prioridades','status','responsaveis'));
+		$this->set(compact('Problemas','usuarios','prioridades','status','responsaveis'));
 	}
 
 	function delete($id = null) {
