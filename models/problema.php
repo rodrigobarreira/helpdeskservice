@@ -8,7 +8,7 @@ class Problema extends AppModel {
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 	var $hasMany = array(
-			'SubProblema' => array('className' => 'SubProblema',
+			'Problema' => array('className' => 'Problema',
 								'foreignKey' => 'problema_id',
 								'dependent' => false,
 								'conditions' => '',
