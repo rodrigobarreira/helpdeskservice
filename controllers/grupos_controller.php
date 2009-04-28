@@ -2,6 +2,8 @@
 class GruposController extends AppController {
 
 	var $name = 'Grupos';
+	var $uses = 'Grupo';
+	
 	var $helpers = array('Html', 'Form');
 	var $paginate = array('limit' => 10);
 
@@ -59,12 +61,27 @@ class GruposController extends AppController {
 		}
 	}
 	
+	function beforeFiler(){
+		parent::beforeFilter();
+		
+		$this->Auth->allow('');
+	}
+	// permite você fazer mais algumas verificações de autenticação	
 	function isAuthorized() {
-		if ($this->Auth->user('nivel_de_permissao') == 2){
-			return true;
-		}else{
-			return false;
+		$retorno = false;
+		switch ($this->Auth->user('grupo_id')){
+			case 1: // solicitante
+				break;
+			case 2: // atendente
+				break;
+			case 3: // administrador 
+				$retorno = false;
+				break;	
+			default:
+				break;
 		}
+
+				return $retorno;
 	}
 
 }
