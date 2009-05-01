@@ -28,7 +28,7 @@ html, body {
 #main_pagina {
 	width:100%;
 	background-color:#FFF;
-	background-image:url(../imagens/sombra_col_main.jpg);
+	background-image:url(../img/sombra_col_main.jpg);
 	background-repeat:repeat-y;
 	background-position:250px top; /* width col conteudo */
 	display:table;
@@ -42,7 +42,7 @@ html, body {
 
 #navegacao {
 	height:20px;
-	background-image:url(../imagens/bg_navegacao.jpg);
+	background-image:url(../img/bg_navegacao.jpg);
 	background-repeat:repeat-x;
 	background-position:top;
 	padding-left:30px; /* alinhamento itens a direita */
@@ -52,7 +52,7 @@ html, body {
 }
 
 #main {
-	background-image:url(../imagens/bg_main_conteudo.jpg);
+	background-image:url(../img/bg_main_conteudo.jpg);
 	background-repeat:no-repeat;
 	background-position:250px top; /* width col conteudo */
 	width:100%;
@@ -60,7 +60,7 @@ html, body {
 }
 
 #col_conteudo {
-	width:220px;
+	width:200px;
 	padding-top:30px;  /* alinhamento itens ao topo */
 	padding-left:30px; /* alinhamento itens a direita */
 	float:left;
@@ -77,13 +77,13 @@ html, body {
 #topo_pagina {
 	width:100%;
 	height:160px;
-	background-image:url(../imagens/bg_topo.jpg);
+	background-image:url(../img/bg_topo.jpg);
 	background-repeat:repeat-x;
 	background-position:bottom;
 }
 #topo_logo {
 	height:80px;
-	background-image:url(../imagens/bg_topo_logo.jpg);
+	background-image:url(../img/bg_topo_logo.jpg);
 	background-repeat:repeat-x;
 	background-position:-10px;
 	padding-left:30px; /* alinhamento itens a direita */
@@ -91,7 +91,7 @@ html, body {
 #topo_logo h1#logo_sistema a {
 	height:80px;
 	width:370px;
-	background-image:url(../imagens/logo_sistema.jpg);
+	background-image:url(../img/logo_sistema.jpg);
 	background-repeat:no-repeat;
 	display:block;
 }
@@ -126,7 +126,7 @@ html, body {
 }
 
 #div_menu_topo {
-	background-image:url(../imagens/bg_menu_principal.jpg);
+	background-image:url(../img/bg_menu_principal.jpg);
 	background-repeat:repeat-x;
 	background-position:top;
 	height:32px;
@@ -151,7 +151,7 @@ html, body {
 #base_pagina {
 	width:100%;
 	height:50px;
-	background-image:url(../imagens/bg_base.jpg);
+	background-image:url(../img/bg_base.jpg);
 	background-repeat:repeat-x;
 	text-align:center;
 	float:left;
