@@ -29,11 +29,15 @@
 				<li><a href="#"><span><img align="left" src="../img/menu/mona.gif" alt="my pictures" />MyPictures</span></a></li>
 				<li><a href="#"><span><img align="left" src="../img/menu/sos.gif" alt="help" />Help</span></a></li>
 				</ul>
+				
+				<div id="data"><p class="txt_geral_pq_br">Quarta-feira, 18 de fevereiro de 2009</p></div>
 			</div>
 			
 			<div id="row_topo">
-				<div id="div_titulos_secoes"><h1>TITULOS DA PAGINAS</h1></div>
-				<div id="data"><p class="txt_geral_pq"><?php echo $time->dataCompleta()?></p></div>
+				<div id="div_titulos_secoes"><h1>TITULOS DA PAGINAS</h1></div>	
+				<div id="div_usuario">
+					<p class="txt_geral">Bem-vindo: <strong><?php e($usuarioNome)?></strong><a href="#"><img src="../img/bt_sair.jpg" alt="Clique aqui para fazer logout" border="0" id="bt_sair"/></a></p>
+				</div>
 			</div>			
 			
 		</div>
@@ -46,11 +50,6 @@
 			<div id="main">
 			
 				<div id="col_conteudo">
-					<p class="txt_geral">
-					Bem-vindo: 
-					<strong><?php e($usuarioNome)?></strong>					
-					</p>
-					<br />
 					<?php 
 					echo $this->renderElement('menu');
 					?>
