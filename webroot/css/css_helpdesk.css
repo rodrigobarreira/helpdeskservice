@@ -63,6 +63,7 @@ html, body {
 	width:200px;
 	padding-top:30px;  /* alinhamento itens ao topo */
 	padding-left:30px; /* alinhamento itens a direita */
+	padding-right:20px;
 	float:left;
 }
 
