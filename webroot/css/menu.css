@@ -13,7 +13,7 @@ img {
 	line-height:32px;
 	list-style:none;
 	margin:0;
-	width:800px;
+	width:500px;
 }
 #div_menu_topo li {
 	display:inline;
@@ -36,10 +36,10 @@ img {
 }
 /* show picture when mouse over link */
 #div_menu_topo a:hover {
-	background: url(../img/menu/left.png) no-repeat left center;
+	background: url(../menu/left.png) no-repeat left center;
 }
 #div_menu_topo a:hover span {
-	background:url(../img/menu/right.png) no-repeat right center;
+	background:url(../menu/right.png) no-repeat right center;
 }
 #div_menu_topo a.right {
 	float:right; /* for help button - just add class "right" ->  <a class="right"... */
