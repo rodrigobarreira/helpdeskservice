@@ -19,8 +19,6 @@
 		<li><?php echo $html->link(__('Delete Status', true), array('action'=>'delete', $status['Status']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $status['Status']['id'])); ?> </li>
 		<li><?php echo $html->link(__('List Status', true), array('action'=>'index')); ?> </li>
 		<li><?php echo $html->link(__('New Status', true), array('action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Chamados', true), array('controller'=> 'chamados', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Chamado', true), array('controller'=> 'chamados', 'action'=>'add')); ?> </li>
 	</ul>
 </div>
 <div class="related">
