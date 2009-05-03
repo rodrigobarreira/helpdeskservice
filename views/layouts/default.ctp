@@ -37,7 +37,7 @@
 	echo $html->css('css_helpdesk');
 	echo $html->css('menu');
 	echo $html->css('menu_style');
-	echo $html->css('cake.generic');
+	//echo $html->css('cake.generic');
 	
 	echo $scripts_for_layout;
 	?>
@@ -59,14 +59,14 @@
 							'span',
 							$html->image(
 								'menu_add.gif', array(
-									'alt' => 'add new', 
+									'alt' => 'Home', 
 									'align' => 'left'
 								)
-							).'Add New',
+							).'Home',
 							null,
 							false
 						),
-						'#',
+						'/',
 						null, null, false
 						)
 					?>
@@ -77,10 +77,10 @@
 							'span',
 							$html->image(
 								'menu_mail.gif', array(
-									'alt' => 'Check Mail', 
+									'alt' => 'Atendimento', 
 									'align' => 'left'
 								)
-							).'Check Mail',
+							).'Atendimento',
 							null,
 							false
 						),
@@ -88,6 +88,7 @@
 						null, null, false
 						)
 					?>
+				</li>
 				<li>
 					<?php echo $html->link(
 						$html->tag(
@@ -105,6 +106,7 @@
 						null, null, false
 						)
 					?>
+				</li>
 				<li>
 					<?php echo $html->link(
 						$html->tag(
@@ -122,6 +124,7 @@
 						null, null, false
 						)
 					?>
+				</li>
 				<li>
 					<?php echo $html->link(
 						$html->tag(
@@ -139,6 +142,7 @@
 						null, null, false
 						)
 					?>
+				</li>
 				</ul>
 				
 				<div id="data"><p class="txt_geral_pq_br"><?php echo $time->dataCompleta()?></p></div>
@@ -150,7 +154,7 @@
 					<p class="txt_geral">Bem-vindo: 
 						<strong><?php e($usuarioNome)?></strong>
 						<?php echo $html->link(
-							$html->image('bt_sair.jpg', array('alt' => 'Clique aqui para fazer logout', 'border' => '0')),
+							$html->image('bt_sair.gif', array('alt' => 'Clique aqui para fazer logout', 'border' => '0')),
 							'/logout',
 							null, null, false
 						)?>
