@@ -10,7 +10,7 @@
 	echo $html->meta('icon');
 	echo $html->css('css_helpdesk');
 	echo $html->css('menu');
-	echo $html->css('cake.generic');
+	echo $html->css('login');
 	
 	echo $scripts_for_layout;
 	?>
