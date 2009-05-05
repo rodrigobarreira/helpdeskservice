@@ -76,8 +76,9 @@ html, body {
 /* topo pagina */
 #topo_pagina {
 	width:100%;
-	height:160px;
-	background-image:url(../img/bg_topo.jpg);
+	height:145px;
+	background-color:#fff;
+	background-image:url(../img/bg_navegacao.jpg);
 	background-repeat:repeat-x;
 	background-position:bottom;
 }
