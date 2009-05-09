@@ -4,13 +4,15 @@ class Chamado extends AppModel {
 	var $name = 'Chamado';
 	var $validate = array(
 		'problema_id' => array('numeric'),
+		'titulo' => array('notEmpty'),
 		'usuario_id' => array('numeric'),
-		'data_hora_abertura' => array('date'),
+		//'data_hora_abertura' => array('date'),
 		'aberto_por' => array('numeric'),
 		'descricao_problema' => array('notempty'),
 		'status_id' => array('numeric')
 	);
-
+	
+	var $recursive = 0;
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 	var $belongsTo = array(
 			'Problema' => array('className' => 'Problema',
@@ -52,7 +54,7 @@ class Chamado extends AppModel {
 	var $hasMany = array(
 			'ChamadoHistorico' => array('className' => 'ChamadoHistorico',
 								'foreignKey' => 'chamado_id',
-								'dependent' => false,
+								'dependent' => true,
 								'conditions' => '',
 								'fields' => '',
 								'order' => '',
