@@ -1,3 +1,4 @@
+
 <?php
 /* SVN FILE: $Id: default.ctp 7690 2008-10-02 04:56:53Z nate $ */
 /**
@@ -32,13 +33,15 @@
 		<?php __('HelpDesk System'); ?>
 	</title>
 	<?php
-	echo $html->meta('icon');
+	echo $html->meta('icn');
 
 	echo $html->css('css_helpdesk');
 	echo $html->css('menu');
 	echo $html->css('menu_style');
 	//echo $html->css('cake.generic');
-	
+	//echo $javascript->link('prototype');
+	//echo $javascript->link('scriptaculous');
+	echo $javascript->link('jquery/jquery-1.3.1.min');
 	echo $scripts_for_layout;
 	?>
 </head>
@@ -66,65 +69,55 @@
 							null,
 							false
 						),
-						'/',
+						'/home',
 						null, null, false
 						)
 					?>
 				</li>
 				<li>
-					<?php echo $html->link(
-						$html->tag(
-							'span',
-							$html->image(
-								'menu_mail.gif', array(
-									'alt' => 'Atendimento', 
-									'align' => 'left'
-								)
-							).'Atendimento',
-							null,
-							false
-						),
-						'#',
-						null, null, false
-						)
+					<?php 
+					if ($usuarioGrupo > 1){
+						echo $html->link(
+							$html->tag(
+								'span',
+								$html->image(
+									'menu_mail.gif', array(
+										'alt' => 'Atendimento', 
+										'align' => 'left'
+									)
+								).'Atendimento',
+								null,
+								false
+							),
+							'/atendimento',
+							null, null, false
+						);
+					}
 					?>
 				</li>
 				<li>
-					<?php echo $html->link(
-						$html->tag(
-							'span',
-							$html->image(
-								'menu_chart.gif', array(
-									'alt' => 'Statistic', 
-									'align' => 'left'
-								)
-							).'Statistic',
-							null,
-							false
-						),
-						'#',
-						null, null, false
-						)
+					<?php 
+					if ($usuarioGrupo > 2){
+						echo $html->link(
+					
+							$html->tag(
+								'span',
+								$html->image(
+									'menu_chart.gif', array(
+										'alt' => 'Administração', 
+										'align' => 'left'
+									)
+								).'Administração',
+								null,
+								false
+							),
+							'/administracao',
+							null, null, false
+						);
+					}
 					?>
 				</li>
-				<li>
-					<?php echo $html->link(
-						$html->tag(
-							'span',
-							$html->image(
-								'menu_mona.gif', array(
-									'alt' => 'My Pictures', 
-									'align' => 'left'
-								)
-							).'My Pictures',
-							null,
-							false
-						),
-						'#',
-						null, null, false
-						)
-					?>
-				</li>
+				
 				<li>
 					<?php echo $html->link(
 						$html->tag(
@@ -155,7 +148,7 @@
 						<strong><?php e($usuarioNome)?></strong>
 						<?php echo $html->link(
 							$html->image('bt_sair.gif', array('alt' => 'Clique aqui para fazer logout', 'border' => '0')),
-							'/logout',
+							'/usuarios/logout',
 							null, null, false
 						)?>
 					</p>
@@ -167,7 +160,7 @@
 		<!-- conteudo -->
 		<div id="conteudo_pagina">
 		
-			<div id="navegacao"><p class="txt_geral_pq"><strong>VocÃª estÃ¡ em: </strong>nome da pagina</p></div>
+			<div id="navegacao"><p class="txt_geral_pq"><strong>Você está em: </strong>nome da pagina</p></div>
 			
 			<div id="main">
 			
@@ -175,7 +168,16 @@
 					
 					<!-- menu lateral -->
 					<?php 
-					echo $this->renderElement('menu');
+					if ($usuarioGrupo == '1'){ // solicitante
+						echo $this->renderElement($menu);
+					}elseif ($usuarioGrupo == '2'){ // atendente
+						echo $this->renderElement($menu);
+					}elseif ($usuarioGrupo == '3'){ // administrador de area
+						echo $this->renderElement($menu);
+					}elseif ($usuarioGrupo == '4'){ // administrador geral
+						echo $this->renderElement($menu);
+					}
+					
 					?>
 					<!-- fim menu lateral -->
 					
@@ -212,7 +214,7 @@
 
 	<!-- rodape -->
 	<div id="base_pagina">
-		<p>Â©2009 helpdesk | Todos os direitos reservados</p>
+		<p>ï¿½2009 helpdesk | Todos os direitos reservados</p>
 	</div>
 	<!-- fim rodape -->
 
