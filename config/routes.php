@@ -37,6 +37,11 @@
 	
 	Router::connect('/atendimento', array('controller' => 'chamados', 'action' => 'index', 'home'));
 	
+	Router::connect('/home', array('controller' => 'chamados', 'action' => 'meusChamados', 'home'));
+	Router::connect('/home/meusChamados/*', array('controller' => 'chamados', 'action' => 'meusChamados', ''));
+	Router::connect('/home/abrirChamado', array('controller' => 'chamados', 'action' => 'abrirChamado', ''));
+	Router::connect('/home/alterarSenha', array('controller' => 'usuarios', 'action' => 'alterarSenha', ''));
+	
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */
