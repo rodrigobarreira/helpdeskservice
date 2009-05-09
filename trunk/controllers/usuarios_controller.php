@@ -2,12 +2,12 @@
 class UsuariosController extends AppController {
 
 	var $name = 'Usuarios';
-	var $helpers = array('Html', 'Form');
+	var $helpers = array('Html', 'Form', 'Xml');
 
 	function index() {
-	// verifica se o usuÃ¡rio estÃ¡ autenticado
+		// verifica se o usuário está autenticado
 		if(!$this->Auth->user('id')){
-			// nÃ£o estÃ¡ autenticado
+			// não está autenticado
 			//$this->log("array('controller'=>'usuarios', 'action'=> 'login'", LOG_DEBUG);
 			$this->redirect(array('controller'=>'usuarios', 'action'=> 'login'));
 		}else{
@@ -55,6 +55,8 @@ class UsuariosController extends AppController {
 		if (empty($this->data)) {
 			$this->data = $this->Usuario->read(null, $id);
 		}
+
+
 		$grupos = $this->Usuario->Grupo->find('list');
 		$setores = $this->Usuario->Setor->find('list');
 		$this->set(compact('grupos','setores'));
@@ -70,46 +72,98 @@ class UsuariosController extends AppController {
 			$this->redirect(array('action'=>'index'));
 		}
 	}
-	
-	/* funÃ§Ã£o que altera a senha atual do usuÃ¡rio
+
+	/**
+	 * FunÃ§Ã£o que lista os chamados do usuário logado, que tenha ele como solicitante
+	 * @access public
+	 * @name meusChamados
+	 * @return void
+	 */
+
+	public function meusChamados(){
+		$this->Usuario->Chamado->recursive = 1;
+		$this->paginate = array('limit' => 5,
+			'where' => "Chamado.usuario_id = '$this->usuarioId'",
+			'order' => 'Chamado.id DESC'
+			);
+
+			$this->set('chamados', $this->paginate());
+
+			/*$this->Usuario->Chamado->find('all', array(
+			 'conditions' => array('Chamado.usuario_id' => $this->usuarioId),
+			 'order' => 'Chamado.id DESC'
+			 ));*/
+
+	}
+
+	/* funÃ§Ã£o que altera a senha atual do usuário
 	 * deve ser informada a senha atual e a nova senha
 	 * sendo a nova senha deve ser informada duas vezes
 	 * para verificaÃ§Ã£o da mesma
 	 */
 	function alterarSenha(){
-		// verifica se foi informado o campo senha atual
-		if ($this->data['Usuario']['senha_atual'] == null){
-			$this->Session->setFlash('Informe a senha atual.');
-		}elseif($this->data['Usuario']['senha_nova'] == null){
-			$this->Session->setFlash('Informe a nova senha.');
-		}elseif($this->data['Usuario']['senha_confirmar'] == null){
-			$this->Session->setFlash('Informe a senha de confirmaÃ§Ã£o.');
-		}else{
-			// apllica-se a funÃ§Ã£o de hash na senha atual informada
-			//$this->
-			
-			
+		if (!empty($this->data)) {
+			// verifica se foi informado o campo senha atual
+			if ($this->data['Usuario']['senha_atual'] == null){
+				$this->Session->setFlash('Informe a senha atual.');
+				//$this->redirect(array('action'=>'alterarSenha'));
+				$this->render('alterarSenha');
+			}elseif($this->data['Usuario']['senha_nova'] == null){
+				$this->Session->setFlash('Informe a nova senha.');
+				//$this->redirect(array('action'=>'alterarSenha'));
+				$this->render('alterarSenha');
+			}elseif($this->data['Usuario']['senha_confirmar'] == null){
+				$this->Session->setFlash('Informe a senha de confirmação.');
+				//$this->redirect(array('action'=>'alterarSenha'));
+				$this->render('alterarSenha');
+			}elseif ($this->data['Usuario']['senha_nova'] != $this->data['Usuario']['senha_confirmar']){
+				$this->Session->setFlash('Os campos Nova Senha e Confirmar Senha<br />devem ser preenchidos com o mesmo valor.');
+				//$this->redirect(array('action'=>'alterarSenha'));
+			}else{
+				$senha_atual = $this->Auth->password($this->data['Usuario']['senha_atual']);
+				$this->data['Usuario']['matricula']= $this->usuarioMatricula;
+				$this->data['Usuario']['senha']= $senha_atual;
+				$usuario = $this->Auth->identify($this->data);
+				if ($usuario != false){
+					$this->data['Usuario']['senha'] = $this->Auth->password($this->data['Usuario']['senha_nova']);
+					$this->data['Usuario']['id'] = $this->usuarioId;
+					if ($this->Usuario->save($this->data)){
+						$this->Session->setFlash('Senha Alterada com sucesso!');
+						$this->redirect('/home');
+					}else{
+						$this->Session->setFlash('Não foi possível alterar a sua senha!');	
+					}
+				}else{
+					$this->Session->setFlash('Senha atual não confere!');
+				}
+					
+				//$this->redirect(array('action'=>'index'));
+					
+				//unset($this->data['Usuario']['senha']);
+			}
 		}
-		//pr($this->data);
 	}
-	
+
 	function login(){
 		$this->layout = 'login';
-		//$this->redirect(array('controller' => 'chamados', 'actions' => 'index'));	
-		
+		//pr($this->Auth);
+		//$this->redirect(array('controller' => 'chamados', 'actions' => 'index'));
+
 	}
-	
+
 	function logout(){
 		$this->redirect($this->Auth->logout());
 	}
-	
+
 	function beforeFilter(){
-		
+		$this->Auth->allow('index', 'login', 'alterarSenha', 'edit');
+		//pr ($this->Auth);
 		parent::beforeFilter();
-		$this->Auth->allow('index', 'login', 'add');
-		
+		//pr($this->Auth);
+
+
 	}
-	
+
 	function isAuthorized() {
 		return true;
 	}
