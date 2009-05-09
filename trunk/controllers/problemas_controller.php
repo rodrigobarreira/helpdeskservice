@@ -2,10 +2,10 @@
 class ProblemasController extends AppController {
 
 	var $name = 'Problemas';
-	var $helpers = array('Html', 'Form');
+	//var $helpers = array('Html', 'Form');
 
 	function index() {
-		$this->Problema->recursive = 0;
+		$this->Problema->recursive = 1;
 		$this->set('problemas', $this->paginate());
 	}
 
@@ -62,6 +62,10 @@ class ProblemasController extends AppController {
 			$this->Session->setFlash(__('Problema deleted', true));
 			$this->redirect(array('action'=>'index'));
 		}
+	}
+	
+	function ajaxListaProblemas($setor_id){
+		
 	}
 
 }
