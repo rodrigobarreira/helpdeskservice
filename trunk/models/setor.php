@@ -3,11 +3,13 @@ class Setor extends AppModel {
 
 	var $name = 'Setor';
 	var $validate = array(
-		'descricao' => array('numeric'),
+		//'descricao' => array('notEmpty'),
 		'sla_id' => array('numeric'),
-		'atende_chamado' => array('comparison')
+		'atende_chamado' => array('boolean')
 	);
-
+	
+	var $recursive = -1;
+	var $displayField = 'descricao';
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 	var $belongsTo = array(
 			'Sla' => array('className' => 'Sla',
