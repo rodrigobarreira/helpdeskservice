@@ -300,7 +300,7 @@ form {
 }
 fieldset {
 	border: 1px solid #ccc;
-	margin-top: 30px;
+	/* margin-top: 30px; */
 	padding: 16px 20px;
 }
 fieldset legend {
@@ -325,7 +325,7 @@ fieldset fieldset div {
 form div {
 	clear: both;
 	margin-bottom: 1em;
-	padding: .5em;
+	/*padding: .5em;*/
 	vertical-align: text-top;
 }
 form div.input {
