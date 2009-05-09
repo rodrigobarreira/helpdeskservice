@@ -8,7 +8,6 @@
 		echo $form->input('setor_id');
 		echo $form->input('matricula');
 		echo $form->input('nome');
-		echo $form->input('senha');
 		echo $form->input('email');
 		echo $form->input('celular');
 		echo $form->input('telefone');
