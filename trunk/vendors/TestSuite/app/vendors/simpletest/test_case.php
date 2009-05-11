@@ -541,8 +541,6 @@
                     $classes[] = $class;
                 }
             }
-            $classes[] = 'SetorTestCase';
-            // para teste
             return $classes;
         }
 
