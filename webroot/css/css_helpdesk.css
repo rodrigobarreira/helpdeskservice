@@ -1,0 +1,430 @@
+@charset "utf-8";
+/* CSS Document */
+
+* {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+
+html, body {
+	width:100%;
+	height:100%;
+	min-height:100%;
+}
+
+
+/*********************************************************
+	ESTRUTURA PAGINA
+*********************************************************/
+#pagina {
+	width:100%;
+	min-width:1000px;
+	float:left;
+	min-height:400px;
+}
+
+/* main pagina */
+#main_pagina {
+	width:100%;
+	background-color:#FFF;
+	background-image:url(../img/sombra_col_main.jpg);
+	background-repeat:repeat-y;
+	background-position:250px top; /* width col conteudo */
+	display:table;
+}
+
+#conteudo_pagina {
+	padding-bottom:30px;
+	width:100%;
+	float:left;
+}
+
+#navegacao {
+	height:20px;
+	background-image:url(../img/bg_navegacao.jpg);
+	background-repeat:repeat-x;
+	background-position:top;
+	padding-left:30px; /* alinhamento itens a direita */
+}
+#navegacao p {
+	padding-top:2px;
+}
+
+#main {
+	background-image:url(../img/bg_main_conteudo.jpg);
+	background-repeat:no-repeat;
+	background-position:250px top; /* width col conteudo */
+	width:100%;
+	height:350px;
+}
+
+#col_conteudo {
+	width:220px;
+	padding-top:30px;  /* alinhamento itens ao topo */
+	padding-left:30px; /* alinhamento itens a direita */
+	float:left;
+}
+
+#main_conteudo {
+	padding-top:30px;  /* alinhamento itens ao topo */
+	padding-left:30px; /* alinhamento itens a direita */
+	width:70%;
+	float:left;
+}
+
+/* topo pagina */
+#topo_pagina {
+	width:100%;
+	height:145px;
+	background-color:#fff;
+	background-image:url(../img/bg_navegacao.jpg);
+	background-repeat:repeat-x;
+	background-position:bottom;
+}
+#topo_logo {
+	height:80px;
+	background-image:url(../img/bg_topo_logo.jpg);
+	background-repeat:repeat-x;
+	background-position:-10px;
+	padding-left:30px; /* alinhamento itens a direita */
+}
+#topo_logo h1#logo_sistema a {
+	height:80px;
+	width:370px;
+	background-image:url(../img/logo_sistema.jpg);
+	background-repeat:no-repeat;
+	display:block;
+}
+#topo_logo h1#logo_sistema span {
+	display:none;
+}
+
+#row_topo {
+	padding-bottom:10px;
+	padding-top:5px;
+}
+
+/* data */
+#data {
+	width:auto;
+	float:right;
+	text-align:right;
+	padding-right:30px;
+	padding-top:10px;
+}
+
+#div_usuario {
+	width:300px;
+	float:right;
+	text-align:right;
+	padding-right:30px;
+	padding-top:3px;
+}
+
+#div_usuario img#bt_sair {
+	padding-left:10px;
+}
+
+#div_menu_topo {
+	background-image:url(../img/bg_menu_principal.jpg);
+	background-repeat:repeat-x;
+	background-position:top;
+	height:32px;
+	padding-left:30px; /* alinhamento itens a direita */
+	font:normal 12px 'Trebuchet MS', 'Arial';
+}
+
+/* titulos das paginas */
+#div_titulos_secoes {
+	float:left;
+	width:50%;
+	padding-left:30px; /* alinhamento itens a direita */
+}
+#div_titulos_secoes h1 {
+	font-family:"Courier New", Courier, monospace;
+	font-size:20px;
+	color:#014A6D;
+}
+
+
+/* base pagina */
+#base_pagina {
+	width:100%;
+	height:50px;
+	background-image:url(../img/bg_base.jpg);
+	background-repeat:repeat-x;
+	text-align:center;
+	float:left;
+	padding-top:20px;
+}
+#base_pagina p {
+	font-family:Arial;
+	font-size:11px;
+	color:#666;
+	margin-top:8px;
+}
+
+
+
+
+/*********************************************************
+	ESTRUTURA PAGINA LOGIN
+*********************************************************/
+#main_pagina_login {
+	width:100%;
+	background-color:#FFF;
+}
+
+#main_login {
+	background-position:250px top; /* width col conteudo */
+	width:100%;
+	height:350px;
+}
+
+
+
+
+
+/*********************************************************
+	FORMATACAO LINKS
+*********************************************************/
+
+
+
+
+/*********************************************************
+	FORMATACAO TEXTOS
+*********************************************************/
+.txt_geral_pq {
+	font-family:Arial;
+	font-size:11px;
+	color:#666;
+}
+
+.txt_geral_pq_br {
+	font-family:Arial;
+	font-size:11px;
+	color:#fff;
+}
+
+.txt_geral {
+	font-family:Arial;
+	font-size:12px;
+	color:#666;
+}
+
+
+
+/*********************************************************
+	FORMATACAO TITULOS
+*********************************************************/
+
+/* Tables */
+table {
+	background: #fff;
+	border:1px solid #ccc;
+	border-right:0;
+	clear: both;
+	color: #333;
+	margin-bottom: 10px;
+	width: 100%;
+}
+th {
+	background: #f2f2f2;
+	border:1px solid #bbb;
+	border-top: 1px solid #fff;
+	border-left: 1px solid #fff;
+	text-align: center;
+}
+th a {
+	background:#f2f2f2;
+	display: block;
+	padding: 2px 4px;
+	text-decoration: none;
+}
+th a:hover {
+	background: #ccc;
+	color: #333;
+	text-decoration: none;
+}
+table tr td {
+	background: #fff;
+	border-right: 1px solid #ccc;
+	padding: 4px;
+	text-align: center;
+	vertical-align: top;
+}
+table tr.altrow td {
+	background: #f4f4f4;
+}
+td.actions {
+	text-align: center;
+	white-space: nowrap;
+}
+td.actions a {
+	margin: 0px 6px;
+}
+.cake-sql-log table {
+	background: #f4f4f4;
+}
+.cake-sql-log td {
+	padding: 4px 8px;
+	text-align: left;
+}
+
+/* Paging */
+div.paging {
+	background:#fff;
+	color: #ccc;
+	margin-bottom: 2em;
+}
+div.paging div.disabled {
+	color: #ddd;
+	display: inline;
+}
+div.paging span {
+}
+div.paging span.current {
+	color: #000;
+}
+div.paging span a {
+}
+
+/* Forms */
+form {
+	clear: both;
+	margin-right: 20px;
+	padding: 0;
+	width: 80%;
+}
+fieldset {
+	border: 1px solid #ccc;
+	/* margin-top: 30px; */
+	padding: 16px 20px;
+}
+fieldset legend {
+	background:#fff;
+	color: #e32;
+	font-size: 160%;
+	font-weight: bold;
+}
+fieldset fieldset {
+	margin-top: 0px;
+	margin-bottom: 20px;
+	padding: 16px 10px;
+}
+fieldset fieldset legend {
+	font-size: 120%;
+	font-weight: normal;
+}
+fieldset fieldset div {
+	clear: left;
+	margin: 0 20px;
+}
+form div {
+	clear: both;
+	margin-bottom: 1em;
+	/*padding: .5em;*/
+	vertical-align: text-top;
+}
+form div.input {
+	color: #444;
+}
+form div.required {
+	color: #333;
+	font-weight: bold;
+}
+form div.submit {
+	border: 0;
+	clear: both;
+	margin-top: 10px;
+	margin-left: 140px;
+}
+label {
+	display: block;
+	font-size: 110%;
+	padding-right: 20px;
+}
+input, textarea {
+	clear: both;
+	font-size: 140%;
+	font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif;
+	padding: 2px;
+	width: 100%;
+}
+select {
+	clear: both;
+	font-size: 120%;
+	vertical-align: text-bottom;
+}
+select[multiple=multiple] {
+	width: 100%;
+}
+option {
+	font-size: 120%;
+	padding: 0 3px;
+}
+input[type=checkbox] {
+	clear: left;
+	float: left;
+	margin: 0px 6px 7px 2px;
+	width: auto;
+}
+input[type=radio] {
+	float:left;
+	width:auto;
+	margin: 0 3px 7px 0;
+}
+div.radio label {
+	margin: 0 0 6px 20px;
+}
+input[type=submit] {
+	display: inline;
+	font-size: 110%;
+	padding: 2px 5px;
+	width: auto;
+	vertical-align: bottom;
+}
+
+/* Notices and Errors */
+div.message {
+	clear: both;
+	color: #900;
+	font-size: 140%;
+	font-weight: bold;
+	margin: 1em 0;
+}
+div.error-message {
+	clear: both;
+	color: #900;
+	font-weight: bold;
+}
+p.error {
+	background-color: #e32;
+	color: #fff;
+	font-family: Courier, monospace;
+	font-size: 120%;
+	line-height: 140%;
+	padding: 0.8em;
+	margin: 1em 0;
+}
+p.error em {
+	color: #000;
+	font-weight: normal;
+	line-height: 140%;
+}
+.notice {
+	background: #ffcc00;
+	color: #000;
+	display: block;
+	font-family: Courier, monospace;
+	font-size: 120%;
+	line-height: 140%;
+	padding: 0.8em;
+	margin: 1em 0;
+}
+.success {
+	background: green;
+	color: #fff;
+}
