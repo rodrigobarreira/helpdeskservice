@@ -35,6 +35,16 @@ class ChamadosController extends AppController {
 		$this->pageTitle = "Abertura de Chamado";
 		if (!empty($this->data)) {
 			$this->Chamado->create();
+			
+			if($this->data['Chamado']['data_hora_abertura']){
+				// formata a data para o formato americano ou seja do banco
+				$data_brasil = substr($this->data['Chamado']['data_hora_abertura'], 0, 10);
+				$data_brasil_array = explode("-", $data_brasil);
+				$data_americana = $data_brasil_array[2]."-".$data_brasil_array[1]."-".$data_brasil_array[0];
+				// complementa com as horas
+				$data_americana = $data_americana.substr($this->data['Chamado']['data_hora_abertura'], 10, 9);
+				$this->data['Chamado']['data_hora_abertura'] = $data_americana;
+			}
 			if ($this->Chamado->save($this->data)) {
 				$this->Session->setFlash(__('The Chamado has been saved', true));
 				$this->redirect(array('action'=>'index'));
@@ -93,7 +103,7 @@ class ChamadosController extends AppController {
 	}
 	
 	/*
-	 * Lista todos os chamados do usuário solicitante
+	 * Lista todos os chamados do usuï¿½rio solicitante
 	 * 
 	 */
 	function meusChamados(){

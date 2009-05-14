@@ -53,12 +53,12 @@ $j(document).ready(function(){
 	));
 	
 	echo $form->input('setor_id', array (
-			'empty' => '', 'options' => array ($areas),	'label' => '�rea',
+			'empty' => '', 'options' => array ($areas),	'label' => 'Área',
 			'onchange' => 'return false'
 	));	 	
 	
 	echo $form->input('problema_id', array (
-			'empty' => 'Selecione uma �rea primeiro',
+			'empty' => 'Selecione uma área primeiro',
 			'label' => 'Tipo de Problema',
 			'style' => 'width: 300px;',
 			'div' => array('id' => 'ajax_problema'),
@@ -76,7 +76,7 @@ $j(document).ready(function(){
 	));
 			
 	echo $form->input('titulo', array(
-			'label' => 'T�tulo do Problema'
+			'label' => 'Título do Problema'
 	));
 	
 	echo $form->input('data_hora_abertura', array(
