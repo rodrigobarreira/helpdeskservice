@@ -11,7 +11,7 @@ $j(document).ready(function(){
 			sucess: function(msg){
 				alert(msg)
 			},
-			complete: function(c){
+			complete: function(problemas){
 				//$j("#ajax_problema").html(c)
 				$j("#ajax_problema").html(XMLHttpRequest.responseText);			}
 		});
@@ -27,9 +27,9 @@ $j(document).ready(function(){
 			sucess: function(msg){
 				alert(msg)
 			},
-			complete: function(c){
+			complete: function(prioridades){
 				//$j("#ajax_problema").html(c)
-				$j("#ajax_prioridade").html(XMLHttpRequest.responseText);			}
+				$j("#ajax_prioridade").html(prioridades);			}
 		});
 		//$j("#ajax_problema").html(XMLHttpRequest.responseText);
 		
@@ -43,24 +43,30 @@ $j(document).ready(function(){
 	<fieldset>
 	<?php
 	echo $form->input('usuario_id', array(
-			'type' => 'hidden',
+			//'type' => 'hidden',
 			'value' => $usuarioId
 	));	 
 	
+	echo $form->input('aberto_por', array(
+			//'type' => 'hidden',
+			'value' => $usuarioId
+	));
+	
 	echo $form->input('setor_id', array (
-			'empty' => '', 'options' => array ($areas),	'label' => 'Área',
+			'empty' => '', 'options' => array ($areas),	'label' => 'ï¿½rea',
 			'onchange' => 'return false'
 	));	 	
 	
 	echo $form->input('problema_id', array (
-			'empty' => 'Selecione uma área primeiro',
+			'empty' => 'Selecione uma ï¿½rea primeiro',
 			'label' => 'Tipo de Problema',
 			'style' => 'width: 300px;',
 			'div' => array('id' => 'ajax_problema'),
-			'type' => 'select'
+			'type' => 'select',
+			'option' => $problemas,
+			'onchange' => 'return false'
 	));
-	
- 
+	 
 	echo $form->input('prioridade_id', array (
 		'empty' => '',
 		'label' => 'Prioridade: ',
@@ -68,12 +74,11 @@ $j(document).ready(function(){
 		'div' => array('id' => 'ajax_prioridade'),
 		'value' =>$prioridade['Prioridade']['descricao']
 	));
-	
-
-		
+			
 	echo $form->input('titulo', array(
-			'label' => 'Título do Problema'
+			'label' => 'Tï¿½tulo do Problema'
 	));
+	
 	echo $form->input('data_hora_abertura', array(
 			'type' => 'text',
 			'label' => 'Data de Abertura',
@@ -85,6 +90,7 @@ $j(document).ready(function(){
 			'value' => $usuarioId
 	));
 	echo $form->input('descricao_problema');
+	
 	echo $form->input('status_id', array(
 			//'type' => 'text',
 			'label' => 'Status',
