@@ -144,6 +144,22 @@ class UsuariosController extends AppController {
 		}
 	}
 
+	function recuperarAcesso(){
+		
+		if(!empty($this->data)){
+			//verifica se campos estao preenchidos
+			if($this->data['Usuario']['matricula']==null){
+				$this->Session->setFlash('Informe a matricula.');				
+			}elseif ($this->data['Usuario']['email']==null){
+				$this->Session->setFlash('Informe o e-mail.');				
+			}							
+		}else{
+		// criar nova senha a partir da senha do usuário
+		// enviar e mail para o usuário  	
+		
+		}
+		
+	}
 	function login(){
 		$this->layout = 'login';
 		//pr($this->Auth);
