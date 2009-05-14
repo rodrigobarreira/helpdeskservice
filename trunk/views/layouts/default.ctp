@@ -1,4 +1,4 @@
-
+	
 <?php
 /* SVN FILE: $Id: default.ctp 7690 2008-10-02 04:56:53Z nate $ */
 /**
@@ -104,10 +104,10 @@
 								'span',
 								$html->image(
 									'menu_chart.gif', array(
-										'alt' => 'Administração', 
+										'alt' => 'AdministraÃ§Ã£o', 
 										'align' => 'left'
 									)
-								).'Administração',
+								).'AdministraÃ§Ã£o',
 								null,
 								false
 							),
@@ -160,7 +160,7 @@
 		<!-- conteudo -->
 		<div id="conteudo_pagina">
 		
-			<div id="navegacao"><p class="txt_geral_pq"><strong>Você está em: </strong>nome da pagina</p></div>
+			<div id="navegacao"><p class="txt_geral_pq"><strong>VocÃª estÃ¡ em: </strong>nome da pagina</p></div>
 			
 			<div id="main">
 			
