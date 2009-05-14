@@ -52,10 +52,10 @@ class ChamadosController extends AppController {
 		));
 		
 		//$usuarios = $this->Chamado->Usuario->find('list');
-		//$problemas = $this->Chamado->Problema->find('list');
+		$problemas = $this->Chamado->Problema->find('list');
 		$status = $this->Chamado->Status->find('list');
 		$responsaveis = $this->Chamado->Responsavel->find('list');
-		$this->set(compact('usuarios', 'status', 'responsaveis', 'areas'));
+		$this->set(compact('usuarios', 'status', 'responsaveis', 'areas', 'problemas'));
 	}
 
 	function edit($id = null) {
