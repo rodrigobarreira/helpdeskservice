@@ -39,9 +39,9 @@
 	echo $html->css('menu');
 	echo $html->css('menu_style');
 	//echo $html->css('cake.generic');
-	//echo $javascript->link('prototype');
-	//echo $javascript->link('scriptaculous');
-	echo $javascript->link('jquery/jquery-1.3.1.min');
+	echo $javascript->link('prototype');
+	echo $javascript->link('scriptaculous');
+	//echo $javascript->link('jquery/jquery-1.3.1.min');
 	echo $scripts_for_layout;
 	?>
 </head>
