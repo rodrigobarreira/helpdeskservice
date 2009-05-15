@@ -1,78 +1,61 @@
-<script type="text/javascript" language="javascript">
-var $j  = jQuery;
-$j.noConflict();
-
-$j(document).ready(function(){
-	$j("#ChamadoSetorId").change(function(){
-		
-		var XMLHttpRequest = $j.ajax({
-			type: "POST",
-			url: "/helpdesksystem/chamados/ajaxListaProblemaPorArea/"+this.value,
-			sucess: function(msg){
-				alert(msg)
-			},
-			complete: function(problemas){
-				//$j("#ajax_problema").html(c)
-				$j("#ajax_problema").html(XMLHttpRequest.responseText);			}
-		});
-		//$j("#ajax_problema").html(XMLHttpRequest.responseText);
-		
-	});
-
-	$j("#ChamadoProblemaId").change(function(){
-		XMLHttpRequest = null;
-		var XMLHttpRequest = $j.ajax({
-			type: "POST",
-			url: "/helpdesksystem/chamados/ajaxPrioridade/"+this.value,
-			sucess: function(msg){
-				alert(msg)
-			},
-			complete: function(prioridades){
-				//$j("#ajax_problema").html(c)
-				$j("#ajax_prioridade").html(prioridades);			}
-		});
-		//$j("#ajax_problema").html(XMLHttpRequest.responseText);
-		
-	});
-});
-
-</script>
 <div  class="chamados form">
 
 <?php echo $form->create('Chamado', array('action' => 'abrirChamado'));?>
 	<fieldset>
 	<?php
 	echo $form->input('usuario_id', array(
-			//'type' => 'hidden',
+			'type' => 'hidden',
 			'value' => $usuarioId
 	));	 
 	
 	echo $form->input('aberto_por', array(
-			//'type' => 'hidden',
+			'type' => 'hidden',
 			'value' => $usuarioId
 	));
 	
 	echo $form->input('setor_id', array (
-			'empty' => '', 'options' => array ($areas),	'label' => 'Área',
-			'onchange' => 'return false'
+			'empty' => '', 
+			'options' => array ($areas),	
+			'label' => 'Área',
+			'type' => 'select',
+			'onchange' => $ajax->remoteFunction( 
+			    array( 
+			        'url' => array( 
+			        	'controller' => 'chamados', 
+			        	'action' => 'ajaxListaProblemaPorArea', 
+			    		7 
+			    	), 
+			        'update' => 'ajax_problema' 
+			    ) 
+			)
 	));	 	
 	
+	//echo '<div id="ajax_problema">';
 	echo $form->input('problema_id', array (
 			'empty' => 'Selecione uma área primeiro',
 			'label' => 'Tipo de Problema',
 			'style' => 'width: 300px;',
 			'div' => array('id' => 'ajax_problema'),
 			'type' => 'select',
-			'option' => $problemas,
-			'onchange' => 'return false'
+			//'options' => $problemas,
+			'onchange' => $ajax->remoteFunction( 
+			    array( 
+			        'url' => array( 
+			        	'controller' => 'chamados', 
+			        	'action' => 'ajaxPrioridade', 
+			    		1 
+			    	), 
+			        'update' => 'ajax_prioridade' 
+			    ) 
+			)
 	));
-	 
+	//echo "</div>";
 	echo $form->input('prioridade_id', array (
 		'empty' => '',
 		'label' => 'Prioridade: ',
 		'style' => 'width: 200px;',
 		'div' => array('id' => 'ajax_prioridade'),
-		'value' =>$prioridade['Prioridade']['descricao']
+		//'value' => $prioridade['Prioridade']['descricao']
 	));
 			
 	echo $form->input('titulo', array(
