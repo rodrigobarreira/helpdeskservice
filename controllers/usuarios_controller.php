@@ -150,13 +150,21 @@ class UsuariosController extends AppController {
 		if(!$matricula){
 			$this->Session->setFlash('Informe a matr&iacute;cula.');			
 		}else{
-			$teste = $this->Usuario->find('first',array(
-				'conditions'=>array(
-					'Usuario.matricula'=>$matricula
-				),
-				'recursive' => -1 // para não retornar as tabelas associadas
-			));
-			pr($teste);
+			$dados = $this->Usuario->find(
+				'first',array(
+					'conditions'=>array('usuario.matricula'=>$matricula),
+					'fields'=>array('usuario.matricula','usuario.senha','usuario.email')	
+				)
+			);
+			//verificar se o usuário existe
+			if(!$dados){
+				//mensagem de erro
+				$this->Session->setFlash('Este usu&aacute;rio n&atilde;o est&aacute; cadastrado!<br/>Por favor entre em contato com o adminstrador do sistema');					
+			}
+			else{
+				//$email=$Dados[email];
+				pr($dados);
+			}
 		}
 	}
 	function login(){
