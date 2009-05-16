@@ -162,8 +162,11 @@ class UsuariosController extends AppController {
 				$this->Session->setFlash('Este usu&aacute;rio n&atilde;o est&aacute; cadastrado!<br/>Por favor entre em contato com o adminstrador do sistema');					
 			}
 			else{
-				//$email=$Dados[email];
-				pr($dados);
+				$email = $dados['Usuario']['email'];
+				//pega os ultimos 6 caracteres da senha antiga
+				$senha = substr($dados['Usuario']['senha'],-6);
+				$this->data['Usuario']['senha'] = $this->Auth->password($senha);
+				echo $senha;
 			}
 		}
 	}
