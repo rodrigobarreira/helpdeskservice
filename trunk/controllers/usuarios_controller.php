@@ -153,7 +153,7 @@ class UsuariosController extends AppController {
 			$dados = $this->Usuario->find(
 				'first',array(
 					'conditions'=>array('usuario.matricula'=>$matricula),
-					'fields'=>array('usuario.matricula','usuario.senha','usuario.email')	
+					'fields'=>array('usuario.matricula','usuario.senha','usuario.email','usuario.id')	
 				)
 			);
 			//verificar se o usuário existe
@@ -162,10 +162,17 @@ class UsuariosController extends AppController {
 				$this->Session->setFlash('Este usu&aacute;rio n&atilde;o est&aacute; cadastrado!<br/>Por favor entre em contato com o adminstrador do sistema');					
 			}
 			else{
-				$email = $dados['Usuario']['email'];
+			$email = $dados['Usuario']['email'];
 				//pega os ultimos 6 caracteres da senha antiga
 				$senha = substr($dados['Usuario']['senha'],-6);
 				$this->data['Usuario']['senha'] = $this->Auth->password($senha);
+				$this->data['Usuario']['id'] = $dados['Usuario']['id'];
+				if ($this->Usuario->save($this->data)){
+						$this->Session->setFlash('Uma nova senha foi enviada para o seu e-mail!');
+						$this->redirect('/index');
+					}else{
+						$this->Session->setFlash('N&atilde;o foi poss&iacute;vel alterar a sua senha!');	
+				
 				echo $senha;
 			}
 		}
