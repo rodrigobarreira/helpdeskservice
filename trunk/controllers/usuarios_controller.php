@@ -146,18 +146,11 @@ class UsuariosController extends AppController {
 
 	function recuperarAcesso(){
 		$this->layout = 'login';
-		if(!empty($this->data)){
-			//verifica se campos estao preenchidos
-			if($this->data['Usuario']['matricula']==null){
-				$this->Session->setFlash('Informe a matr&iacute;cula.');				
-			}elseif($this){
-				//verificar se o usuário existe
-				$this->Session->setFlash('Este usu&aacute;rio n&atilde;o est&aacute; cadastrado!<br/>Por favor entre em contato com o adminstrador do sistema');	
-			}else{
-				// criar nova senha a partir da senha do usu�rio
-				//	$senha_atual = $this->data['Usuario']['matricula'];
-				// 	enviar e mail para o usu�rio
-			}
+		$matricula= $this->data['Usuario']['matricula'];
+		if(!$matricula){
+			$this->Session->setFlash('Informe a matr&iacute;cula.');			
+		}else{
+			$teste = find('first',array('conditions'=>array('Usuario.matricula'=>$matricula)));
 		}
 	}
 	function login(){
