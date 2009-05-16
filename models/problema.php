@@ -12,8 +12,8 @@ class Problema extends AppModel {
 	var $displayField = 'descricao';
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 	var $belongsTo = array(
-			'Sla' => array('className' => 'Sla',
-								'foreignKey' => 'sla_id',
+			'Prioridade' => array('className' => 'Prioridade',
+								'foreignKey' => 'prioridade_id',
 								'conditions' => '',
 								'fields' => '',
 								'order' => ''
