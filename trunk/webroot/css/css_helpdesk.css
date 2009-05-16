@@ -172,7 +172,6 @@ html, body {
 	ESTRUTURA PAGINA LOGIN
 *********************************************************/
 #main_pagina_login {
-	width:auto;
 	background-color:#FFF;
 	padding:50px;
 }
@@ -183,6 +182,7 @@ html, body {
 	padding:20px;
 	margin:0 auto;
 	border:1px solid #DDDDDD;
+	background-color:#F9F9F9;
 }
 
 

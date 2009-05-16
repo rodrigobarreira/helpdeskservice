@@ -6,26 +6,23 @@
 	width: 100%;	
 }
 form {
-	clear: both;
 	padding: 0;
-	/*width: 80%;*/
+	width: 100%;
 }
 fieldset {
 	border: 1px solid #ccc;
 	margin-top: 30px;
-	padding: 16px 20px;
 }
 fieldset legend {
 	background:#fff;
 	color: #e32;
-	font-size: 150%;
-	font-family: "Arial";
+	font-size: 120%;
+	font-family: Arial;
 	font-weight: bold;
 }
 fieldset fieldset {
 	margin-top: 0px;
 	margin-bottom: 20px;
-	padding: 16px 10px;
 }
 fieldset fieldset legend {
 	font-size: 100%;
@@ -35,31 +32,32 @@ fieldset fieldset div {
 	clear: left;
 }
 form div {
-	clear: both;
 	/*margin-bottom: 1em;
 	padding: .5em;*/
 	vertical-align: text-top;
 }
+form div.label {
+	padding-right: 20px;
+	font-size:100%;
+	font-family: Arial;
+}
 form div.input {
 	color: #444;
-	width: 100%;
+	width: 98%;
+	font-size:100%;
+	font-family: Arial;
 }
 form div.required {
 	color: #333;
 	font-weight: bold;
 }
 form div.submit {
-	border: 0;
-	clear: both;
 	margin-top: 10px;
-}
-label {
-	display: block;
-	padding-right: 20px;
+	margin:0 auto;
 }
 input, textarea {
 	clear: both;
-	font-family: "Arial";
+	font-family: Arial;
 	padding: 2px;
 	width: 100%;
 }
