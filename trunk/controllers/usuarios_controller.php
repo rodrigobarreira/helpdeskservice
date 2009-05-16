@@ -113,7 +113,7 @@ class UsuariosController extends AppController {
 				//$this->redirect(array('action'=>'alterarSenha'));
 				$this->render('alterarSenha');
 			}elseif($this->data['Usuario']['senha_confirmar'] == null){
-				$this->Session->setFlash('Informe a senha de confirma��o.');
+				$this->Session->setFlash('Informe a senha de confirma&ccedil;&atilde;o.');
 				//$this->redirect(array('action'=>'alterarSenha'));
 				$this->render('alterarSenha');
 			}elseif ($this->data['Usuario']['senha_nova'] != $this->data['Usuario']['senha_confirmar']){
