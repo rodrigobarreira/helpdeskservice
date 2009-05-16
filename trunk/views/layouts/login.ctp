@@ -38,8 +38,6 @@
 		
 		<!-- conteudo -->
 		<div id="main_pagina_login">
-		
-			<div id="navegacao"></div>
 			
 			<div id="main_login">
 			<?php 
