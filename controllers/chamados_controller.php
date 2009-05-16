@@ -34,19 +34,28 @@ class ChamadosController extends AppController {
 	
 	function abrirChamado() {
 		//pr($this);
+		$status = $this->Chamado->Status->find('first', array(
+			'conditions' => array(
+				'Status.id' => $this->configuracao['status_abertura'] 
+			),
+			
+		));
+		
 		$this->pageTitle = "Abertura de Chamado";
 		if (!empty($this->data)) {
 			$this->Chamado->create();
 			
-			if($this->data['Chamado']['data_hora_abertura']){
-				// formata a data para o formato americano ou seja do banco
-				$data_brasil = substr($this->data['Chamado']['data_hora_abertura'], 0, 10);
+			//if($this->data['Chamado']['data_hora_abertura']){
+				/*/ formata a data para o formato americano ou seja do banco
+				/$data_brasil = substr($this->data['Chamado']['data_hora_abertura'], 0, 10);
 				$data_brasil_array = explode("-", $data_brasil);
 				$data_americana = $data_brasil_array[2]."-".$data_brasil_array[1]."-".$data_brasil_array[0];
 				// complementa com as horas
-				$data_americana = $data_americana.substr($this->data['Chamado']['data_hora_abertura'], 10, 9);
-				$this->data['Chamado']['data_hora_abertura'] = $data_americana;
-			}
+				$data_americana = $data_americana.substr($this->data['Chamado']['data_hora_abertura'], 10, 9);*/
+			$this->data['Chamado']['data_hora_abertura'] = date('Y-m-d H:i:s');
+			$this->data['Chamado']['status_id'] = $status['Status']['id']; 
+			//}
+			
 			if ($this->Chamado->save($this->data)) {
 				$this->Session->setFlash(__('The Chamado has been saved', true));
 				$this->redirect(array('action'=>'index'));
@@ -65,9 +74,10 @@ class ChamadosController extends AppController {
 		
 		//$usuarios = $this->Chamado->Usuario->find('list');
 		$problemas = $this->Chamado->Problema->find('list');
-		$status = $this->Chamado->Status->find('list');
+		
+		
 		$responsaveis = $this->Chamado->Responsavel->find('list');
-		$this->set(compact('usuarios', 'status', 'responsaveis', 'areas', 'problemas'));
+		$this->set(compact('usuarios', 'responsaveis', 'areas', 'problemas'));
 	}
 
 	function edit($id = null) {
