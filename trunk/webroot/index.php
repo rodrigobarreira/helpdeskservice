@@ -58,8 +58,8 @@
  *
  */
 	if (!defined('CAKE_CORE_INCLUDE_PATH')) {
-		define('CAKE_CORE_INCLUDE_PATH', 'C:\xampp\cake12');
-		//define('CAKE_CORE_INCLUDE_PATH', ROOT.DS.'cake12');
+		//define('CAKE_CORE_INCLUDE_PATH', 'C:\xampp\cake12');
+		define('CAKE_CORE_INCLUDE_PATH', ROOT.DS.'cake12');
 		//echo ROOT;
 		
 		
@@ -87,6 +87,7 @@
 			define('CORE_PATH', CAKE_CORE_INCLUDE_PATH . DS);
 		}
 	}
+	echo CORE_PATH ;
 	if (!include(CORE_PATH . 'cake' . DS . 'bootstrap.php')) {
 		
 		trigger_error("CakePHP core could not be found.  Check the value of CAKE_CORE_INCLUDE_PATH in APP/webroot/index.php.  It should point to the directory containing your " . DS . "cake core directory and your " . DS . "vendors root directory.", E_USER_ERROR);

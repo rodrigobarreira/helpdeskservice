@@ -9,7 +9,7 @@ class ChamadosController extends AppController {
 	
 	function index() {
 		/*s$this->paginate = array('limit' => 5, 
-				'where' => "usuario_id = '$this->usuarioId'");
+			$this->set('menu', $this->menu);	'where' => "usuario_id = '$this->usuarioId'");
 		$this->Chamado->recursive = 1;
 		$this->set('chamados', $this->paginate());*/
 		$this->redirect('/home/meusChamados');
@@ -130,6 +130,48 @@ class ChamadosController extends AppController {
 		$this->set('chamados', $this->paginate());
 	}
 	
+	/*
+	 * Lista todos os chamados abertos do sistema de acordo com a área do atendente
+	 * como o status ou a prioridade, caso omitidos esses serão listados todos
+	 * considera-se aberto todo chamado que tenha um status diferente de encerrado
+	 */
+	
+	function chamadosAbertos(){
+		$this->pageTitle = "Chamados Abertos";
+		
+		$this->paginate = array(
+			'limit' => 5, 
+			'conditions' => array (
+				'Problema.setor_id' => $this->usuarioSetor,
+				'Chamado.status_id <> 4',
+			),
+			'recursive' => 2
+		);
+		
+		
+		//$this->Chamado->recursive = 2;
+		$this->set('chamados', $this->paginate());
+		 
+	}
+	
+	function chamadosEncerrados(){
+		$this->pageTitle = "Chamados Encerrados";
+		
+		$this->paginate = array(
+			'limit' => 5, 
+			'conditions' => array (
+				'Problema.setor_id' => $this->usuarioSetor,
+				'Chamado.status_id' => 4,
+			),
+			'recursive' => 2
+		);
+		
+		
+		//$this->Chamado->recursive = 2;
+		$this->set('chamados', $this->paginate());
+	
+	}
+	
 	function ajaxListaProblemaPorArea(){
 		//pr($this->data);
 		$this->layout = 'ajax';
@@ -152,5 +194,6 @@ class ChamadosController extends AppController {
 		$this->set('prioridade', $prioridade);
 		//echo $problemas;
 	}
+	
 }
 ?>

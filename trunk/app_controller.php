@@ -50,13 +50,17 @@ class AppController extends Controller {
 	protected $usuarioId;
 	protected $usuarioNome;
 	protected $usuarioGrupo;
-	protected $menu = 'menu_home';
+	protected $usuarioSetor;
+	//protected $menu = 'menu_home';
 	protected $configuracao = array();
+	
+	
 		 
 	function beforeFilter() {		
 		// informa ao cake que a aplicação utilizar� o sistema lingua pt_br
 		Configure :: write('Config.language', "pt_br");
 
+		
 		// especifica que cada controladora implementar� as regras de acesso as funções (actions)
 		$this->Auth->authorize = 'controller';
 		
@@ -73,7 +77,7 @@ class AppController extends Controller {
 		$this->Auth->userScope = array('Usuario.ativo' => '1');
 		
 		// caso ocorra algum erro de login "ser� exibido" a mensagem
-		$this->Auth->loginError = __("Usuario n�o encontrado.", true);
+		$this->Auth->loginError = __("Usuario não encontrado.", true);
 
 		// informa qual a função de login
 		$this->Auth->loginAction = array (
@@ -81,14 +85,14 @@ class AppController extends Controller {
 			'action' => 'login'
 		);
 		
-		// informa para qual p�gina redirecionar ap�s o sucesso do login
+		// informa para qual página redirecionar após o sucesso do login
 		$this->Auth->loginRedirect = array (
 			'controller' => 'chamados',
 			'action' => 'index'
 		);
 		
 		// "exibe a mensagem" de acesso negado a alguma funcionalidade do sistema
-		$this->Auth->authError = "Sem permiss�o para a fun��o desejada.";
+		$this->Auth->authError = "Sem permissão para a função desejada.";
 		
 		$this->Auth->autoRedirect = true;
 		
@@ -96,15 +100,61 @@ class AppController extends Controller {
 		$this->usuarioMatricula = $this->Auth->user('matricula');
 		$this->usuarioNome = $this->Auth->user('nome');
 		$this->usuarioGrupo = $this->Auth->user('grupo_id');
+		$this->usuarioSetor = $this->Auth->user('setor_id');
 		
 		$this->set('usuarioId', $this->usuarioId);
 		$this->set('usuarioNome', $this->usuarioNome);
 		$this->set('usuarioGrupo', $this->usuarioGrupo);
+		$this->set('usuarioSetor', $this->usuarioSetor);
 		
 		
 		//$this->log("isAuthorized", LOG_DEBUG);
+		//pr($this);
+		// mostra o menu de acordo com a opção desejada
+		// captura a  url
+		$url = $this->params['url']['url'];
 		
-		$this->set('menu', $this->menu);
+		/* verifica se foi passada alguma url *obs a url considera é após a url do domínio, 
+		* ou seja, se a url for http://ww.meusite.com/home/chamado
+		* para este caso será considerado url a string /home/chamado, seria como um parâmetro
+		*/
+		
+		// verifica se foi passado alguma url
+		if (!empty($url)){
+			
+			$pos = strpos($url, "/");
+			if ($pos != false){
+				$menu = substr($url, 0, $pos);				
+			}else{
+				// não encontrou a '/' talves porque foi informado somente o home, atedimento ou administracao
+				$menu = $url;
+			}
+
+			if ($menu == 'home'){
+				$menu = 'menu_home';
+				
+			}elseif($menu == 'atendimento'){
+				$menu = 'menu_atendimento';
+				
+			}elseif($menu == 'administracao'){
+				// verifica se é administrador de área ou administrador geral
+				if ($this->usuarioGrupo == 3){// administrador de area
+					$menu = 'menu_administrador_area';
+				}else{
+					$menu = 'menu_administrador_geral';
+				}
+				
+			}else{
+				// menu desconhecido, então exibe o menu home
+				$menu = 'menu_home';
+			}
+			 
+			
+			
+				
+		}
+		
+		$this->set('menu', $menu);
 		
 		// configurações do sistema
 		$configuracoes = $this->Configuracao->find('first', array(
