@@ -9,7 +9,7 @@ class Usuario extends AppModel {
 		'matricula' => array('alphanumeric'),
 		'nome' => array('notempty'),
 		'senha' => array('alphanumeric'),
-		//'email' => array('email'),
+		'email' => array('email'),
 		//'celular' => array('phone'),
 		//'telefone' => array('phone'),
 		//'ramal' => array('alphanumeric'),
