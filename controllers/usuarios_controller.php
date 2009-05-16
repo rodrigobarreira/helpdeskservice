@@ -131,10 +131,10 @@ class UsuariosController extends AppController {
 						$this->Session->setFlash('Senha Alterada com sucesso!');
 						$this->redirect('/home');
 					}else{
-						$this->Session->setFlash('N�o foi poss�vel alterar a sua senha!');	
+						$this->Session->setFlash('N&atilde;o foi poss&iacute;vel alterar a sua senha!');	
 					}
 				}else{
-					$this->Session->setFlash('Senha atual n�o confere!');
+					$this->Session->setFlash('Senha atual n&atilde;o confere!');
 				}
 					
 				//$this->redirect(array('action'=>'index'));
@@ -150,16 +150,15 @@ class UsuariosController extends AppController {
 			//verifica se campos estao preenchidos
 			if($this->data['Usuario']['matricula']==null){
 				$this->Session->setFlash('Informe a matr&iacute;cula.');				
-			}/*elseif ($this->data['Usuario']['email']==null){
-				$this->Session->setFlash('Informe o e-mail.');	}	*/
-			// envia email para o usuário						
-		}else{
-		// criar nova senha a partir da senha do usu�rio
-		
-		// enviar e mail para o usu�rio  	
-		
+			}elseif($this){
+				//verificar se o usuário existe
+				$this->Session->setFlash('Este usu&aacute;rio n&atilde;o est&aacute; cadastrado!<br/>Por favor entre em contato com o adminstrador do sistema');	
+			}else{
+				// criar nova senha a partir da senha do usu�rio
+				//	$senha_atual = $this->data['Usuario']['matricula'];
+				// 	enviar e mail para o usu�rio
+			}
 		}
-		
 	}
 	function login(){
 		$this->layout = 'login';
