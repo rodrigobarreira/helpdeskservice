@@ -2,7 +2,7 @@
 <?php
 
     echo $form->create('Usuario', array('action' => 'login'));
-    echo $form->input('matricula', array('label' => 'Matrícula', 'class'));
+    echo $form->input('matricula', array('label' => 'MatrÃ­cula', 'class'));
     echo $form->input('e-mail', array('type' => 'text'));
     echo $form->end('Login');
 ?>

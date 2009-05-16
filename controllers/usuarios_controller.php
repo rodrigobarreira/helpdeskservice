@@ -5,9 +5,9 @@ class UsuariosController extends AppController {
 	var $helpers = array('Html', 'Form', 'Xml');
 
 	function index() {
-		// verifica se o usuário está autenticado
+		// verifica se o usuï¿½rio estï¿½ autenticado
 		if(!$this->Auth->user('id')){
-			// não está autenticado
+			// nï¿½o estï¿½ autenticado
 			//$this->log("array('controller'=>'usuarios', 'action'=> 'login'", LOG_DEBUG);
 			$this->redirect(array('controller'=>'usuarios', 'action'=> 'login'));
 		}else{
@@ -74,7 +74,7 @@ class UsuariosController extends AppController {
 	}
 
 	/**
-	 * FunÃ§Ã£o que lista os chamados do usuário logado, que tenha ele como solicitante
+	 * FunÃ§Ã£o que lista os chamados do usuï¿½rio logado, que tenha ele como solicitante
 	 * @access public
 	 * @name meusChamados
 	 * @return void
@@ -96,7 +96,7 @@ class UsuariosController extends AppController {
 
 	}
 
-	/* funÃ§Ã£o que altera a senha atual do usuário
+	/* funÃ§Ã£o que altera a senha atual do usuï¿½rio
 	 * deve ser informada a senha atual e a nova senha
 	 * sendo a nova senha deve ser informada duas vezes
 	 * para verificaÃ§Ã£o da mesma
@@ -113,7 +113,7 @@ class UsuariosController extends AppController {
 				//$this->redirect(array('action'=>'alterarSenha'));
 				$this->render('alterarSenha');
 			}elseif($this->data['Usuario']['senha_confirmar'] == null){
-				$this->Session->setFlash('Informe a senha de confirmação.');
+				$this->Session->setFlash('Informe a senha de confirmaï¿½ï¿½o.');
 				//$this->redirect(array('action'=>'alterarSenha'));
 				$this->render('alterarSenha');
 			}elseif ($this->data['Usuario']['senha_nova'] != $this->data['Usuario']['senha_confirmar']){
@@ -131,10 +131,10 @@ class UsuariosController extends AppController {
 						$this->Session->setFlash('Senha Alterada com sucesso!');
 						$this->redirect('/home');
 					}else{
-						$this->Session->setFlash('Não foi possível alterar a sua senha!');	
+						$this->Session->setFlash('Nï¿½o foi possï¿½vel alterar a sua senha!');	
 					}
 				}else{
-					$this->Session->setFlash('Senha atual não confere!');
+					$this->Session->setFlash('Senha atual nï¿½o confere!');
 				}
 					
 				//$this->redirect(array('action'=>'index'));
@@ -145,17 +145,18 @@ class UsuariosController extends AppController {
 	}
 
 	function recuperarAcesso(){
-		
+		$this->layout = 'login';
 		if(!empty($this->data)){
 			//verifica se campos estao preenchidos
 			if($this->data['Usuario']['matricula']==null){
 				$this->Session->setFlash('Informe a matricula.');				
-			}elseif ($this->data['Usuario']['email']==null){
+			}/*elseif ($this->data['Usuario']['email']==null){
 				$this->Session->setFlash('Informe o e-mail.');				
-			}							
+			}	*/
+			// envia email para o usuÃ¡rio						
 		}else{
-		// criar nova senha a partir da senha do usuário
-		// enviar e mail para o usuário  	
+		// criar nova senha a partir da senha do usuï¿½rio
+		// enviar e mail para o usuï¿½rio  	
 		
 		}
 		
@@ -172,7 +173,7 @@ class UsuariosController extends AppController {
 	}
 
 	function beforeFilter(){
-		$this->Auth->allow('index', 'login', 'alterarSenha', 'edit');
+		$this->Auth->allow('index', 'login', 'alterarSenha', 'edit', 'recuperarAcesso');
 		//pr ($this->Auth);
 		parent::beforeFilter();
 		//pr($this->Auth);

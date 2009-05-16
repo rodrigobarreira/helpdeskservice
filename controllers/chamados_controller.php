@@ -4,7 +4,9 @@ class ChamadosController extends AppController {
 	var $name = 'Chamados';
 	//var $helpers = array('Html', 'Form'); 
 	var $uses = array('Chamado', 'Setor', 'Problema', 'ChamadoHistorico', 'Prioridade');
-
+	
+	var $components = array('RequestHandler');
+	
 	function index() {
 		/*s$this->paginate = array('limit' => 5, 
 				'where' => "usuario_id = '$this->usuarioId'");
@@ -118,19 +120,20 @@ class ChamadosController extends AppController {
 		$this->set('chamados', $this->paginate());
 	}
 	
-	function ajaxListaProblemaPorArea($codigoArea){
-		
+	function ajaxListaProblemaPorArea(){
+		//pr($this->data);
 		$this->layout = 'ajax';
 		$problemas = $this->Problema->find('list', array (
 			'order' => 'Problema.descricao ASC',
 			'conditions' => array (
-				'Problema.setor_id' => $codigoArea)
+				'Problema.setor_id' => $this->data['Chamado']['setor_id'])
 		));
 		$this->set('problemas', $problemas);
 		//echo $problemas;
 	}
 	
-	function ajaxPrioridade($prioridadeId){
+	function ajaxPrioridade(){
+		$prioridadeId = $this->data['Chamado']['problema_id'];
 		$this->layout = 'ajax';
 		$prioridade = $this->Prioridade->find('first', array (
 			'conditions' => array (

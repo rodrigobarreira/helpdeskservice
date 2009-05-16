@@ -18,43 +18,39 @@
 			'options' => array ($areas),	
 			'label' => 'Área',
 			'type' => 'select',
-			'onchange' => $ajax->remoteFunction( 
-			    array( 
-			        'url' => array( 
-			        	'controller' => 'chamados', 
-			        	'action' => 'ajaxListaProblemaPorArea', 
-			    		7 
-			    	), 
-			        'update' => 'ajax_problema' 
-			    ) 
-			)
-	));	 	
+	));	 
+
+	// ajax
+	echo $ajax->observeField( 'ChamadoSetorId', 
+	    array(
+	        'url' => array( 'action' => 'ajaxListaProblemaPorArea' ),
+	    	'update' => 'problema'
+	    ) 
+	); 
 	
-	//echo '<div id="ajax_problema">';
+	echo '<div id="problema">';
 	echo $form->input('problema_id', array (
 			'empty' => 'Selecione uma área primeiro',
 			'label' => 'Tipo de Problema',
 			'style' => 'width: 300px;',
 			'div' => array('id' => 'ajax_problema'),
 			'type' => 'select',
-			//'options' => $problemas,
-			'onchange' => $ajax->remoteFunction( 
-			    array( 
-			        'url' => array( 
-			        	'controller' => 'chamados', 
-			        	'action' => 'ajaxPrioridade', 
-			    		1 
-			    	), 
-			        'update' => 'ajax_prioridade' 
-			    ) 
-			)
 	));
-	//echo "</div>";
+	
+	//ajax
+	/*echo $ajax->observeField( 'ChamadoProblemaId', 
+	    array(
+	        'url' => array( 'action' => 'ajaxPrioridade' ),
+	    	'update' => 'ajax_prioridade'
+	    ) 
+	); */
+	echo '</div>';
 	echo $form->input('prioridade_id', array (
 		'empty' => '',
 		'label' => 'Prioridade: ',
 		'style' => 'width: 200px;',
 		'div' => array('id' => 'ajax_prioridade'),
+		'readonly'=> 'readonly'
 		//'value' => $prioridade['Prioridade']['descricao']
 	));
 			

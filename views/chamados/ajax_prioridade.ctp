@@ -4,7 +4,8 @@ echo $form->input('prioridade_id', array (
 			'label' => 'Prioridade: ',
 			'style' => 'width: 200px;',
 			'div' => array('id' => 'ajax_prioridad'),
-			'value' =>$prioridade['Prioridade']['descricao']
+			'value' =>$prioridade['Prioridade']['descricao'],
+			'readonly'=> 'readonly'
 	));
 	
 ?>
