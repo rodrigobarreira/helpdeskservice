@@ -4,10 +4,10 @@
 <tr>
 	<th><?php echo $paginator->sort('Nº', 'id');?></th>
 	<th><?php echo $paginator->sort('Área', 'area_id');?></th>
-	<th><?php echo $paginator->sort('Tipo de Problema', 'problema_id');?></th>
+	<th><?php echo $paginator->sort('Tipo de Problema', 'Problema.descricao');?></th>
 	<th><?php echo $paginator->sort('Título', 'titulo');?></th>
 	<th><?php echo $paginator->sort('Data / Hora Abertura', 'data_hora_abertura');?></th>
-	<th><?php echo $paginator->sort('Status', 'status');?></th>
+	<th><?php echo $paginator->sort('Status', 'status_descricao');?></th>
 	<th><?php echo $paginator->sort('Responsável', 'responsavel_id');?></th>
 </tr>
 <?php
