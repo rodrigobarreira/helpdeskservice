@@ -537,7 +537,7 @@ class TimeHelper extends AppHelper {
 	
 	function dataCompleta(){
 		$dia = array('domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 
-				'quinta-feira', 'sexta-feira', 's�bado' );
+				'quinta-feira', 'sexta-feira', 'sábado' );
 
 		$mes = array('janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 
 				'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro');
