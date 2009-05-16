@@ -149,13 +149,13 @@ class UsuariosController extends AppController {
 		if(!empty($this->data)){
 			//verifica se campos estao preenchidos
 			if($this->data['Usuario']['matricula']==null){
-				$this->Session->setFlash('Informe a matricula.');				
+				$this->Session->setFlash('Informe a matr&iacute;cula.');				
 			}/*elseif ($this->data['Usuario']['email']==null){
-				$this->Session->setFlash('Informe o e-mail.');				
-			}	*/
+				$this->Session->setFlash('Informe o e-mail.');	}	*/
 			// envia email para o usuário						
 		}else{
 		// criar nova senha a partir da senha do usu�rio
+		
 		// enviar e mail para o usu�rio  	
 		
 		}
