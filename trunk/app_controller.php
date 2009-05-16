@@ -44,34 +44,36 @@ class AppController extends Controller {
 		// componente para controle de SessÃ£o
 		'Session'
 	);
+	var $uses = array('Configuracao');
 	
-// variáveis para serem utilizadas na view ou nos controllers subsequente
+// variÃ¡veis para serem utilizadas na view ou nos controllers subsequente
 	protected $usuarioId;
 	protected $usuarioNome;
 	protected $usuarioGrupo;
 	protected $menu = 'menu_home';
+	protected $configuracao = array();
 		 
 	function beforeFilter() {		
-		// informa ao cake que a aplicaÃ§Ã£o utilizará o sistema lingua pt_br
+		// informa ao cake que a aplicaÃ§Ã£o utilizarï¿½ o sistema lingua pt_br
 		Configure :: write('Config.language', "pt_br");
 
-		// especifica que cada controladora implementará as regras de acesso as funÃ§Ãµes (actions)
+		// especifica que cada controladora implementarï¿½ as regras de acesso as funÃ§Ãµes (actions)
 		$this->Auth->authorize = 'controller';
 		
-		// informa ao cake qual modelo (tabela) conterá os dados de login
+		// informa ao cake qual modelo (tabela) conterï¿½ os dados de login
 		$this->Auth->userModel = 'Usuario';
 		
-		// informa ao cake quais campos da tabela será utilizado para conferir o login e senha
+		// informa ao cake quais campos da tabela serï¿½ utilizado para conferir o login e senha
 		$this->Auth->fields = array (
 			'username' => 'matricula',
 			'password' => 'senha'
 		);
 		
-		// variável que restringe somente os usuários ativos poderÃ£o efetuar o login
+		// variï¿½vel que restringe somente os usuï¿½rios ativos poderÃ£o efetuar o login
 		$this->Auth->userScope = array('Usuario.ativo' => '1');
 		
-		// caso ocorra algum erro de login "será exibido" a mensagem
-		$this->Auth->loginError = __("Usuario não encontrado.", true);
+		// caso ocorra algum erro de login "serï¿½ exibido" a mensagem
+		$this->Auth->loginError = __("Usuario nï¿½o encontrado.", true);
 
 		// informa qual a funÃ§Ã£o de login
 		$this->Auth->loginAction = array (
@@ -79,14 +81,14 @@ class AppController extends Controller {
 			'action' => 'login'
 		);
 		
-		// informa para qual página redirecionar após o sucesso do login
+		// informa para qual pï¿½gina redirecionar apï¿½s o sucesso do login
 		$this->Auth->loginRedirect = array (
 			'controller' => 'chamados',
 			'action' => 'index'
 		);
 		
 		// "exibe a mensagem" de acesso negado a alguma funcionalidade do sistema
-		$this->Auth->authError = "Sem permissão para a função desejada.";
+		$this->Auth->authError = "Sem permissï¿½o para a funï¿½ï¿½o desejada.";
 		
 		$this->Auth->autoRedirect = true;
 		
@@ -103,6 +105,17 @@ class AppController extends Controller {
 		//$this->log("isAuthorized", LOG_DEBUG);
 		
 		$this->set('menu', $this->menu);
+		
+		// configuraÃ§Ãµes do sistema
+		$configuracoes = $this->Configuracao->find('first', array(
+			'condition' => array(
+				'id' => '1'
+			)
+		));
+		
+		foreach ($configuracoes['Configuracao'] as $chave => $valor){
+			$this->configuracao[$chave] = $valor;
+		}
 				
 	}
 
