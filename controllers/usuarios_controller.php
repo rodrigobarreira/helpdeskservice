@@ -171,6 +171,10 @@ class UsuariosController extends AppController {
 				$this->data['Usuario']['senha'] = $this->Auth->password($senha);
 				$this->data['Usuario']['id'] = $dados['Usuario']['id'];
 				if ($this->Usuario->save($this->data)){
+					$this->Email->from = 	'HelpdeskService';
+					$this->Email->to = 		$email;
+					$this->Email->subject = 'HelpDeskService - Novo acesso';
+					$this->Email-> send('teste nova senha'.$senha);
 					$this->Session->setFlash('Uma nova senha foi enviada para o seu e-mail!');
 					$this->redirect('/');
 				}else{
