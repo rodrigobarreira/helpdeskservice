@@ -150,7 +150,13 @@ class UsuariosController extends AppController {
 		if(!$matricula){
 			$this->Session->setFlash('Informe a matr&iacute;cula.');			
 		}else{
-			$teste = find('first',array('conditions'=>array('Usuario.matricula'=>$matricula)));
+			$teste = $this->Usuario->find('first',array(
+				'conditions'=>array(
+					'Usuario.matricula'=>$matricula
+				),
+				'recursive' => -1 // para não retornar as tabelas associadas
+			));
+			pr($teste);
 		}
 	}
 	function login(){
