@@ -58,26 +58,22 @@
 			'label' => 'Título do Problema'
 	));
 	
+	/*
 	echo $form->input('data_hora_abertura', array(
 			'type' => 'text',
 			'label' => 'Data de Abertura',
 			'style' => 'width: 250px;',
 			'value' => date("d-m-Y H:m:s")
 	));
+	*/
+	
 	echo $form->input('aberto_por', array(
 			'type' => 'hidden',
 			'value' => $usuarioId
 	));
 	echo $form->input('descricao_problema');
 	
-	echo $form->input('status_id', array(
-			//'type' => 'text',
-			'label' => 'Status',
-			'style' => 'width: 250px;',
-			//'options' => array ($status),
-			'options' => array ($status),
-			
-	));
+	
 	
 	?>
 	
