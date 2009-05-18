@@ -183,12 +183,12 @@ class UsuariosController extends AppController {
 						pr($erro);
 					}**/
 					
-					if(mail($email, "Verifique esta mensagem!", "teste de envio de senha!\n\n nova senha:".$senha, "From: HelpdeskService <HelpdeskService@sobresoftware.net>\n\n")){
+					if(mail($email, "HelpdeskService - Recuperação de acesso", "Esta é uma mensagem automatica por favor não responda este e-mail!\nSua nova senha é ".$senha, "From: HelpdeskService <helpdeskservice@sobresoftware.net>\n\n")){
 						
 						$this->Session->setFlash('Uma nova senha foi enviada para o seu e-mail!');
 						$this->redirect('/');
 					}else{
-						$this->Session->setFlash('erro');						
+						$this->Session->setFlash('Erro no envio do email <br/> Por favor entre em contato conosco atravez do email helpdeskservice@sobresoftware.net');						
 					}
 					
 				}else{
