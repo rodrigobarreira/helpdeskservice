@@ -91,7 +91,7 @@ foreach ($chamados as $chamado):
 		<td>
 			<?php
 			$data_abertura = date_parse($chamado['VwChamado']['data_hora_abertura'] );
-			echo $data_abertura['day']."-".$data_abertura['month'].$data_abertura['year'] ;
+			echo $data_abertura['day']."-".$data_abertura['month']."-".$data_abertura['year'] ;
 			 echo "<br>";
 			 echo $data_abertura['hour'].":".$data_abertura['minute'].":".$data_abertura['second'] ;
 			//echo date_format($chamado['VwChamado']['data_hora_abertura'], "H-i-s");
