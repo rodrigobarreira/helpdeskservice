@@ -1,5 +1,9 @@
 <div class="chamados view">
-
+	<div class="actions">
+		<ul>
+			<li><?php echo $html->link(__('Alterar', true), array('controller'=> 'atendimento', 'action'=>'alterarChamado', $chamado['Chamado']['id']) );?> </li>
+		</ul>
+	</div>
 <fieldset>
 	<?php
 	
@@ -12,7 +16,7 @@
 	echo $form->input('area', array(
 			'type' => 'text',
 			'value' => $setor['Setor']['descricao'],
-			'label' => 'Área Responsável: '
+			'label' => 'Ãrea ResponsÃ¡vel: '
 	));	 
 	
 	echo $form->input('problema_id', array (
@@ -22,14 +26,14 @@
 	));
 		
 	echo $form->input('titulo', array(
-			'label' => 'Título do Problema:',
+			'label' => 'TÃ­tulo do Problema:',
 			'value' => $chamado['Chamado']['titulo']
 	));
 
 	echo $form->input('descricao', array (
 			'type' => 'text',
 			'value' => $chamado['Chamado']['descricao_problema'],
-			'label' => 'Descrição do Problema:',
+			'label' => 'DescriÃ§Ã£o do Problema:',
 	));
 		
 	
@@ -44,7 +48,7 @@
 		// diferente de aguardando atendimento
 		echo $form->input('responsavel_id', array(
 				'type' => 'text',
-				'label' => 'Responsável',
+				'label' => 'ResponsÃ¡vel',
 				'style' => 'width: 250px;',
 				//'options' => array ($status),
 				'value' => $chamado['Responsavel']['nome'],
@@ -63,7 +67,7 @@
 		echo $form->input('descricao_solucao', array (
 			'type' => 'text',
 			'value' => $chamado['Chamado']['descricao_solucao'],
-			'label' => 'Descrição da Solução:',
+			'label' => 'DescriÃ§Ã£o da SoluÃ§Ã£o:',
 		));
 		
 	}
@@ -78,7 +82,7 @@
 	 //pr($historicos);
 	if (count($historicos) > 0){
 		//$historicos = $chamado['ChamadoHistorico'];
-		echo "<h4>Histórico do Chamado</h4>";
+		echo "<h4>HistÃ³rico do Chamado</h4>";
 		echo "<table>";
 			foreach($historicos as $historico){
 			echo "<tr>";
