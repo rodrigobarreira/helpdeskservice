@@ -309,7 +309,8 @@ fieldset {
 fieldset legend {
 	background:#fff;
 	color: #e32;
-	font-size: 160%;
+	font-family:Arial;
+	font-size:12px;
 	font-weight: bold;
 }
 fieldset fieldset {
@@ -318,7 +319,8 @@ fieldset fieldset {
 	padding: 16px 10px;
 }
 fieldset fieldset legend {
-	font-size: 120%;
+	font-family:Arial;
+	font-size:12px;
 	font-weight: normal;
 }
 fieldset fieldset div {
@@ -337,6 +339,8 @@ form div.input {
 form div.required {
 	color: #333;
 	font-weight: bold;
+	font-family:Arial;
+	font-size:12px;
 }
 form div.submit {
 	border: 0;
@@ -346,19 +350,21 @@ form div.submit {
 }
 label {
 	display: block;
-	font-size: 110%;
+	font-family:Arial;
+	font-size:13px;
 	padding-right: 20px;
 }
 input, textarea {
 	clear: both;
-	font-size: 140%;
-	font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif;
+	font-family:Arial;
+	font-size:12px;
 	padding: 2px;
 	width: 100%;
 }
 select {
 	clear: both;
-	font-size: 120%;
+	font-family:Arial;
+	font-size:12px;
 	vertical-align: text-bottom;
 }
 select[multiple=multiple] {
@@ -384,7 +390,8 @@ div.radio label {
 }
 input[type=submit] {
 	display: inline;
-	font-size: 110%;
+	font-family:Arial;
+	font-size:12px;
 	padding: 2px 5px;
 	width: auto;
 	vertical-align: bottom;
@@ -394,20 +401,23 @@ input[type=submit] {
 div.message {
 	clear: both;
 	color: #900;
-	font-size: 140%;
+	font-family:Arial;
+	font-size:12px;
 	font-weight: bold;
 	margin: 1em 0;
 }
 div.error-message {
 	clear: both;
 	color: #900;
+	font-family:Arial;
+	font-size:12px;
 	font-weight: bold;
 }
 p.error {
 	background-color: #e32;
 	color: #fff;
-	font-family: Courier, monospace;
-	font-size: 120%;
+	font-family:Arial;
+	font-size:12px;
 	line-height: 140%;
 	padding: 0.8em;
 	margin: 1em 0;
@@ -421,8 +431,8 @@ p.error em {
 	background: #ffcc00;
 	color: #000;
 	display: block;
-	font-family: Courier, monospace;
-	font-size: 120%;
+	font-family:Arial;
+	font-size:12px;
 	line-height: 140%;
 	padding: 0.8em;
 	margin: 1em 0;
