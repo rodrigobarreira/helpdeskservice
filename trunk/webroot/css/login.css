@@ -16,7 +16,7 @@ fieldset {
 fieldset legend {
 	background:#fff;
 	color: #e32;
-	font-size: 120%;
+	font-size: 12px;
 	font-family: Arial;
 	font-weight: bold;
 }
@@ -25,7 +25,7 @@ fieldset fieldset {
 	margin-bottom: 20px;
 }
 fieldset fieldset legend {
-	font-size: 100%;
+	font-size: 12px;
 	font-weight: normal;
 }
 fieldset fieldset div {
@@ -38,13 +38,14 @@ form div {
 }
 form div.label {
 	padding-right: 20px;
-	font-size:100%;
+	font-size: 12px;
+	font-weight: bold;
 	font-family: Arial;
 }
 form div.input {
 	color: #444;
 	width: 98%;
-	font-size:100%;
+	font-size: 12px;
 	font-family: Arial;
 }
 form div.required {
@@ -88,9 +89,8 @@ div.radio label {
 	margin: 0 0 6px 20px;
 }
 input[type=submit] {
-	display: inline;
-	font-size: 110%;
+	font-size: 12px;
 	padding: 2px 5px;
-	width: auto;
+	width: 150px;
 	vertical-align: bottom;
 }
