@@ -214,7 +214,7 @@
 
 	<!-- rodape -->
 	<div id="base_pagina">
-		<p>�2009 helpdesk | Todos os direitos reservados</p>
+		<p>@2009 helpdesk | Todos os direitos reservados</p>
 	</div>
 	<!-- fim rodape -->
 
