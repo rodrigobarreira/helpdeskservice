@@ -2,6 +2,7 @@
 /* CSS Document */
 
 * {
+	font-family: arial, verdana;
 	margin:0;
 	padding:0;
 	list-style:none;
@@ -30,7 +31,7 @@ html, body {
 	background-color:#FFF;
 	background-image:url(../img/sombra_col_main.jpg);
 	background-repeat:repeat-y;
-	background-position:220px top; /* width col conteudo */
+	background-position:15% top; /* width col conteudo */
 	display:table;
 }
 
@@ -52,25 +53,26 @@ html, body {
 }
 
 #main {
-	background-image:url(../img/bg_main_conteudo.jpg);
+	/*background-image:url(../img/bg_main_conteudo.jpg);*/
 	background-repeat:no-repeat;
-	background-position:220px top; /* width col conteudo */
+	background-position:15% top; /* width col conteudo */
 	width:100%;
 	height:350px;
 }
 
 #col_conteudo {
-	width:220px;
+	width: 12%;
 	padding-top:30px;  /* alinhamento itens ao topo */
-	padding-left:30px; /* alinhamento itens a direita */
-	padding-right:15px;
+	/*padding-left:2em;  alinhamento itens a direita */
+	/*padding-right:2em;*/
 	float:left;
+	margin-left:3%;
 }
 
 #main_conteudo {
 	padding-top:30px;  /* alinhamento itens ao topo */
-	padding-left:30px; /* alinhamento itens a direita */
-	width:70%;
+	/*padding-left:2em;*/ /* alinhamento itens a direita */
+	width:85%;
 	float:left;
 }
 
@@ -254,7 +256,8 @@ th a:hover {
 	text-decoration: none;
 }
 table tr td {
-	font-size: 10px;
+	font-size: 11px;
+	font-family: inherit;
 	background: #fff;
 	border-right: 1px solid #ccc;
 	padding: 4px;
