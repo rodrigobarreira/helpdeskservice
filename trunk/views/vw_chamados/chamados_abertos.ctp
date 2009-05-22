@@ -30,13 +30,13 @@ foreach ($chamados as $chamado):
 			$minutos_decorridos += $aux[1];
 		}
 		
-		$tempo_decorrido_em_porcentagem =  ($minutos_decorridos / $chamado['VwChamado']['tempo']) * -100;
+		$tempo_decorrido_em_porcentagem =  ($minutos_decorridos / $chamado['VwChamado']['tempo']) * 100;
+		//$tempo_decorrido_em_porcentagem *= -1;
 			
-		if ($tempo_decorrido_em_porcentagem <= 70){
-			
-			$style = 'style="background-color: green"';	
+		if ($tempo_decorrido_em_porcentagem <= 0){
+			$style = 'style="background-color: red"';	
 		}elseif ($tempo_decorrido_em_porcentagem > 70 && $tempo_decorrido_em_porcentagem < 100){
-			$style = 'style="background-color: yelow"';   
+			$style = 'style="background-color: yellow"';   
 		}else{
 			//passou do horário limite 
 			$style = 'style="background-color: red; width: 5px;"';

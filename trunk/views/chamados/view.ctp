@@ -2,6 +2,7 @@
 	<div class="actions">
 		<ul>
 			<li><?php echo $html->link(__('Alterar', true), array('controller'=> 'atendimento', 'action'=>'alterarChamado', $chamado['Chamado']['id']) );?> </li>
+			<li><?php echo $html->link(__('Atender Chamado', true), array('controller'=> 'atendimento', 'action'=>'atenderChamado', $chamado['Chamado']['id']) );?> </li>
 		</ul>
 	</div>
 <fieldset>
