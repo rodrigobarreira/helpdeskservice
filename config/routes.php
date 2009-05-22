@@ -49,7 +49,12 @@
 	Router::connect('/atendimento/visualisarChamado/*', array('controller' => 'chamados', 'action' => 'view'));
 	
 	
-	Router::connect('/administracao/usuarios', array('controller' => 'usuarios', 'action' => 'index', ''));
+	Router::connect('/admin/usuarios', array('controller' => 'usuarios', 'action' => 'index', ''));
+	Router::connect('/admin/setor', array('controller'=>'setores','action'=>'index',''));
+	Router::connect('/admin/grupos',array('controller'=>'grupos','action'=>'index',''));
+	Router::connect('/admin/slas',array('controller'=>'slas','action'=>'index',''));
+	
+	//Router::connect('/admin/relatorio',array('controller'=>'relatorio','action'=>'index',''));
 	
 /**
  * ...and connect the rest of 'Pages' controller's urls.
