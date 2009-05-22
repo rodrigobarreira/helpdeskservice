@@ -3,7 +3,7 @@ class ChamadosController extends AppController {
 
 	var $name = 'Chamados';
 	//var $helpers = array('Html', 'Form'); 
-	var $uses = array('Chamado', 'Setor', 'Problema', 'ChamadoHistorico', 'Prioridade');
+	var $uses = array('Chamado', 'Setor', 'Problema', 'ChamadoHistorico', 'Prioridade', 'Usuario');
 	
 	var $components = array('RequestHandler');
 	
@@ -172,13 +172,40 @@ class ChamadosController extends AppController {
 	
 	}
 	
+	/*function atenderChamado($id){
+		$this->pageTitle = "Atendimento de Chamado";
+		
+		if (!$id && empty($this->data)) {
+			$this->Session->setFlash(__('Invalid Chamado', true));
+			$this->redirect(array('action'=>'index'));
+		}
+		if (!empty($this->data)){
+			
+			if ($this->Chamado->save($this->data)) {
+				$this->Session->setFlash(__('The Chamado has been saved', true));
+				$this->redirect(array('action'=>'index'));
+			} else {
+				$this->Session->setFlash(__('The Chamado could not be saved. Please, try again.', true));
+			}
+		}
+		if (empty($this->data)) {
+			$this->data = $this->Chamado->read(null, $id);
+		}
+		//$problemas = $this->Chamado->Problema->find('list');
+		$usuarios = $this->Chamado->Usuario->find('list');
+		$status = $this->Chamado->Status->find('list');
+		$responsaveis = $this->Chamado->Responsavel->find('list');
+		$this->set(compact('problemas','usuarios','status','responsaveis'));
+		
+	}*/
+	
 	function ajaxListaProblemaPorArea(){
 		//pr($this->data);
 		$this->layout = 'ajax';
 		$problemas = $this->Problema->find('list', array (
 			'order' => 'Problema.descricao ASC',
 			'conditions' => array (
-				'Problema.setor_id' => $this->data['Chamado']['setor_id'])
+				'Problema.setor_id' => $chamado['Chamado']['setor_id'])
 		));
 		$this->set('problemas', $problemas);
 		//echo $problemas;
@@ -193,6 +220,68 @@ class ChamadosController extends AppController {
 		));
 		$this->set('prioridade', $prioridade);
 		//echo $problemas;
+	}
+	
+	function atender($id){
+		if (!$id && empty($this->data)) {
+			$this->Session->setFlash(__('Invalid Chamado', true));
+			$this->redirect(array('action'=>'index'));
+		}
+		if (!empty($this->data)) {
+			$this->ChamadoHistorico->create();
+			$this->data['ChamadoHistorico']['chamado_id'] = $this->data['Chamado']['id'] ;
+			$this->data['ChamadoHistorico']['data_hora_final'] = date("Y-m-d H:i:s");
+			// salva o histórico
+			if ($this->ChamadoHistorico->save($this->data)) {
+				// altera o status do chamado para em atendimento
+				$this->data['Chamado']['status_id'] = 1; 
+				// atribui a responsabilidade pelo chamado a quem está atendendo
+				$this->data['Chamado']['responsavel_id'] = $usuarioId; 
+				if ($this->Chamado->save($this->data)) {
+					$this->Session->setFlash(__('The Chamado has been saved', true));
+					pr($this->data);
+					$this->redirect('/atendimento/atenderChamado');
+				}else {
+					// exclui o assentamento no historico do chamado
+					// TODO falta informar o id do chamadao historico recem cadastrado
+					$this->ChamadoHistorico->delete();
+					$this->Session->setFlash(__('The Chamado could not be saved. Please, try again.', true));
+				}
+			}else {
+				$this->Session->setFlash(__('The Chamado could not be saved. Please, try again.', true));
+			}
+		}
+		if (empty($this->data)) {
+			//$this->data = $this->Chamado->read(null, $id);
+		}
+		
+		$chamado = $this->Chamado->read(null, $id);
+		
+		$problema = $this->Problema->find('first', 
+			array(
+				'conditions' => array(
+					'Problema.id' => $chamado['Chamado']['problema_id'],
+				),
+				'recursive' => 0
+			)
+		);
+		
+		$solicitante = $this->Usuario->find('first', 
+			array(
+				'conditions' => array(
+					'Usuario.id' => $chamado['Chamado']['usuario_id'],
+				),
+				'recursive' => 0
+			)
+		);
+		
+		$this->set(compact('problema', 'solicitante', 'chamado'));
+		/*$problemas = $this->Chamado->Problema->find('list');
+		$usuarios = $this->Chamado->Usuario->find('list');
+		$status = $this->Chamado->Status->find('list');
+		$responsaveis = $this->Chamado->Responsavel->find('list');*/
+		//$this->set(compact('problemas','usuarios','status','responsaveis'));
+		
 	}
 	
 }

@@ -11,9 +11,9 @@
  */
 
 ?>
-<p style="color: black;">Menu Provisório para teste das funcionalidades</p>
+<p style="color: black;">Menu</p>
 <br />
-<ul class="menu">
+<ul class="menu" "font-size: 12px;">
 	<li><?php echo $html->link('Abrir Chamado','/home/abrirChamado/'); ?></li>
 	<li><?php echo $html->link('Meus Chamados','/home/meusChamados'); ?></li>
 	<li>-</li>
