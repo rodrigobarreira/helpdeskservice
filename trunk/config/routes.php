@@ -42,19 +42,19 @@
 	Router::connect('/home/abrirChamado', array('controller' => 'chamados', 'action' => 'abrirChamado', ''));
 	Router::connect('/home/alterarSenha', array('controller' => 'usuarios', 'action' => 'alterarSenha', ''));
 	
-	Router::connect('/atendimento', array('controller' => 'chamados', 'action' => 'chamadosAbertos', ''));
+	/* rotas para atendimento */
+	Router::connect('/atendimento', array('controller' => 'vw_chamados', 'action' => 'chamadosAbertos', ''));
 	Router::connect('/atendimento/chamadosAbertos/*', array('controller' => 'vw_chamados', 'action' => 'chamadosAbertos',''));
 	Router::connect('/atendimento/chamadosEncerrados/*', array('controller' => 'vw_chamados', 'action' => 'chamadosEncerrados'));
 	Router::connect('/atendimento/alterarChamado/*', array('controller' => 'chamados', 'action' => 'edit'));
-	Router::connect('/atendimento/visualisarChamado/*', array('controller' => 'chamados', 'action' => 'view'));
+	Router::connect('/atendimento/visualizarChamado/*', array('controller' => 'chamados', 'action' => 'view'));
+	Router::connect('/atendimento/atenderChamado/*', array('controller' => 'chamados', 'action' => 'atender'));
 	
-	
+	/* rotas para administracao */
 	Router::connect('/admin/usuarios', array('controller' => 'usuarios', 'action' => 'index', ''));
 	Router::connect('/admin/setor', array('controller'=>'setores','action'=>'index',''));
 	Router::connect('/admin/grupos',array('controller'=>'grupos','action'=>'index',''));
-	Router::connect('/admin/slas',array('controller'=>'slas','action'=>'index',''));
-	
-	//Router::connect('/admin/relatorio',array('controller'=>'relatorio','action'=>'index',''));
+	Router::connect('/admin/slas',array('controller'=>'problemas','action'=>'index',''));
 	
 /**
  * ...and connect the rest of 'Pages' controller's urls.
@@ -66,3 +66,6 @@
  */
 	Router::connect('/tests', array('controller' => 'tests', 'action' => 'index'));
 ?>
+	
+	
+	//Router::connect('/admin/relatorio',array('controller'=>'relatorio','action'=>'index',''));
