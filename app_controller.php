@@ -112,8 +112,9 @@ class AppController extends Controller {
 		//pr($this);
 		// mostra o menu de acordo com a opção desejada
 		// captura a  url
-		$url = $this->params['url']['url'];
+		 $url = $this->params['url']['url'];
 		
+		 $this->set('menuSelecionado', $url);
 		/* verifica se foi passada alguma url *obs a url considera é após a url do domínio, 
 		* ou seja, se a url for http://ww.meusite.com/home/chamado
 		* para este caso será considerado url a string /home/chamado, seria como um parâmetro

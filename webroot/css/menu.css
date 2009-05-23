@@ -46,3 +46,19 @@ img {
 #div_menu_topo a.right {
 	float:right; /* for help button - just add class "right" ->  <a class="right"... */
 }
+/* show picture when mouse over link */
+.div_menu_topo {
+	background: url(../img/menu_left.png) no-repeat left;
+	
+}
+.div_menu_topo_span {
+	
+	background:url(../img/menu_right.png) no-repeat right;
+}
+
+#div_menu_topo a:VISITED {
+	background: url(../img/menu_left.png) no-repeat left center;
+}
+#div_menu_topo a:VISITED span {
+	background:url(../img/menu_right.png) no-repeat right center;
+}
