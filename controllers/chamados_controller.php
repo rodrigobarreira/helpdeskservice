@@ -227,6 +227,8 @@ class ChamadosController extends AppController {
 			$this->Session->setFlash(__('Invalid Chamado', true));
 			$this->redirect(array('action'=>'index'));
 		}
+		
+		// 
 		if (!empty($this->data)) {
 			$this->ChamadoHistorico->create();
 			$this->data['ChamadoHistorico']['chamado_id'] = $this->data['Chamado']['id'] ;
@@ -234,17 +236,19 @@ class ChamadosController extends AppController {
 			// salva o histórico
 			if ($this->ChamadoHistorico->save($this->data)) {
 				// altera o status do chamado para em atendimento
+				$chamado_historico_id = $this->ChamadoHistorico->getInsertID();
 				$this->data['Chamado']['status_id'] = 1; 
 				// atribui a responsabilidade pelo chamado a quem está atendendo
-				$this->data['Chamado']['responsavel_id'] = $usuarioId; 
+				$this->data['Chamado']['responsavel_id'] = $this->usuarioId; 
 				if ($this->Chamado->save($this->data)) {
 					$this->Session->setFlash(__('The Chamado has been saved', true));
-					pr($this->data);
-					$this->redirect('/atendimento/atenderChamado');
+					//pr($this->data);
+					//$this->redirect('/atendimento/');
+					$this->render('/atendimento');
 				}else {
 					// exclui o assentamento no historico do chamado
 					// TODO falta informar o id do chamadao historico recem cadastrado
-					$this->ChamadoHistorico->delete();
+					$this->ChamadoHistorico->delete($chamado_historico_id);
 					$this->Session->setFlash(__('The Chamado could not be saved. Please, try again.', true));
 				}
 			}else {

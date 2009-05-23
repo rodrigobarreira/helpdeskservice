@@ -57,7 +57,15 @@
 			<div id="div_menu_topo">
 				<ul>
 				<li>
-					<?php echo $html->link(
+					<?php 
+					if ($menuSelecionado == 'home'){
+						$class_menu = 'menu_selecionado div a span';
+						$class_span_menu = 'span_menu_selecionado';
+					}else{
+						$class_menu = '';
+					}
+					
+					echo $html->link(
 						$html->tag(
 							'span',
 							$html->image(
@@ -66,12 +74,20 @@
 									'align' => 'left'
 								)
 							).'Home',
-							null,
+							array(
+								'class' => 'div_menu_topo'
+							),
 							false
 						),
 						'/home',
-						null, null, false
-						)
+						array(
+							'class' => 'div_menu_topo_span'
+						), 
+						null, 
+						false
+					);
+					
+					$class_menu = '';
 					?>
 				</li>
 				<li>
