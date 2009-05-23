@@ -2,12 +2,12 @@
 class ChamadoHistorico extends AppModel {
 
 	var $name = 'ChamadoHistorico';
-	var $validate = array(
+	/*var $validate = array(
 		'data_hora_incial' => array('date'),
 		'data_hora_final' => array('date'),
 		'chamado_id' => array('numeric'),
 		'usuario_id' => array('numeric')
-	);
+	);*/
 
 	var $recursive = 1;
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
