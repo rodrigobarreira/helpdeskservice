@@ -31,7 +31,7 @@ html, body {
 	background-color:#FFF;
 	background-image:url(../img/sombra_col_main.jpg);
 	background-repeat:repeat-y;
-	background-position:15% top; /* width col conteudo */
+	background-position:20% top; /* width col conteudo */
 	display:table;
 }
 
@@ -55,24 +55,25 @@ html, body {
 #main {
 	/*background-image:url(../img/bg_main_conteudo.jpg);*/
 	background-repeat:no-repeat;
-	background-position:15% top; /* width col conteudo */
+	background-position:20% top; /* width col conteudo */
 	width:100%;
 	height:350px;
 }
 
 #col_conteudo {
-	width: 12%;
-	padding-top:30px;  /* alinhamento itens ao topo */
+	width: 14%;
+	padding-top:15px;  /* alinhamento itens ao topo */
 	/*padding-left:2em;  alinhamento itens a direita */
 	/*padding-right:2em;*/
 	float:left;
-	margin-left:3%;
+	margin:3%;
 }
 
 #main_conteudo {
-	padding-top:30px;  /* alinhamento itens ao topo */
+	padding-top:20px;  /* alinhamento itens ao topo */
 	/*padding-left:2em;*/ /* alinhamento itens a direita */
-	width:85%;
+	width:74%;
+	padding:3%;
 	float:left;
 }
 
