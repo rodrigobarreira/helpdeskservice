@@ -20,7 +20,7 @@ img {
 	padding:0;
 }
 #div_menu_topo a {
-	background-image:url(../img/bg_menu_principal.jpg);
+	/*background-image:url(../img/bg_menu_principal.jpg);*/
 	color:#FFF; /* need because it will use default link color */
 	float:left;
 	padding:0 3px 0 3px; /* left 3 px because of left.png image */
@@ -56,9 +56,9 @@ img {
 	background:url(../img/menu_right.png) no-repeat right;
 }
 
-#div_menu_topo a:VISITED {
+#div_mendu_topo a:VISITED {
 	background: url(../img/menu_left.png) no-repeat left center;
 }
-#div_menu_topo a:VISITED span {
+#div_mednu_topo a:VISITED span {
 	background:url(../img/menu_right.png) no-repeat right center;
 }
