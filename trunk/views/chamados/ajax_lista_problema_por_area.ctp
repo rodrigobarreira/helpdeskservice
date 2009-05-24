@@ -1,3 +1,4 @@
+<div class="input text required">
 <?php 
 	/*echo $form->input('problema_id', array (
 			'empty' => '',
@@ -19,6 +20,7 @@
 			'name' => 'data[Chamado][problema_id]',
 			'id' => 'ChamadoProblemaId',
 			'options' => array($problemas),
+			'class' => 'input text required'
 	));
 	
 	//ajax
@@ -30,3 +32,4 @@
 	); 	
 	
 ?>
+</div>
