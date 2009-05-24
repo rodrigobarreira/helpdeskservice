@@ -55,7 +55,7 @@
 	Router::connect('/admin/setor', array('controller'=>'setores','action'=>'index',''));
 	Router::connect('/admin/grupos',array('controller'=>'grupos','action'=>'index',''));
 	Router::connect('/admin/slas',array('controller'=>'problemas','action'=>'index',''));
-	
+	//Router::connect('/admin/relatorio',array('controller'=>'relatorio','action'=>'index',''));
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */
@@ -66,6 +66,3 @@
  */
 	Router::connect('/tests', array('controller' => 'tests', 'action' => 'index'));
 ?>
-	
-	
-	//Router::connect('/admin/relatorio',array('controller'=>'relatorio','action'=>'index',''));
