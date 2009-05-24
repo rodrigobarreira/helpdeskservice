@@ -205,7 +205,7 @@ class ChamadosController extends AppController {
 		$problemas = $this->Problema->find('list', array (
 			'order' => 'Problema.descricao ASC',
 			'conditions' => array (
-				'Problema.setor_id' => $chamado['Chamado']['setor_id'])
+				'Problema.setor_id' => $this->data['Chamado']['setor_id'])
 		));
 		$this->set('problemas', $problemas);
 		//echo $problemas;
