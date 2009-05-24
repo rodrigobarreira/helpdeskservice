@@ -51,10 +51,11 @@
 	Router::connect('/atendimento/atenderChamado/*', array('controller' => 'chamados', 'action' => 'atender'));
 	
 	/* rotas para administracao */
+	Router::connect('/admin', array('controller' => 'usuarios', 'action' => 'add', ''));
 	Router::connect('/admin/usuarios', array('controller' => 'usuarios', 'action' => 'index', ''));
 	Router::connect('/admin/setor', array('controller'=>'setores','action'=>'index',''));
 	Router::connect('/admin/grupos',array('controller'=>'grupos','action'=>'index',''));
-	Router::connect('/admin/slas',array('controller'=>'problemas','action'=>'index',''));
+	Router::connect('/admin/problemas',array('controller'=>'problemas','action'=>'index',''));
 	//Router::connect('/admin/relatorio',array('controller'=>'relatorio','action'=>'index',''));
 /**
  * ...and connect the rest of 'Pages' controller's urls.
