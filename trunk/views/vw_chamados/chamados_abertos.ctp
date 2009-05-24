@@ -10,47 +10,50 @@
 	<th><?php echo $paginator->sort('Área', 'area');?></th>
 	<th><?php echo $paginator->sort('Tipo de Problema', 'problema');?></th>
 	<th><?php echo $paginator->sort('Título', 'titulo');?></th>
-	<th><?php echo $paginator->sort('Responsável', 'responsavel');?></th>
 	<th><?php echo $paginator->sort('Solicitante', 'solicitante');?></th>
 	<th><?php echo $paginator->sort('Data Abertura', 'data_hora_abertura');?></th>
 	<th><?php echo $paginator->sort('Data Limite', 'data_hora_limite');?></th>
+	<th><?php echo $paginator->sort('Responsável', 'responsavel');?></th>
 	<th><?php echo $paginator->sort('Status', 'status');?></th>
 	
 </tr>
 <?php
 $i = 0;
 
-foreach ($chamados as $chamado):
-		$style = null; 
-		$aux = explode(":", $chamado['VwChamado']['tempo_decorrido']);
-		$minutos_decorridos = $aux[0] * 60;
-		if ($minutos_decorridos < 0){
-			$minutos_decorridos -= $aux[1];
-		}else{
-			$minutos_decorridos += $aux[1];
-		}
-		
-		$tempo_decorrido_em_porcentagem =  ($minutos_decorridos / $chamado['VwChamado']['tempo']) * 100;
-		//$tempo_decorrido_em_porcentagem *= -1;
-			
-		if ($tempo_decorrido_em_porcentagem <= 0){
-			$style = 'style="background-color: red"';	
-		}elseif ($tempo_decorrido_em_porcentagem > 70 && $tempo_decorrido_em_porcentagem < 100){
-			$style = 'style="background-color: yellow"';   
-		}else{
-			//passou do horário limite 
-			$style = 'style="background-color: red; width: 5px;"';
-		}
-		?>
+foreach ($chamados as $chamado){
+	$style = null; 
+	$aux = explode(":", $chamado['VwChamado']['tempo_decorrido']);
+	/*
+	if (empty($aux[0])){
+		$aux = array(0);
+	}
+	pr ($aux);
+*/
+	$minutos_decorridos = $aux[0] * 60;
+	if ($minutos_decorridos < 0){
+		$minutos_decorridos -= $aux[1];
+	}else{
+		$minutos_decorridos += $aux[1];
+	}
 	
+	$tempo_decorrido_em_porcentagem =  ($minutos_decorridos / $chamado['VwChamado']['tempo']) * 100;
+	//$tempo_decorrido_em_porcentagem *= -1;
 		
-	
-	<?php 
+	if ($tempo_decorrido_em_porcentagem <= 0){
+		$style = 'style="background-color: red"';	
+	}elseif ($tempo_decorrido_em_porcentagem > 70 && $tempo_decorrido_em_porcentagem < 100){
+		$style = 'style="background-color: yellow"';   
+	}else{
+		//passou do horário limite 
+		$style = 'style="background-color: red; width: 5px;"';
+	}
+
 	$class = null;
 	if ($i++ % 2 == 0) {
 		$class = ' class="altrow"';
 	}
-?>
+
+	?>
 	<tr  <?php echo $class;?> >
 		<td <?php echo $style?>>
 		
@@ -83,9 +86,6 @@ foreach ($chamados as $chamado):
 			<?php echo $chamado['VwChamado']['titulo']; ?>
 		</td>
 		<td>
-			<?php echo $chamado['VwChamado']['responsavel']; ?>
-		</td>
-		<td>
 			<?php echo $chamado['VwChamado']['solicitante']; ?>
 		</td>
 		<td>
@@ -101,11 +101,14 @@ foreach ($chamados as $chamado):
 			<?php echo $chamado['VwChamado']['data_hora_limite']; ?>
 		</td>
 		<td>
+			<?php echo $chamado['VwChamado']['responsavel']; ?>
+		</td>
+		<td>
 			<?php echo $chamado['VwChamado']['status']; ?>
 		</td>
 	</tr>
 	
-<?php endforeach; ?>
+<?php } ?>
 </table>
 </div>
 <div class="paging">
