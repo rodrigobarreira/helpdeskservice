@@ -48,36 +48,36 @@ class AppController extends Controller {
 	
 // variáveis para serem utilizadas na view ou nos controllers subsequente
 	protected $usuarioId;
+	protected $usuarioMatricula;
 	protected $usuarioNome;
 	protected $usuarioGrupo;
 	protected $usuarioSetor;
-	//protected $menu = 'menu_home';
 	protected $configuracao = array();
 	
 	
 		 
 	function beforeFilter() {		
-		// informa ao cake que a aplicação utilizar� o sistema lingua pt_br
+		// informa ao cake que a aplicação utilizará o sistema lingua pt_br
 		Configure :: write('Config.language', "pt_br");
 
 		
-		// especifica que cada controladora implementar� as regras de acesso as funções (actions)
+		// especifica que cada controladora implementará as regras de acesso as funções (actions)
 		$this->Auth->authorize = 'controller';
 		
-		// informa ao cake qual modelo (tabela) conter� os dados de login
+		// informa ao cake qual modelo (tabela) conterá os dados de login
 		$this->Auth->userModel = 'Usuario';
 		
-		// informa ao cake quais campos da tabela ser� utilizado para conferir o login e senha
+		// informa ao cake quais campos da tabela será utilizado para conferir o login e senha
 		$this->Auth->fields = array (
 			'username' => 'matricula',
 			'password' => 'senha'
 		);
 		
-		// vari�vel que restringe somente os usu�rios ativos poderão efetuar o login
+		// variável que restringe somente os usuários ativos poderão efetuar o login
 		$this->Auth->userScope = array('Usuario.ativo' => '1');
 		
-		// caso ocorra algum erro de login "ser� exibido" a mensagem
-		$this->Auth->loginError = __("Usuario não encontrado.", true);
+		// caso ocorra algum erro de login "será exibido" a mensagem
+		$this->Auth->loginError = __("Usuário não encontrado.", true);
 
 		// informa qual a função de login
 		$this->Auth->loginAction = array (
@@ -103,18 +103,15 @@ class AppController extends Controller {
 		$this->usuarioSetor = $this->Auth->user('setor_id');
 		
 		$this->set('usuarioId', $this->usuarioId);
+		$this->set('usuarioMatricula', $this->usuarioMatricula);
 		$this->set('usuarioNome', $this->usuarioNome);
 		$this->set('usuarioGrupo', $this->usuarioGrupo);
 		$this->set('usuarioSetor', $this->usuarioSetor);
 		
-		
-		//$this->log("isAuthorized", LOG_DEBUG);
-		//pr($this);
 		// mostra o menu de acordo com a opção desejada
 		// captura a  url
 		 $url = $this->params['url']['url'];
-		
-		 $this->set('menuSelecionado', $url);
+		 
 		/* verifica se foi passada alguma url *obs a url considera é após a url do domínio, 
 		* ou seja, se a url for http://ww.meusite.com/home/chamado
 		* para este caso será considerado url a string /home/chamado, seria como um parâmetro
@@ -122,40 +119,18 @@ class AppController extends Controller {
 		
 		// verifica se foi passado alguma url
 		if (!empty($url)){
-			
+			// procura na url a primeira ocorrência de '/' e retorna a posicao em que ela está
 			$pos = strpos($url, "/");
 			if ($pos != false){
-				$menu = substr($url, 0, $pos);				
+				// retorna a sequencia de caracteres que está entre 0 e a '/'
+				$menu_selecionado = substr($url, 0, $pos);				
 			}else{
 				// não encontrou a '/' talves porque foi informado somente o home, atedimento ou administracao
-				$menu = $url;
+				$menu_selecionado = $url;
 			}
-
-			if ($menu == 'home'){
-				$menu = 'menu_home';
-				
-			}elseif($menu == 'atendimento'){
-				$menu = 'menu_atendimento';
-				
-			}elseif($menu == 'administracao'){
-				// verifica se é administrador de área ou administrador geral
-				if ($this->usuarioGrupo == 3){// administrador de area
-					$menu = 'menu_administrador_area';
-				}else{
-					$menu = 'menu_administrador_geral';
-				}
-				
-			}else{
-				// menu desconhecido, então exibe o menu home
-				$menu = 'menu_home';
-			}
-			 
-			
-			
-				
 		}
-		
-		$this->set('menu', $menu);
+
+		$this->set('menu_selecionado', $menu_selecionado);
 		
 		// configurações do sistema
 		$configuracoes = $this->Configuracao->find('first', array(

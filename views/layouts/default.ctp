@@ -1,29 +1,25 @@
-	
-<?php
-/* SVN FILE: $Id: default.ctp 7690 2008-10-02 04:56:53Z nate $ */
-/**
- *
- * PHP versions 4 and 5
- *
- * CakePHP(tm) :  Rapid Development Framework <http://www.cakephp.org/>
- * Copyright 2005-2008, Cake Software Foundation, Inc.
- *								1785 E. Sahara Avenue, Suite 490-204
- *								Las Vegas, Nevada 89104
- *
- * Licensed under The MIT License
- * Redistributions of files must retain the above copyright notice.
- *
- * @filesource
- * @copyright		Copyright 2005-2008, Cake Software Foundation, Inc.
- * @link				http://www.cakefoundation.org/projects/info/cakephp CakePHP(tm) Project
- * @package			cake
- * @subpackage		cake.cake.console.libs.templates.skel.views.layouts
- * @since			CakePHP(tm) v 0.10.0.1076
- * @version			$Revision: 7690 $
- * @modifiedby		$LastChangedBy: nate $
- * @lastmodified	$Date: 2008-10-02 00:56:53 -0400 (Thu, 02 Oct 2008) $
- * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
- */
+<?php 
+if (empty($menu_selecionado)){
+	switch ($usuarioGrupo){
+		case 1: // solicitante
+			$menu_selecionado = 'home';
+			break;
+		case 2: // atendente
+			$menu_selecionado = 'atendente';
+			break;
+		case 3: // administrador
+			$menu_selecionado = 'admin';
+			break;
+		case 4: // help
+			$menu_selecionado = 'help';
+			break;
+		default:
+			$menu_selecionado = 'home';
+			$menu = 'menu_home';
+			break;
+	}
+}
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -46,6 +42,7 @@
 	?>
 </head>
 <body>
+	<?php echo $menu_selecionado ;?>
 	<div id="pagina">
 
 	<!-- main -->
@@ -58,13 +55,13 @@
 				<ul>
 				<li>
 					<?php 
-					if ($menuSelecionado == 'home'){
-						$class_menu = 'menu_selecionado div a span';
-						$class_span_menu = 'span_menu_selecionado';
+					if ($menu_selecionado == 'home'){
+						$class_menu = 'div_menu_topo';
+						$class_menu_span = 'div_menu_topo_span';
 					}else{
-						$class_menu = '';
+						$class_menu = 'echo $menu_selecionado;';
+						$class_menu_span = '';
 					}
-					
 					echo $html->link(
 						$html->tag(
 							'span',
@@ -75,13 +72,13 @@
 								)
 							).'Home',
 							array(
-								'class' => 'div_menu_topo'
+								'class' => $class_menu_span
 							),
 							false
 						),
 						'/home',
 						array(
-							'class' => 'div_menu_topo_span'
+							'class' => $class_menu
 						), 
 						null, 
 						false
@@ -91,7 +88,17 @@
 					?>
 				</li>
 				<li>
-					<?php 
+					<?php
+					if ($menu_selecionado == 'atendimento'){
+						$menu = 'menu_atendimento';
+						$class_menu = 'div_menu_topo';
+						$class_menu_span = 'div_menu_topo_span';
+					}else{
+						$class_menu = '';
+						$class_menu_span = '';
+					}
+					
+					 
 					if ($usuarioGrupo > 1){
 						echo $html->link(
 							$html->tag(
@@ -102,17 +109,31 @@
 										'align' => 'left'
 									)
 								).'Atendimento',
-								null,
+								array(
+									'class' => $class_menu_span
+								),
 								false
 							),
 							'/atendimento',
-							null, null, false
+							array(
+								'class' => $class_menu
+							), 
+							null, 
+							false
 						);
 					}
+					$class_menu = '';
 					?>
 				</li>
 				<li>
-					<?php 
+					<?php
+					if ($menu_selecionado == 'admin'){
+						$class_menu = 'div_menu_topo';
+						$class_menu_span = 'div_menu_topo_span';
+					}else{
+						$class_menu = '';
+						$class_menu_span = '';
+					} 
 					if ($usuarioGrupo > 2){
 						echo $html->link(
 					
@@ -124,13 +145,21 @@
 										'align' => 'left'
 									)
 								).'Administração',
-								null,
+								array(
+									'class' => $class_menu_span
+								),
 								false
 							),
-							'/administracao',
-							null, null, false
+							'/admin',
+							array(
+								'class' => $class_menu
+							),
+							null, 
+							false
 						);
 					}
+					$class_menu = '';
+					$class_menu_span = '';
 					?>
 				</li>
 				
@@ -144,11 +173,17 @@
 									'align' => 'left'
 								)
 							).'Help',
-							null,
+							array(
+								'class' => $class_menu_span
+							),
 							false
 						),
 						'#',
-						null, null, false
+						array(
+								'class' => $class_menu
+						), 
+						null, 
+						false
 						)
 					?>
 				</li>
@@ -184,16 +219,18 @@
 					
 					<!-- menu lateral -->
 					<?php 
-					if ($usuarioGrupo == '1'){ // solicitante
-						echo $this->renderElement($menu);
-					}elseif ($usuarioGrupo == '2'){ // atendente
-						echo $this->renderElement($menu);
-					}elseif ($usuarioGrupo == '3'){ // administrador de area
-						echo $this->renderElement($menu);
-					}elseif ($usuarioGrupo == '4'){ // administrador geral
-						echo $this->renderElement($menu);
+					if ($menu_selecionado == 'home'){
+						$menu = 'menu_home';
+					}elseif($menu_selecionado == 'atendimento'){
+						$menu = 'menu_atendimento';
+					}elseif($menu_selecionado == 'admin'){
+						if ($usuarioGrupo == 3) // admin area
+							$menu = 'menu_administrador_area';
+						else{
+							$menu = 'menu_administrador_geral';
+						}
 					}
-					
+					echo $this->renderElement($menu);	
 					?>
 					<!-- fim menu lateral -->
 					
