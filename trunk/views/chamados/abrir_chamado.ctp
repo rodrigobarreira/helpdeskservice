@@ -13,13 +13,15 @@
 			'value' => $usuarioId
 	));
 	
+	echo '<div class="input text required">'; 
 	echo $form->input('setor_id', array (
 			'empty' => '', 
 			'options' => array ($areas),	
 			'label' => 'Área',
 			'type' => 'select',
+			'class' => 'input text required'
 	));	 
-
+	echo '</div>';
 	// ajax
 	echo $ajax->observeField( 'ChamadoSetorId', 
 	    array(
@@ -35,6 +37,7 @@
 			'style' => 'width: 300px;',
 			'div' => array('id' => 'ajax_problema'),
 			'type' => 'select',
+			'options' => array()
 	));
 	
 	//ajax
