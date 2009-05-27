@@ -41,13 +41,14 @@
 	Router::connect('/home/meusChamados/*', array('controller' => 'chamados', 'action' => 'meusChamados', ''));
 	Router::connect('/home/abrirChamado', array('controller' => 'chamados', 'action' => 'abrirChamado', ''));
 	Router::connect('/home/alterarSenha', array('controller' => 'usuarios', 'action' => 'alterarSenha', ''));
+	Router::connect('/home/visualizarChamado/*', array('controller' => 'chamados', 'action' => 'view_home'));
 	
 	/* rotas para atendimento */
 	Router::connect('/atendimento', array('controller' => 'vw_chamados', 'action' => 'chamadosAbertos', ''));
 	Router::connect('/atendimento/chamadosAbertos/*', array('controller' => 'vw_chamados', 'action' => 'chamadosAbertos',''));
 	Router::connect('/atendimento/chamadosEncerrados/*', array('controller' => 'vw_chamados', 'action' => 'chamadosEncerrados'));
 	Router::connect('/atendimento/alterarChamado/*', array('controller' => 'chamados', 'action' => 'edit'));
-	Router::connect('/atendimento/visualizarChamado/*', array('controller' => 'chamados', 'action' => 'view'));
+	Router::connect('/atendimento/visualizarChamado/*', array('controller' => 'chamados', 'action' => 'view_atende'));
 	Router::connect('/atendimento/atenderChamado/*', array('controller' => 'chamados', 'action' => 'atender'));
 	
 	/* rotas para administracao */
