@@ -42,7 +42,6 @@ if (empty($menu_selecionado)){
 	?>
 </head>
 <body>
-	<?php echo $menu_selecionado ;?>
 	<div id="pagina">
 
 	<!-- main -->
