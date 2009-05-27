@@ -1,15 +1,4 @@
 <div class="chamados view">
-	<?php 
-	if ($usuarioGrupo != 1){
-		// diferede de solicitante
-	?>
-	
-	<?php echo $html->link(__('Alterar', true), array('controller'=> 'atendimento', 'action'=>'alterarChamado', $chamado['Chamado']['id']) );?>
-	|
-	<?php echo $html->link(__('Atender Chamado', true), array('controller'=> 'atendimento', 'action'=>'atenderChamado', $chamado['Chamado']['id']) );?>
-	<?php 
-	}
-	?>
 <fieldset>
 	<div class="coluna_esq">
 	<?php
@@ -109,6 +98,18 @@
 			echo "<tr>";
 				echo '<td style="width:30%;">Em ' . $historico['ChamadoHistorico']['data_hora_inicial'] . " por " . $historico['Usuario']['nome'] . "</td>";
 				echo "<td>" . $historico['ChamadoHistorico']['descricao']  . "</td>";
+			echo "</tr>";
+		}
+		
+		echo "</table>";
+		
+	}else{
+		echo "<label>Histórico do Chamado</label>";
+
+		echo "<table>";
+			foreach($historicos as $historico){
+			echo "<tr>";
+				echo '<td>Nenhum Histórico foi inserido</td>';
 			echo "</tr>";
 		}
 		
