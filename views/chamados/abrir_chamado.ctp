@@ -34,31 +34,26 @@
 	echo $form->input('problema_id', array (
 			'empty' => 'Selecione uma área primeiro',
 			'label' => 'Tipo de Problema',
-			'style' => 'width: 300px;',
+			'style' => 'width: 250px;',
 			'div' => array('id' => 'ajax_problema'),
 			'type' => 'select',
 			'options' => array()
 	));
-	
-	//ajax
-	/*echo $ajax->observeField( 'ChamadoProblemaId', 
-	    array(
-	        'url' => array( 'action' => 'ajaxPrioridade' ),
-	    	'update' => 'ajax_prioridade'
-	    ) 
-	); */
 	echo '</div>';
+	
+	echo '<div id="ajax_prioridade">';
 	echo $form->input('prioridade_id', array (
 		'empty' => '',
 		'label' => 'Prioridade: ',
-		'style' => 'width: 200px;',
-		'div' => array('id' => 'ajax_prioridade'),
+		'style' => 'width: 100px;',
+		//'div' => array('id' => 'ajax_prioridade'),
 		'readonly'=> 'readonly'
 		//'value' => $prioridade['Prioridade']['descricao']
 	));
-			
+	echo "</div>";
 	echo $form->input('titulo', array(
-			'label' => 'Título do Problema'
+			'label' => 'Título do Problema',
+			'style' => 'float:left;clear: left;width: 600px;'
 	));
 	
 	/*
@@ -74,13 +69,17 @@
 			'type' => 'hidden',
 			'value' => $usuarioId
 	));
-	echo $form->input('descricao_problema');
-	
-	
+	echo $form->input('descricao_problema', array(
+			'label' => 'Descrição do Problema',
+			'style' => 'float:left;width: 600px;'
+	));
 	
 	?>
 	
 	</fieldset>
-<?php echo $form->end('Submit');?>
+	<br>
+	<fieldset style="text-align: left;">
+<?php echo $form->end('Registrar');?>
+</fieldset>
 </div>
 
