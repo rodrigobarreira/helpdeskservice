@@ -15,7 +15,22 @@ class ChamadosController extends AppController {
 		$this->redirect('/home/meusChamados');
 	}
 
-	function view($id = null) {
+	function view_home($id = null) {
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid Chamado.', true));
+			$this->redirect(array('action'=>'index'));
+		}
+		
+		$chamado = $this->Chamado->read(null, $id);
+		$setor = $this->Setor->read(null, $chamado['Problema']['setor_id']);
+		$historicos = $this->ChamadoHistorico->find('all', array(
+				'conditions' => array ('ChamadoHistorico.chamado_id' => $id),
+				'order' => 'ChamadoHistorico.id DESC'
+		));
+		$this->set(compact('chamado', 'setor', 'historicos'));
+	}
+
+	function view_atende($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid Chamado.', true));
 			$this->redirect(array('action'=>'index'));
@@ -61,6 +76,7 @@ class ChamadosController extends AppController {
 				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The Chamado could not be saved. Please, try again.', true));
+				//$this->redirect(array('../../home/abrirChamado'));
 			}
 		}
 		$this->Setor->recursive = 1;
@@ -78,6 +94,7 @@ class ChamadosController extends AppController {
 		
 		$responsaveis = $this->Chamado->Responsavel->find('list');
 		$this->set(compact('usuarios', 'responsaveis', 'areas', 'problemas'));
+		//$this->render('abrirChamado');
 	}
 
 	function edit($id = null) {
@@ -121,13 +138,28 @@ class ChamadosController extends AppController {
 	function meusChamados(){
 		$this->pageTitle = "Meus Chamados";
 		$this->paginate = array(
-			'limit' => 5, 
+			'limit' => 2, 
 			'conditions' => array (
 				'Chamado.usuario_id' => $this->usuarioId,
+				'Chamado.status_id' => array (
+					1,3,6
+				)
 			)
 		);
 		$this->Chamado->recursive = 2;
 		$this->set('chamados', $this->paginate());
+		
+		$this->paginate = array(
+			'limit' => 5, 
+			'conditions' => array (
+				'Chamado.usuario_id' => $this->usuarioId,
+				'Chamado.status_id' => array (
+					2,4,5
+				)
+			)
+		);
+		$this->Chamado->recursive = 2;
+		$this->set('chamadosEncerrados', $this->paginate());
 	}
 	
 	/*
@@ -145,7 +177,7 @@ class ChamadosController extends AppController {
 				'Problema.setor_id' => $this->usuarioSetor,
 				'Chamado.status_id <> 4',
 			),
-			'recursive' => 2
+			'recursive' => -1
 		);
 		
 		
