@@ -14,7 +14,7 @@
 <p style="color: black;">Menu Provisório para teste das funcionalidades</p>
 <br />
 <ul class="menu">
-	< $li><?php echo $html->link('Usuários','/administracao/usuarios/'); ?></li>
+	<li><?php echo $html->link('Usuários','/administracao/usuarios/'); ?></li>
 	<li><?php echo $html->link('Tipo de Problema','/problemas/index'); ?></li>
 	<li><?php echo $html->link('Relat�rios','/relatorio/index');?></li>
 	<li><?php echo $html->link('Setores','/setores/index');?></li>
