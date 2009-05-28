@@ -4,7 +4,7 @@ class ChamadosController extends AppController {
 	var $name = 'Chamados';
 	//var $helpers = array('Html', 'Form'); 
 	var $uses = array('Chamado', 'Setor', 'Problema', 'ChamadoHistorico', 'Prioridade', 'Usuario');
-	
+	//var $helpers = array ('Ajax');
 	var $components = array('RequestHandler');
 	
 	function index() {
@@ -137,8 +137,13 @@ class ChamadosController extends AppController {
 	 */
 	function meusChamados(){
 		$this->pageTitle = "Meus Chamados";
+	}
+	
+	function meusChamadosAbertos(){
+		$this->layout = 'ajax';
+		$this->pageTitle = "Meus Chamados";
 		$this->paginate = array(
-			'limit' => 2, 
+			'limit' => 5, 
 			'conditions' => array (
 				'Chamado.usuario_id' => $this->usuarioId,
 				'Chamado.status_id' => array (
@@ -148,7 +153,11 @@ class ChamadosController extends AppController {
 		);
 		$this->Chamado->recursive = 2;
 		$this->set('chamados', $this->paginate());
-		
+		//pr($this->paginate());
+	}
+	function meusChamadosEncerrados(){
+		$this->layout = 'ajax';
+		$this->pageTitle = "Meus Chamados";
 		$this->paginate = array(
 			'limit' => 5, 
 			'conditions' => array (
@@ -159,7 +168,8 @@ class ChamadosController extends AppController {
 			)
 		);
 		$this->Chamado->recursive = 2;
-		$this->set('chamadosEncerrados', $this->paginate());
+		$this->set('chamados', $this->paginate());
+		//pr($this->paginate());
 	}
 	
 	/*
