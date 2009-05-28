@@ -410,8 +410,19 @@ input[type=submit] {
 	font-family:Arial;
 	font-size:12px;
 	padding: 2px 5px;
+	vertical-align: bottom;
+	width: 80px; 
+}
+
+input[type=button] {
+	display: inline;
+	font-family:Arial;
+	font-size:12px;
+	padding: 2px 5px;
 	width: auto;
 	vertical-align: bottom;
+	margin-top: 10px;
+	width: 80px; 
 }
 
 /* Notices and Errors */
