@@ -15,7 +15,8 @@
 	echo $ajax->observeField( 'ChamadoProblemaId', 
 	    array(
 	        'url' => array( 'action' => 'ajaxPrioridade' ),
-	    	'update' => 'ajax_prioridade'
+	    	'update' => 'ajax_prioridade',
+	    	'indicator' => 'loadAjax'
 	    ) 
 	); 	
 	
