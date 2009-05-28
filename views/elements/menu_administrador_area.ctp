@@ -14,8 +14,9 @@
 <p style="color: black;">Menu ProvisÃ³rio para teste das funcionalidades</p>
 <br />
 <ul class="menu">
+	<!--tag > nome do link > controler/acão-->
 	<li><?php echo $html->link('UsuÃ¡rios','/administracao/usuarios/'); ?></li>
-	<li><?php echo $html->link('Meus Chamados','/home/meusChamados'); ?></li>
-	<li>-</li>
+	<li><?php echo $html->link('Tipo de Problema','/problemas/index'); ?></li>
+	<li><?php echo $html->link('Relatórios','/relatorio/index');?></li>
 	<li><?php echo $html->link('Alterar Senha','/home/alterarSenha'); ?></li>
 </ul>
