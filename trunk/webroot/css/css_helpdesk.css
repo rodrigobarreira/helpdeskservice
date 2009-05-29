@@ -36,7 +36,7 @@ html, body {
 }
 
 #conteudo_pagina {
-	padding-bottom:30px;
+	padding-bottom:10px;
 	width:100%;
 	float:left;
 }
@@ -483,5 +483,11 @@ p.error em {
 	width: 47%;
 	float: right;
 	margin-right:2%;
+	
+}
+
+.chamados{
+	display: block;
+	height: 140px;
 	
 }
