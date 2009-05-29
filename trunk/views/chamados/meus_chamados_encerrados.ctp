@@ -1,5 +1,6 @@
 <?php //pr($chamados)?>
-<h5 style="font-weight: normal;">Chamados Abertos.</h5>
+<h5 style="font-weight: normal;">Chamados Encerrados.</h5>
+<div class="chamados">
 <table cellpadding="0" cellspacing="0">
 <?php  
 $paginator->options(
@@ -52,8 +53,9 @@ foreach ($chamados as $chamado):
 	
 <?php endforeach; ?>
 </table>
+</div>
 <div class="paging">
-	<?php echo $paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
+	<?php echo $paginator->prev($html->image('bt_anterior.jpg'), array('escape' => false), $html->image('bt_anterior_off.jpg'), array('class'=>'disabled', 'escape' => false));?>
  | 	<?php echo $paginator->numbers();?>
-	<?php echo $paginator->next(__('next', true).' >>', array(), null, array('class'=>'disabled'));?>
+	<?php echo $paginator->next($html->image('bt_proximo.jpg'), array('escape' => false), $html->image('bt_proximo_off.jpg'), array('class'=>'disabled', 'escape' => false));?>
 </div>
