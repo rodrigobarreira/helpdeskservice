@@ -143,7 +143,10 @@ class UsuariosController extends AppController {
 			}
 		}
 	}
-
+	function pesquisar(){
+		
+		
+	}
 	function recuperarAcesso(){
 		$this->layout = 'login';
 		$matricula= $this->data['Usuario']['matricula'];
