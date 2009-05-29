@@ -16,4 +16,6 @@
 <ul class="menu" style="font-size: 12px;">
 	<li><?php echo $html->link('Chamados Abertos','/atendimento/chamadosAbertos'); ?></li>
 	<li><?php echo $html->link('Chamados Encerrados','/atendimento/chamadosEncerrados'); ?></li>
+	<li><?php echo $html->link('Pesquisar Chamados','/vw_chamados/pesquisar');?></li>
+	<li><?php echo $html->link('Pesquisar Usuários','/usuarios/pesquisar');?></li>
 </ul>
