@@ -12,15 +12,5 @@ echo $ajax->remoteFunction(array(
 	<?php echo $html->image('LoadAjax.gif');?>
 </div>
 
-<div id="chamadosAbertos">
-</div>
-<div id="chamadosEncerrados">
-<script type="text/javascript">
-<?php 
-echo $ajax->remoteFunction(array(
-	'url' => array ('controller' => 'chamados', 'action'=>'meusChamadosEncerrados'),
-	'update' => 'chamadosEncerrados'
-));
-?>
-</script>
+<div id="chamadosAbertos" style ="width: 100%">
 </div>
