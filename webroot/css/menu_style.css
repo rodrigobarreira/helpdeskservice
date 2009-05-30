@@ -15,7 +15,7 @@ padding:0;
 }
 
 #vista_toolbar ul {
-background-image:url(url(../img/menu_back.gif) );
+background-image:url(../img/menu_back.gif);
 background-repeat:repeat-x;
 float:left;
 line-height:32px;
