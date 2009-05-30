@@ -16,6 +16,7 @@ $ajax->form(array('type' => 'post',
 ));
 ;?>
 	<fieldset>
+	<legend>Formulário de Registro de Chamado</legend>
 	<?php
 	echo $form->input('usuario_id', array(
 			'type' => 'hidden',
@@ -27,15 +28,16 @@ $ajax->form(array('type' => 'post',
 			'value' => $usuarioId
 	));
 	
-	echo '<div class="input text required">'; 
 	echo $form->input('setor_id', array (
 			'empty' => '', 
 			'options' => array ($areas),	
 			'label' => 'Área',
 			'type' => 'select',
-			'class' => 'input text required'
+			'div' => array ('class' => 'campo'),
+			'style' => 'width: 220px;',
+			
 	));	 
-	echo '</div>';
+
 	// ajax
 	echo $ajax->observeField( 'ChamadoSetorId', 
 	    array(
@@ -45,74 +47,71 @@ $ajax->form(array('type' => 'post',
 	    ) 
 	); 
 	
-	echo '<div id="problema" class="input text required">';
 	echo $form->input('problema_id', array (
 			'empty' => 'Selecione uma área primeiro',
 			'label' => 'Tipo de Problema',
-			'style' => 'width: 250px;',
 			//'div' => array('id' => 'ajax_problema'),
 			'type' => 'select',
 			'name' => 'data[Chamado][problema_id]',
 			'id' => 'ChamadoProblemaId',
 			'options' => array(),
-			'class' => 'input text required'
+			'div' => array ('class' => 'campo', 'id' => 'problema', ),
+			'style' => 'width: 270px;',
 	));
 	
-	echo '</div>';
-	
-	echo '<div id="ajax_prioridade">';
 	echo $form->input('prioridade_id', array (
 		'empty' => '',
 		'label' => 'Prioridade: ',
 		'style' => 'width: 100px;',
-		//'div' => array('id' => 'ajax_prioridade'),
+		'div' => array('class' => 'campo', 'id' => 'ajax_prioridade'),
 		'readonly'=> 'readonly'
-		//'value' => $prioridade['Prioridade']['descricao']
 	));
-	echo "</div>";
+
 	echo $form->input('titulo', array(
 			'label' => 'Título do Problema',
-			'style' => 'float:left;clear: left;width: 600px;'
+			'style' => 'width: 620px;',
+			'div' => 'campo'
 	));
-	
-	/*
-	echo $form->input('data_hora_abertura', array(
-			'type' => 'text',
-			'label' => 'Data de Abertura',
-			'style' => 'width: 250px;',
-			'value' => date("d-m-Y H:m:s")
-	));
-	*/
 	
 	echo $form->input('aberto_por', array(
 			'type' => 'hidden',
 			'value' => $usuarioId
 	));
+	
 	echo $form->input('descricao_problema', array(
 			'label' => 'Descrição do Problema',
-			'style' => 'float:left;width: 600px;'
+			'style' => 'width: 620px; margin-right: 15px;',
+			'div' => 'campo'
 	));
 	
 	?>
 	
 	</fieldset>
-	<br>
+
 	<fieldset style="text-align: left;">
-<?php 
-echo $form->end('Registrar',array(
-	'update'=>'main_conteudo',
-    'url' => array(
-    	'controller' => 'home',
-        'action' => 'abrirChamado'
-    )
-));
-echo $form->button('Voltar', array(
-	'type'=>'button', 
-	'id' => 'btnVoltar', 
-	'onClick'=>'history.go(-1)',
-	//'style' => 'lear: both;'
-));
-?>
-</fieldset>
+	
+	<div class="botao">
+	<?php 
+	echo $form->button('Registrar',array(
+		'type'=>'submit',
+		'update'=>'main_conteudo',
+	    'url' => array(
+	    	'controller' => 'home',
+	        'action' => 'abrirChamado'
+	    ),
+	));
+	?>
+	</div>
+	<div class="botao">
+	<?php 
+	echo $form->button('Voltar', array(
+		'type'=>'button', 
+		'id' => 'btnVoltar', 
+		'onClick'=>'history.go(-1)',
+	));
+	?>
+	</div>
+	</fieldset>
+
 </div>
 
