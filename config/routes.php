@@ -37,8 +37,8 @@
 	
 	
 	
-	Router::connect('/home', array('controller' => 'chamados', 'action' => 'meusChamados', 'home'));
-	Router::connect('/home/meusChamados/*', array('controller' => 'chamados', 'action' => 'meusChamados', ''));
+	Router::connect('/home/', array('controller' => 'vw_chamados', 'action' => 'meusChamados', 'home'));
+	Router::connect('/home/meusChamados/*', array('controller' => 'vw_chamados', 'action' => 'meusChamados', ''));
 	Router::connect('/home/abrirChamado', array('controller' => 'chamados', 'action' => 'abrirChamado', ''));
 	Router::connect('/home/alterarSenha', array('controller' => 'usuarios', 'action' => 'alterarSenha', ''));
 	Router::connect('/home/visualizarChamado/*', array('controller' => 'chamados', 'action' => 'view_home'));

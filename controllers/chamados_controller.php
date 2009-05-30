@@ -5,17 +5,18 @@ class ChamadosController extends AppController {
 	//var $helpers = array('Html', 'Form'); 
 	var $uses = array('Chamado', 'Setor', 'Problema', 'ChamadoHistorico', 'Prioridade', 'Usuario');
 	//var $helpers = array ('Ajax');
-	var $components = array('RequestHandler');
 	
+	//var $persistModel = true;
 	function index() {
 		/*s$this->paginate = array('limit' => 5, 
 			$this->set('menu', $this->menu);	'where' => "usuario_id = '$this->usuarioId'");
-		$this->Chamado->recursive = 1;
+		$this->Chamado->recurunsive = 1;
 		$this->set('chamados', $this->paginate());*/
 		$this->redirect('/home/meusChamados');
 	}
 
 	function view_home($id = null) {
+		$this->pageTitle = "Visualização de Chamado";
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid Chamado.', true));
 			$this->redirect(array('action'=>'index'));
@@ -23,6 +24,7 @@ class ChamadosController extends AppController {
 		
 		$chamado = $this->Chamado->read(null, $id);
 		$setor = $this->Setor->read(null, $chamado['Problema']['setor_id']);
+		
 		$historicos = $this->ChamadoHistorico->find('all', array(
 				'conditions' => array ('ChamadoHistorico.chamado_id' => $id),
 				'order' => 'ChamadoHistorico.id DESC'
@@ -139,11 +141,14 @@ class ChamadosController extends AppController {
 		$this->pageTitle = "Meus Chamados";
 	}
 	
-	function meusChamadosAbertos(){
+	function meusChamadosAbertos($quantidade = 5){
 		$this->layout = 'ajax';
 		$this->pageTitle = "Meus Chamados";
+		
+		//$this->Chamado->Problema->unbindModel( array('hasMany' => array('Chamado')) );
+		
 		$this->paginate = array(
-			'limit' => 5, 
+			'limit' => $quantidade, 
 			'conditions' => array (
 				'Chamado.usuario_id' => $this->usuarioId,
 				'Chamado.status_id' => array (
@@ -151,7 +156,7 @@ class ChamadosController extends AppController {
 				)
 			)
 		);
-		$this->Chamado->recursive = 2;
+		$this->Chamado->recursive = 1;
 		$this->set('chamados', $this->paginate());
 		//pr($this->paginate());
 	}
