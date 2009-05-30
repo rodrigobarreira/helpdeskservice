@@ -57,12 +57,12 @@ html, body {
 	background-repeat:no-repeat;
 	background-position:20% top; /* width col conteudo */
 	width:100%;
-	height:350px;
+	height:385px;
 }
 
 #col_conteudo {
 	width: 14%;
-	padding-top:15px;  /* alinhamento itens ao topo */
+	padding-top:5px;  /* alinhamento itens ao topo */
 	/*padding-left:2em;  alinhamento itens a direita */
 	/*padding-right:2em;*/
 	float:left;
@@ -70,10 +70,9 @@ html, body {
 }
 
 #main_conteudo {
-	padding-top:20px;  /* alinhamento itens ao topo */
-	/*padding-left:2em;*/ /* alinhamento itens a direita */
+	margin-left: 1%;
+	margin-top: 1%;
 	width:74%;
-	padding:1%;
 	float:left;
 }
 
@@ -156,12 +155,12 @@ html, body {
 /* base pagina */
 #base_pagina {
 	width:100%;
-	height:50px;
+	height:20px;
 	background-image:url(../img/bg_base.jpg);
 	background-repeat:repeat-x;
 	text-align:center;
 	float:left;
-	padding-top:20px;
+	padding-top:8px;
 }
 #base_pagina p {
 	font-family:Arial;
@@ -236,6 +235,7 @@ table {
 	clear: both;
 	color: #333;
 	margin-bottom: 10px;
+	margin-left: 10px;
 	width: 100%;
 }
 th {
@@ -265,6 +265,7 @@ table tr td {
 	padding: 4px;
 	text-align: center;
 	vertical-align: top;
+	height: 35px;
 }
 table tr.altrow td {
 	background: #f4f4f4;
@@ -288,7 +289,10 @@ td.actions a {
 div.paging {
 	background:#fff;
 	color: #ccc;
-	margin-bottom: 2em;
+	margin-bottom: 1em;	
+	margin-left: 10px;
+	font-size: 12px;
+	
 }
 div.paging div.disabled {
 	color: #ddd;
@@ -308,12 +312,16 @@ form {
 	margin-right: 20px;
 	padding: 0;
 	width: 80%;
+	float: left;
 }
 fieldset {
 	border: 1px solid #ccc;
 	/* margin-top: 30px; */
-	padding: 10px 0px 10px 15px;
-	width: 85%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	width: 665px;
+	margin-bottom: 10px;
+	margin-left: 1%;
 }
 fieldset legend {
 	background:#fff;
@@ -321,6 +329,7 @@ fieldset legend {
 	font-family:Arial;
 	font-size:12px;
 	font-weight: bold;
+	margin-left: 15px;	
 }
 fieldset fieldset {
 	margin-top: 0px;
@@ -331,18 +340,19 @@ fieldset fieldset legend {
 	font-family:Arial;
 	font-size:12px;
 	font-weight: normal;
+	margin-left: 10px;
 }
 fieldset fieldset div {
 	clear: left;
 	margin: 0 20px;
 }
 form div {
-	clear: right;
+	/*clear: right;*/
 	margin-bottom: 1%;
 	/*padding: .5em;*/
 	vertical-align: text-top;
-	float:left;
-	margin-right: 10px;
+	/*float:left;*/
+	/*margin-right: 10px;*/
 }
 form div.input {
 	color: #444;
@@ -365,17 +375,15 @@ label {
 	font-size:12px;
 	color:#0066cc;
 	font-weight: bold;
-	padding-right: 20px;
 	padding-top:5px;
 }
 
 
 input, textarea {
-	clear: both;
+	clear: right;
 	font-family:Arial;
 	font-size:12px;
 	padding: 5px;
-	width: 100%;
 	border: inset 1px;
 }
 select {
@@ -412,6 +420,7 @@ input[type=submit] {
 	padding: 2px 5px;
 	vertical-align: bottom;
 	width: 80px; 
+	border: solid  buttonshadow 1px;
 }
 
 input[type=button] {
@@ -421,7 +430,7 @@ input[type=button] {
 	padding: 2px 5px;
 	width: auto;
 	vertical-align: bottom;
-	margin-top: 10px;
+	border: solid buttonshadow 1px;
 	width: 80px; 
 }
 
@@ -432,7 +441,7 @@ div.message {
 	font-family:Arial;
 	font-size:12px;
 	font-weight: bold;
-	margin: 1em 0;
+	margin: 0 0 1em 0;
 }
 div.error-message {
 	clear: both;
@@ -488,6 +497,32 @@ p.error em {
 
 .chamados{
 	display: block;
-	height: 140px;
+	height: 100%;
 	
+}
+
+.campo{
+	display: block;
+	float: left;
+	margin-left: 15px;
+	margin-bottom: 10px;
+	
+}
+
+.campo input{
+	background-color: #f4f4f4;
+}
+.campo textarea{
+	background-color: #f4f4f4;
+}
+
+.botao{
+	display: block;
+	float: left;
+	margin: 5px 0px 5px 15px;
+
+}
+
+.paging span{
+	padding-bottom: 20px;
 }
