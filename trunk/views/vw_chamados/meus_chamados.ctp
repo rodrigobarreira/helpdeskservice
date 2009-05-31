@@ -23,7 +23,7 @@ $paginator->options(
 	<th style="width:18%;"><?php echo $paginator->sort('Área', 'area');?></th>
 	<th style="width:18%;"><?php echo $paginator->sort('Tipo de Problema', 'problema');?></th>
 	<th style="width:18%;"><?php echo $paginator->sort('Título', 'titulo');?></th>
-	<th style="width:14%;"><?php echo $paginator->sort('Data / Hora Abertura', 'data_hora_abertura');?></th>
+	<th style="width:14%;"><?php echo $paginator->sort('Data Abertura', 'data_hora_abertura');?></th>
 	<th style="width:13%;"><?php echo $paginator->sort('Status', 'status');?></th>
 	<th style="width:8%;"><?php echo $paginator->sort('Responsável', 'responsavel');?></th>
 	<th style="width:8%;"><?php echo 'Ação';?></th>
@@ -53,11 +53,8 @@ foreach ($vw_chamados as $chamado):
 		</td>
 		<td>
 			<?php
-			 //echo $chamado['Chamado']['data_hora_abertura']; 
-			$data_abertura = date_parse($chamado['VwChamado']['data_hora_abertura'] );
-			echo $data_abertura['day']."-".$data_abertura['month']."-".$data_abertura['year'] ;
-			echo "<br>";
-			echo $data_abertura['hour'].":".$data_abertura['minute'].":".$data_abertura['second'] ; 
+			$data = $time->dataBrasileira($chamado['VwChamado']['data_hora_limite']);
+			echo substr($data, 0, 10). "<br />". substr($data, 11); 
 			?>
 		</td>
 		<td>
@@ -77,7 +74,7 @@ foreach ($vw_chamados as $chamado):
 </div>
 <div class="paging">
 	<?php echo $paginator->prev($html->image('bt_anterior.jpg'), array('escape' => false), $html->image('bt_anterior_off.jpg'), array('class'=>'disabled', 'escape' => false));?>
- | 	<?php echo $paginator->numbers();?>
+  	<?php echo $paginator->numbers();?>
 	<?php echo $paginator->next($html->image('bt_proximo.jpg'), array('escape' => false), $html->image('bt_proximo_off.jpg'), array('class'=>'disabled', 'escape' => false));?>
 	
 </div>
