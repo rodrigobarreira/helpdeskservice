@@ -16,7 +16,7 @@ $ajax->form(array('type' => 'post',
 ));
 ;?>
 	<fieldset>
-	<legend>Formulário de Registro de Chamado</legend>
+	<legend>Formulário de abertura de Chamado</legend>
 	<?php
 	echo $form->input('usuario_id', array(
 			'type' => 'hidden',

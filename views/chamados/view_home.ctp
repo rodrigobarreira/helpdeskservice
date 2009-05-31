@@ -8,7 +8,7 @@
 			'label' => 'Número: ',
 			'style'=> 'width: 50px; ',
 			'type' => 'text',
-			'div' => 'campo',
+			'div' => 'campoBloqueado',
 			'readonly' => 'readonly'
 		
 	));	 
@@ -17,8 +17,8 @@
 			'type' => 'text',
 			'label' => 'Data de Abertura',
 			'style' => 'width: 120px;',
-			'value' => $chamado['Chamado']['data_hora_abertura'],
-			'div' => 'campo',
+			'value' => $time->dataBrasileira($chamado['Chamado']['data_hora_abertura']),
+			'div' => 'campoBloqueado',
 			'readonly' => 'readonly'
 	));
 	
@@ -27,7 +27,7 @@
 			'value' => $setor['Setor']['descricao'],
 			'label' => 'Área Responsável: ',
 			'style'=> 'width: 170px; ;',
-			'div' => 'campo',
+			'div' => 'campoBloqueado',
 			'readonly' => 'readonly'
 	));	 
 	
@@ -35,7 +35,7 @@
 			'type' => 'text',
 			'value' => $chamado['Problema']['descricao'],
 			'label' => 'Tipo de Problema:',
-			'div' => 'campo',
+			'div' => 'campoBloqueado',
 			'style'=> 'width: 200px;',
 			'readonly' => 'readonly'
 	));
@@ -43,14 +43,14 @@
 	echo $form->input('titulo', array(
 			'label' => 'Título do Problema:',
 			'value' => $chamado['Chamado']['titulo'],
-			'div' => 'campo',
+			'div' => 'campoBloqueado',
 			'style'=> 'width: 235px;',
 			'readonly' => 'readonly'
 	));
 	
 	
 	
-	if ($chamado['Chamado']['status_id'] != 3){
+	
 		// diferente de aguardando atendimento
 		echo $form->input('responsavel_id', array(
 				'type' => 'text',
@@ -58,17 +58,17 @@
 				'style' => 'width: 170px;',
 				//'options' => array ($status),
 				'value' => $chamado['Responsavel']['nome'],
-				'div' => 'campo',
+				'div' => 'campoBloqueado',
 				'readonly' => 'readonly'
 				
 		));
-	}
+	
 	
 	echo $form->input('status', array (
 			'type' => 'text',
 			'value' => $chamado['Status']['descricao'],
 			'label' => 'Status:',
-			'div' => 'campo',
+			'div' => 'campoBloqueado',
 			'readonly' => 'readonly',
 			'style' => 'width: 160px;',
 	));
@@ -77,7 +77,7 @@
 			'type' => 'textarea',
 			'value' => $chamado['Chamado']['descricao_problema'],
 			'label' => 'Descrição do Problema:',
-			'div' => 'campo',
+			'div' => 'campoBloqueado',
 			'style' => 'width: 618px;',
 			'readonly' => 'readonly'
 	));
@@ -89,7 +89,7 @@
 			'label' => 'Data de Encerramento',
 			'style' => 'width: 195px;',
 			'value' => $chamado['Chamado']['data_hora_encerramento'],
-			'div' => 'campo',
+			'div' => 'campoBloqueado',
 			'readonly' => 'readonly'
 		));
 		
@@ -97,8 +97,9 @@
 			'type' => 'text',
 			'value' => $chamado['Chamado']['descricao_solucao'],
 			'label' => 'Descrição da Solução:',
-			'div' => 'campo',
+			'div' => 'campoBloqueado',
 			'style' => 'width: 600px;',
+			'readonly' => 'readonly'
 		));
 		
 	} 
@@ -109,7 +110,7 @@
 	?>
 	
 	
-		<div class="campo" >
+		<div class="campoBloqueado" >
 	<label>Histórico do Chamado</label>
 	
 
@@ -129,7 +130,8 @@
 			<tr  <?php echo $class;?> >
 			<?php 
 			//echo "<tr>";
-				echo '<td style="width:30%;">Em ' . $historico['ChamadoHistorico']['data_hora_inicial'] . " por " . $historico['Usuario']['nome'] . "</td>";
+				echo '<td style="width:30%;">Em ' . 
+				$time->dataBrasileira($historico['ChamadoHistorico']['data_hora_inicial']) . " por " . $historico['Usuario']['nome'] . "</td>";
 				echo "<td>" . $historico['ChamadoHistorico']['descricao']  . "</td>";
 			echo "</tr>";
 		}
@@ -142,6 +144,7 @@
 			'label' => false,
 			'div' => false,
 			'style' => 'width: 618px;',
+			'readonly' => 'readonly'
 	));
 	}
 	?>
