@@ -545,6 +545,20 @@ class TimeHelper extends AppHelper {
 		return $dia[date("w")]. ", ". date("d"). " de ". $mes[abs(date("m"))-1]. " de ". date("Y");
 				
 	}
+	
+	function dataBrasileira($data = null){
+		if ($data == false){
+			$data = date ('d-m-Y H:i:s');
+		}else{
+
+			$ano= substr($data, 0, 4);
+			$mes = substr($data, 5, 2);
+			$dia = substr($data, 8, 2);
+			$hora = substr($data, 11);
+			
+			return $dia."-".$mes."-".$ano." ".$hora;
+		}
+	}
 }
 
 ?>
