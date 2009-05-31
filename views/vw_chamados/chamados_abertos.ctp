@@ -1,7 +1,7 @@
 <?php //TODO verifica a recursividade dos chamados($chamados)
 //pr($chamados);
 ?>
-<div class="chamados index" style="background-color: ">
+<div class="chamados index"">
 <table cellpadding="0" cellspacing="0">
 <tr>
 	
@@ -90,15 +90,15 @@ foreach ($chamados as $chamado){
 		</td>
 		<td>
 			<?php
-			$data_abertura = date_parse($chamado['VwChamado']['data_hora_abertura'] );
-			echo $data_abertura['day']."-".$data_abertura['month']."-".$data_abertura['year'] ;
-			 echo "<br>";
-			 echo $data_abertura['hour'].":".$data_abertura['minute'].":".$data_abertura['second'] ;
-			//echo date_format($chamado['VwChamado']['data_hora_abertura'], "H-i-s");
+			$data = $time->dataBrasileira($chamado['VwChamado']['data_hora_abertura']);
+			echo substr($data, 0, 10). "<br />". substr($data, 11); 
 			?>
 		</td>
 		<td>
-			<?php echo $chamado['VwChamado']['data_hora_limite']; ?>
+			<?php
+			$data = $time->dataBrasileira($chamado['VwChamado']['data_hora_limite']);
+			echo substr($data, 0, 10). "<br />". substr($data, 11);
+			?>
 		</td>
 		<td>
 			<?php echo $chamado['VwChamado']['responsavel']; ?>
@@ -112,8 +112,8 @@ foreach ($chamados as $chamado){
 </table>
 </div>
 <div class="paging">
-	<?php echo $paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
- | 	<?php echo $paginator->numbers();?>
-	<?php echo $paginator->next(__('next', true).' >>', array(), null, array('class'=>'disabled'));?>
+	<?php echo $paginator->prev($html->image('bt_anterior.jpg'), array('escape' => false), $html->image('bt_anterior_off.jpg'), array('class'=>'disabled', 'escape' => false));?>
+  	<?php echo $paginator->numbers();?>
+	<?php echo $paginator->next($html->image('bt_proximo.jpg'), array('escape' => false), $html->image('bt_proximo_off.jpg'), array('class'=>'disabled', 'escape' => false));?>
+	
 </div>
-
