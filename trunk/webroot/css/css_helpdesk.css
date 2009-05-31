@@ -509,10 +509,32 @@ p.error em {
 	
 }
 
+.campoBloqueado{
+	display: block;
+	float: left;
+	margin-left: 15px;
+	margin-bottom: 10px;
+	
+}
 .campo input{
-	background-color: #f4f4f4;
+	background-color: #ffffff;
 }
 .campo textarea{
+	background-color: #ffffff;
+}
+
+.campo select{
+	background-color: #ffffff;
+}
+
+.campoBloqueado input{
+	background-color: #f4f4f4;
+}
+.campoBloqueado textarea{
+	background-color: #f4f4f4;
+}
+
+.campoBloqueado select{
 	background-color: #f4f4f4;
 }
 
