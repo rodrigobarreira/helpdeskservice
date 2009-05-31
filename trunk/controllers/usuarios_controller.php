@@ -102,6 +102,7 @@ class UsuariosController extends AppController {
 	 * para verificação da mesma
 	 */
 	function alterarSenha(){
+		$this->pageTitle = "Alterar Senha";
 		if (!empty($this->data)) {
 			// verifica se foi informado o campo senha atual
 			if ($this->data['Usuario']['senha_atual'] == null){
