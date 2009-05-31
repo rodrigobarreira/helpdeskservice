@@ -7,7 +7,7 @@
 			'id' => 'ChamadoProblemaId',
 			'options' => array($problemas),
 			'div' => false,
-			'style' => 'width: 260px;',
+			'style' => 'width: 270px;',
 			'empty' => ''
 	));
 	//ajax
