@@ -42,9 +42,12 @@ class AppController extends Controller {
 		// componente para login e autorização de funções	
 		'Auth',
 		// componente para controle de Sessão
-		'Session'
+		'Session',
+		'RequestHandler'
 	);
 	var $uses = array('Configuracao');
+	
+	var $persistModel = false;
 	
 // variáveis para serem utilizadas na view ou nos controllers subsequente
 	protected $usuarioId;
@@ -87,7 +90,7 @@ class AppController extends Controller {
 		
 		// informa para qual página redirecionar após o sucesso do login
 		$this->Auth->loginRedirect = array (
-			'controller' => 'chamados',
+			'controller' => 'home',
 			'action' => 'index'
 		);
 		
