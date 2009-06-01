@@ -1,21 +1,71 @@
 <div class="chamados view">
-	<?php 
-	if ($usuarioGrupo != 1){
-		// diferede de solicitante
-	?>
+	<fieldset style="text-align: left;">
 	
-	<?php echo $html->link(__('Alterar', true), array('controller'=> 'atendimento', 'action'=>'alterarChamado', $chamado['Chamado']['id']) );?>
-	|
-	<?php echo $html->link(__('Atender Chamado', true), array('controller'=> 'atendimento', 'action'=>'atenderChamado', $chamado['Chamado']['id']) );?>
-	<?php 
+	<div class="botao">
+	<?php
+	//pr($chamado); 
+	if ($chamado['VwChamado']['chamado_status_id'] == 1 || $chamado['VwChamado']['chamado_status_id'] == 6){ 
+		// Em Atendimento ou aguardando usuário
+		echo $form->button('Alterar', array(
+			'type'=>'button', 
+			'id' => 'btnAlterar', 
+			'onClick'=>'alterarChamado('.$chamado['VwChamado']['chamado_id'].')',
+		));
+	?>
+	</div>
+	<?php
+	}elseif($chamado['VwChamado']['chamado_status_id'] == 3){ // aguardadndo atendimento
+		echo $form->button('Atender', array(
+			'type'=>'button', 
+			'id' => 'btnAtender', 
+			'onClick'=>'atenderChamado('.$chamado['VwChamado']['chamado_id'].')',
+		));
+	?>
+	</div>
+	<?php
+	}else{
+		echo $form->button('Voltar', array(
+			'type'=>'button', 
+			'id' => 'btnVoltar', 
+			'onClick'=>'history.go(-1)',
+		));
 	}
 	?>
+	</div>
+	<?php
+	//echo $html->link(__('Alterar', true), array('controller'=> 'atendimento', 'action'=>'alterarChamado', $chamado['Chamado']['id']) );
+	
+	//echo $html->link(__('Atender Chamado', true), array('controller'=> 'atendimento', 'action'=>'atenderChamado', $chamado['Chamado']['id']) );
+	?>
+</fieldset>
 <fieldset>
+ 			<legend><?php __('Dados do Solicitante');?>
+ 			<?php  
+ 			echo $form->input('Usuario.id', array(
+				'readonly' => 'readonly',
+				'label' => 'Nome',
+				'value' => $chamado['VwChamado']['solicitante_nome'],
+				'type' => 'text',
+ 				'div' => 'campoBloqueado',
+			));
+			
+			echo $form->input('solicitante_setor_nome', array(
+				'readonly' => 'readonly',
+				'label' => 'Setor',
+				'value' => $chamado['VwChamado']['solicitante_setor_nome'],
+				'type' => 'text',
+				'div' => 'campoBloqueado',
+			));
+			?>
+ 		</fieldset>
+ 		
+<fieldset>
+	
 	<legend> Dados do Chamado </legend>
 	<?php
 	
 	echo $form->input('chamado_id', array (
-			'value' => $chamado['Chamado']['id'],
+			'value' => $chamado['VwChamado']['chamado_id'],
 			'label' => 'Número: ',
 			'style'=> 'width: 50px; ',
 			'type' => 'text',
@@ -28,14 +78,14 @@
 			'type' => 'text',
 			'label' => 'Data de Abertura',
 			'style' => 'width: 120px;',
-			'value' => $time->dataBrasileira($chamado['Chamado']['data_hora_abertura']),
+			'value' => $time->dataBrasileira($chamado['VwChamado']['chamado_abertura']),
 			'div' => 'campoBloqueado',
 			'readonly' => 'readonly'
 	));
 	
 	echo $form->input('area', array(
 			'type' => 'text',
-			'value' => $setor['Setor']['descricao'],
+			'value' => $chamado['VwChamado']['problema_tipo_area_nome'],
 			'label' => 'Área Responsável: ',
 			'style'=> 'width: 170px; ;',
 			'div' => 'campoBloqueado',
@@ -44,7 +94,7 @@
 	
 	echo $form->input('problema_id', array (
 			'type' => 'text',
-			'value' => $chamado['Problema']['descricao'],
+			'value' => $chamado['VwChamado']['problema_tipo_descricao'],
 			'label' => 'Tipo de Problema:',
 			'div' => 'campoBloqueado',
 			'style'=> 'width: 200px;',
@@ -53,7 +103,7 @@
 		
 	echo $form->input('titulo', array(
 			'label' => 'Título do Problema:',
-			'value' => $chamado['Chamado']['titulo'],
+			'value' => $chamado['VwChamado']['chamado_titulo'],
 			'div' => 'campoBloqueado',
 			'style'=> 'width: 235px;',
 			'readonly' => 'readonly'
@@ -61,14 +111,14 @@
 	
 	
 	
-	if ($chamado['Chamado']['status_id'] != 3){
+	if ($chamado['VwChamado']['chamado_status_id'] != 3){
 		// diferente de aguardando atendimento
 		echo $form->input('responsavel_id', array(
 				'type' => 'text',
 				'label' => 'Responsável',
 				'style' => 'width: 170px;',
 				//'options' => array ($status),
-				'value' => $chamado['Responsavel']['nome'],
+				'value' => $chamado['VwChamado']['chamado_responsavel_nome'],
 				'div' => 'campoBloqueado',
 				'readonly' => 'readonly'
 				
@@ -77,7 +127,7 @@
 	
 	echo $form->input('status', array (
 			'type' => 'text',
-			'value' => $chamado['Status']['descricao'],
+			'value' => $chamado['VwChamado']['chamado_descricao_problema'],
 			'label' => 'Status:',
 			'div' => 'campoBloqueado',
 			'readonly' => 'readonly',
@@ -86,27 +136,27 @@
 	
 	echo $form->input('descricao', array (
 			'type' => 'textarea',
-			'value' => $chamado['Chamado']['descricao_problema'],
+			'value' => $chamado['VwChamado']['chamado_descricao_problema'],
 			'label' => 'Descrição do Problema:',
 			'div' => 'campoBloqueado',
 			'style' => 'width: 618px;',
 			'readonly' => 'readonly'
 	));
 	
-	if ($chamado['Chamado']['status_id'] == 4){
+	if ($chamado['VwChamado']['chamado_status_id'] == 4){
 		// igual a encerrada
 		echo $form->input('data_hora_encerramento', array(
 			'type' => 'text',
 			'label' => 'Data de Encerramento',
 			'style' => 'width: 195px;',
-			'value' => $chamado['Chamado']['data_hora_encerramento'],
+			'value' => $chamado['VwChamado']['data_hora_encerramento'],
 			'div' => 'campoBloqueado',
 			'readonly' => 'readonly'
 		));
 		
 		echo $form->input('descricao_solucao', array (
 			'type' => 'text',
-			'value' => $chamado['Chamado']['descricao_solucao'],
+			'value' => $chamado['VwChamado']['descricao_solucao'],
 			'label' => 'Descrição da Solução:',
 			'div' => 'campoBloqueado',
 			'style' => 'width: 600px;',
@@ -162,17 +212,6 @@
 	
 	</div>
 	</fieldset>
-	<fieldset style="text-align: left;">
 	
-	<div class="botao">
-	<?php 
-	echo $form->button('Voltar', array(
-		'type'=>'button', 
-		'id' => 'btnVoltar', 
-		'onClick'=>'history.go(-1)',
-	));
-	?>
-	</div>
-	</fieldset>
 	
 </div>

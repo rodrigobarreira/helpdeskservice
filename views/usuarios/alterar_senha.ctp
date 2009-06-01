@@ -1,6 +1,6 @@
 <div  class="form">
-<fieldset style="width: 220px">
-	<legend>Formulário de Alteração de Senha</legend>
+<fieldset style="width: 210px">
+	<legend>Formulário de Troca de Senha</legend>
 
 	<?php
     if  ($session->check('Message.auth')) $session->flash('auth');
@@ -31,7 +31,7 @@
     //echo $form->end('Alterar');
 ?>
 </fieldset>
-<fieldset style="text-align: left; width: 220px">
+<fieldset style="text-align: left; width: 210px">
 	
 	<div class="botao">
 	<?php 
