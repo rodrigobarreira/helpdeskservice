@@ -32,20 +32,6 @@ class ChamadosController extends AppController {
 		$this->set(compact('chamado', 'setor', 'historicos'));
 	}
 
-	function view_atende($id = null) {
-		if (!$id) {
-			$this->Session->setFlash(__('Invalid Chamado.', true));
-			$this->redirect(array('action'=>'index'));
-		}
-		
-		$chamado = $this->Chamado->read(null, $id);
-		$setor = $this->Setor->read(null, $chamado['Problema']['setor_id']);
-		$historicos = $this->ChamadoHistorico->find('all', array(
-				'conditions' => array ('ChamadoHistorico.chamado_id' => $id),
-				'order' => 'ChamadoHistorico.id DESC'
-		));
-		$this->set(compact('chamado', 'setor', 'historicos'));
-	}
 	
 	var $recursive = 1;
 	

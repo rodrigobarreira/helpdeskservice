@@ -107,16 +107,16 @@ class UsuariosController extends AppController {
 			// verifica se foi informado o campo senha atual
 			if ($this->data['Usuario']['senha_atual'] == null){
 				$this->Session->setFlash('Informe a senha atual.');
-				//$this->redirect(array('action'=>'alterarSenha'));
-				$this->render('alterarSenha');
+				$this->redirect(array('controller' => 'home', 'action'=>'alterarSenha'));
+				//$this->render('alterarSenha');
 			}elseif($this->data['Usuario']['senha_nova'] == null){
 				$this->Session->setFlash('Informe a nova senha.');
 				//$this->redirect(array('action'=>'alterarSenha'));
-				$this->render('alterarSenha');
+				$this->redirect(array('controller' => 'home', 'action'=>'alterarSenha'));
 			}elseif($this->data['Usuario']['senha_confirmar'] == null){
 				$this->Session->setFlash('Informe a senha de confirma&ccedil;&atilde;o.');
 				//$this->redirect(array('action'=>'alterarSenha'));
-				$this->render('alterarSenha');
+				$this->redirect(array('controller' => 'home', 'action'=>'alterarSenha'));
 			}elseif ($this->data['Usuario']['senha_nova'] != $this->data['Usuario']['senha_confirmar']){
 				$this->Session->setFlash('Os campos Nova Senha e Confirmar Senha<br />devem ser preenchidos com o mesmo valor.');
 				//$this->redirect(array('action'=>'alterarSenha'));
@@ -205,7 +205,7 @@ class UsuariosController extends AppController {
 	function login(){
 		$this->layout = 'login';
 		//pr($this->Auth);
-		//$this->redirect(array('controller' => 'chamados', 'actions' => 'index'));
+		//$this->redirect(array('controller' => 'home', 'actions' => 'index'));
 
 	}
 
