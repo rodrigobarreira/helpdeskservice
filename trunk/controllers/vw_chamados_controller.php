@@ -74,6 +74,20 @@ class VwChamadosController extends AppController {
 		$this->set('vw_chamados', $this->paginate());
 		//pr($this->paginate());
 	}
+	function pesquisar(){
+		$this->pageTitle = "Pesquisar Chamados";
+		/*pesquisar por problema, solicitante e data
+		 * 
+		 * $this->paginate = array(
+			'limit' => 5, 
+			'conditions' => array (
+				'VwChamado.setor_id' => $this->usuarioSetor,
+				'VwChamado.status_id' => 4,
+			),
+			'recursive' => 2
+		);
+		*/
+	}
 	
 }
 ?>
