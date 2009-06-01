@@ -1,57 +1,69 @@
-<?php //TODO verifica a recursividade dos chamados($chamados)?>
-<div class="chamados index">
+<?php //TODO verifica a recursividade dos chamados($chamados)
+//pr($chamados);
+?>
+<div class="chamados index"">
 <table cellpadding="0" cellspacing="0">
 <tr>
-	<th><?php echo $paginator->sort('Nº', 'id');?></th>
-	<th><?php echo $paginator->sort('Área', 'area_id');?></th>
-	<th><?php echo $paginator->sort('Tipo de Problema', 'Problema.descricao');?></th>
-	<th><?php echo $paginator->sort('Título', 'titulo');?></th>
-	<th><?php echo $paginator->sort('Data / Hora Abertura', 'data_hora_abertura');?></th>
-	<th><?php echo $paginator->sort('Status', 'status_descricao');?></th>
-	<th><?php echo $paginator->sort('Responsável', 'responsavel_id');?></th>
+	
+	<th colspan="2"><?php echo $paginator->sort('Nº', 'chamado_id');?></th>
+	<th><?php echo $paginator->sort('Prioridade', 'chamado_prioridade_descricao');?></th>
+	<th><?php echo $paginator->sort('Área', 'problema_tipo_area_nome');?></th>
+	<th><?php echo $paginator->sort('Tipo de Problema', 'problema_tipo_descricao');?></th>
+	<th><?php echo $paginator->sort('Título', 'chamado_titulo');?></th>
+	<th><?php echo $paginator->sort('Solicitante', 'solicitante_nome');?></th>
+	<th><?php echo $paginator->sort('Data Abertura', 'chamado_abertura');?></th>
+	<th><?php echo $paginator->sort('Data Limite', 'chamado_limite');?></th>
+	<th><?php echo $paginator->sort('Responsável', 'chamado_responsavel_nome');?></th>
+	<th><?php echo $paginator->sort('Status', 'chamado_status_descricao');?></th>
+	
 </tr>
 <?php
 $i = 0;
-foreach ($chamados as $chamado):
-	$class = null;
-	if ($i++ % 2 == 0) {
-		$class = ' class="altrow"';
-	}
-?>
-	<tr  <?php echo $class;?> >
-		<td	>
-		<?php echo $html->link($chamado['Chamado']['id'], array('action'=>'view', $chamado['Chamado']['id'])); ?>
 
+foreach ($chamados as $chamado){?>	
+		<tr <?php echo $class;?> >
+		<td>
+		
+		</td>
+		<td	>
+			<?php echo $html->link($chamado['VwChamado']['chamado_id'], array('controller' => 'atendimento', 'action'=>'visualizarChamado', $chamado['VwChamado']['chamado_id']));?>
 		</td>
 		<td>
-			<?php echo $chamado['Problema']['Setor']['descricao']; ?>
+			<?php echo $chamado['VwChamado']['chamado_prioridade_descricao']; ?>
 		</td>
 		<td>
-			<?php echo $chamado['Problema']['descricao']; ?>
+			<?php echo $chamado['VwChamado']['problema_tipo_area_nome']; ?>
 		</td>
 		<td>
-			<?php echo $chamado['Chamado']['titulo']; ?>
+			<?php echo $chamado['VwChamado']['problema_tipo_descricao']; ?>
+		</td>
+		<td>
+			<?php echo $chamado['VwChamado']['chamado_titulo']; ?>
+		</td>
+		<td>
+			<?php echo $chamado['VwChamado']['solicitante_nome']; ?>
 		</td>
 		<td>
 			<?php
-			$data_abertura = date_parse($chamado['VwChamado']['data_hora_abertura'] );
-			$ano= substr($chamado['VwChamado']['data_hora_abertura'], 0, 4);
-			$mes = substr($chamado['VwChamado']['data_hora_abertura'], 5, 2);
-			$dia = substr($chamado['VwChamado']['data_hora_abertura'], 8, 2);
-			$hora = substr($chamado['VwChamado']['data_hora_abertura'], 11);
-			
-			echo $dia."-".$mes."-".$ano."<br />".$hora; 
+			$data = $time->dataBrasileira($chamado['VwChamado']['chamado_abertura']);
+			echo substr($data, 0, 10). "<br />". substr($data, 11); 
 			?>
 		</td>
 		<td>
-			<?php echo $chamado['Status']['descricao']; ?>
+			<?php
+			$data = $time->dataBrasileira($chamado['VwChamado']['chamado_limite']);
+			echo substr($data, 0, 10). "<br />". substr($data, 11);
+			?>
 		</td>
 		<td>
-			<?php echo $chamado['Responsavel']['nome']; ?>
+			<?php echo $chamado['VwChamado']['chamado_responsavel_nome']; ?>
+		</td>
+		<td>
+			<?php echo $chamado['VwChamado']['chamado_status_descricao']; ?>
 		</td>
 	</tr>
 	
-<?php endforeach; ?>
+<?php } ?>
 </table>
 </div>
 <div class="paging">

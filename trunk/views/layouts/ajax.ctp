@@ -24,4 +24,7 @@
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 ?>
+<div id="loadAjax" style="position: absolute; margin-left: 250px; display: none;">
+	<?php echo $html->image('LoadAjax.gif');?>
+</div>
 <?php echo $content_for_layout; ?>

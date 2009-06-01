@@ -1,6 +1,4 @@
-<div id="loadAjax" style="position: absolute; margin-left: 250px; display: none;">
-	<?php echo $html->image('LoadAjax.gif');?>
-</div>
+
 
 <fieldset  style="width: 100%; padding-left: 0px">
 <legend>Filtros</legend>
@@ -16,16 +14,16 @@ $paginator->options(
         'indicator' => 'loadAjax',
 ));
 
- 
 ?> 
 <tr>
-	<th style="width:3%;"><?php echo $paginator->sort('Nº', 'id');?></th>
-	<th style="width:18%;"><?php echo $paginator->sort('Área', 'area');?></th>
-	<th style="width:18%;"><?php echo $paginator->sort('Tipo de Problema', 'problema');?></th>
-	<th style="width:18%;"><?php echo $paginator->sort('Título', 'titulo');?></th>
-	<th style="width:14%;"><?php echo $paginator->sort('Data Abertura', 'data_hora_abertura');?></th>
-	<th style="width:13%;"><?php echo $paginator->sort('Status', 'status');?></th>
-	<th style="width:8%;"><?php echo $paginator->sort('Responsável', 'responsavel');?></th>
+	<th style="width:3%;"><?php echo $paginator->sort('Nº', 'chamado_id');?></th>
+	<th style="width:18%;"><?php echo $paginator->sort('Área', 'problema_tipo_area_nome');?></th>
+	<th style="width:18%;"><?php echo $paginator->sort('Tipo de Problema', 'problema_tipo_descricao');?></th>
+	<th style="width:18%;"><?php echo $paginator->sort('Prioridade', 'chamado_prioridade_descricao');?></th>
+	<th style="width:18%;"><?php echo $paginator->sort('Título', 'chamado_titulo');?></th>
+	<th style="width:14%;"><?php echo $paginator->sort('Data Abertura', 'chamado_abertura');?></th>
+	<th style="width:13%;"><?php echo $paginator->sort('Status', 'chamado_status_descricao');?></th>
+	<th style="width:8%;"><?php echo $paginator->sort('Responsável', 'chamado_responsavel_nome');?></th>
 	<th style="width:8%;"><?php echo 'Ação';?></th>
 </tr>
 <?php
@@ -39,32 +37,35 @@ foreach ($vw_chamados as $chamado):
 ?>
 	<tr  <?php echo $class;?> >
 		<td	>
-		<?php echo $html->link($chamado['VwChamado']['id'], array('controller'=>'home', 'action' => 'visualizarChamado', $chamado['VwChamado']['id'])); ?>
+		<?php echo $html->link($chamado['VwChamado']['chamado_id'], array('controller'=>'home', 'action' => 'visualizarChamado', $chamado['VwChamado']['chamado_id'])); ?>
 
 		</td>
 		<td>
-			<?php echo $chamado['VwChamado']['area']; ?>
+			<?php echo $chamado['VwChamado']['problema_tipo_area_nome']; ?>
 		</td>
 		<td>
-			<?php echo $chamado['VwChamado']['problema']; ?>
+			<?php echo $chamado['VwChamado']['problema_tipo_descricao']; ?>
 		</td>
 		<td>
-			<?php echo $chamado['VwChamado']['titulo']; ?>
+			<?php echo $chamado['VwChamado']['chamado_prioridade_descricao']; ?>
+		</td>
+		<td>
+			<?php echo $chamado['VwChamado']['chamado_titulo']; ?>
 		</td>
 		<td>
 			<?php
-			$data = $time->dataBrasileira($chamado['VwChamado']['data_hora_limite']);
+			$data = $time->dataBrasileira($chamado['VwChamado']['chamado_abertura']);
 			echo substr($data, 0, 10). "<br />". substr($data, 11); 
 			?>
 		</td>
 		<td>
-			<?php echo $chamado['VwChamado']['status']; ?>
+			<?php echo $chamado['VwChamado']['chamado_status_descricao']; ?>
 		</td>
 		<td>
-			<?php echo $chamado['VwChamado']['responsavel']; ?>
+			<?php echo $chamado['VwChamado']['chamado_responsavel_nome']; ?>
 		</td>
 		<td	>
-		<?php echo $html->link('Visualizar', array('controller'=>'home', 'action' => 'visualizarChamado', $chamado['VwChamado']['id'])); ?>
+		<?php echo $html->link('Visualizar', array('controller'=>'home', 'action' => 'visualizarChamado', $chamado['VwChamado']['chamado_id'])); ?>
 		</td>
 		
 	</tr>
