@@ -73,7 +73,7 @@ foreach ($chamados as $chamado){
 		
 		</td>
 		<td	>
-			<?php echo $html->link($chamado['VwChamado']['chamado_id'], array('controller' => 'atendimento', 'action'=>'visualizarChamado', $chamado['VwChamado']['chamado_id']));?>
+			<?php echo $html->link($chamado['VwChamado']['chamado_id'], array('controller' => 'atendimento', 'action'=>'atenderChamado', $chamado['VwChamado']['chamado_id']));?>
 		</td>
 		<td>
 			<?php echo $chamado['VwChamado']['chamado_prioridade_descricao']; ?>

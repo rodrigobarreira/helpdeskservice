@@ -1,27 +1,27 @@
 <div class="chamados view">
 	<fieldset style="text-align: left;">
-	
 	<div class="botao">
 	<?php
-	//pr($chamado); 
-	if ($chamado['VwChamado']['chamado_status_id'] == 1 || $chamado['VwChamado']['chamado_status_id'] == 6){ 
-		// Em Atendimento ou aguardando usuário
 		echo $form->button('Alterar', array(
 			'type'=>'button', 
 			'id' => 'btnAlterar', 
-			'onClick'=>'alterarChamado('.$chamado['VwChamado']['chamado_id'].')',
+			//'onClick'=> 'alterarChamado('.$chamado['VwChamado']['chamado_id'].')',
+			'onClick'=> '(location.href="'.$html->url(array('controller' => 'atendimento', 'action' => 'alterarChamado')).'")'
+			
 		));
 	?>
 	</div>
+	<div class="botao">
 	<?php
-	}elseif($chamado['VwChamado']['chamado_status_id'] == 3){ // aguardadndo atendimento
+	if($chamado['VwChamado']['chamado_status_id'] == 3){ // aguardadndo atendimento
 		echo $form->button('Atender', array(
 			'type'=>'button', 
 			'id' => 'btnAtender', 
 			'onClick'=>'atenderChamado('.$chamado['VwChamado']['chamado_id'].')',
+			'div' => 'botao',
 		));
 	?>
-	</div>
+
 	<?php
 	}else{
 		echo $form->button('Voltar', array(
@@ -31,7 +31,7 @@
 		));
 	}
 	?>
-	</div>
+</div>
 	<?php
 	//echo $html->link(__('Alterar', true), array('controller'=> 'atendimento', 'action'=>'alterarChamado', $chamado['Chamado']['id']) );
 	
@@ -111,7 +111,7 @@
 	
 	
 	
-	if ($chamado['VwChamado']['chamado_status_id'] != 3){
+	//if ($chamado['VwChamado']['chamado_status_id'] != 3){
 		// diferente de aguardando atendimento
 		echo $form->input('responsavel_id', array(
 				'type' => 'text',
@@ -123,7 +123,7 @@
 				'readonly' => 'readonly'
 				
 		));
-	}
+	
 	
 	echo $form->input('status', array (
 			'type' => 'text',
