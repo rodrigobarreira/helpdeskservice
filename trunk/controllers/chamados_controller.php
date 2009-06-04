@@ -86,6 +86,7 @@ class ChamadosController extends AppController {
 	}
 
 	function edit($id = null) {
+		//pr($this->data);
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid Chamado', true));
 			$this->redirect(array('action'=>'index'));
