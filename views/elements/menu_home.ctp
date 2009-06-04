@@ -11,11 +11,81 @@
  */
 
 ?>
-<p style="color: black;">Menu</p>
-<br />
+<div id="menu_secundario">
 <ul class="menu" "font-size: 12px;">
-	<li><?php echo $html->link('Abrir Chamado','/home/abrirChamado/'); ?></li>
-	<li><?php echo $html->link('Meus Chamados','/home/meusChamados'); ?></li>
-	<li>-</li>
-	<li><?php echo $html->link('Alterar Senha','/home/alterarSenha'); ?></li>
+	
+	<li>
+		<?php 
+		echo $html->link(
+			$html->tag(
+				'span',
+				$html->image(
+					'add_chamado.gif', array(
+						'alt' => 'Abrir Chamado', 
+					)
+				).'Abrir Chamado',
+				array(
+					'class' => ''
+				),
+				false
+			),
+			'/home/abrirChamado',
+			array(
+				'class' => ''
+			), 
+			null, 
+			false
+		);
+		?>
+	</li>
+	<li>
+		<?php
+		echo $html->link(
+			$html->tag(
+				'span',
+				$html->image(
+					'chamados.gif', array(
+						'alt' => 'Meus Chamados', 
+					)
+				).'Meus Chamados',
+				array(
+					'class' => ''
+				),
+				false
+			),
+			'/home/meusChamados',
+			array(
+				'class' => ''
+			), 
+			null, 
+			false
+		);
+		?>
+	</li>
+	<li>
+		<?php 
+	
+		echo $html->link(
+			$html->tag(
+				'span',
+				$html->image(
+					'edit_chamado.gif', array(
+						'alt' => 'Alerar Senha', 
+					)
+				).'Alterar Senha',
+				array(
+					'class' => ''
+				),
+				false
+			),
+			'/home/alterarSenha',
+			array(
+				'class' => ''
+			), 
+			null, 
+			false
+		);
+		?>
+	</li>
 </ul>
+</div>
