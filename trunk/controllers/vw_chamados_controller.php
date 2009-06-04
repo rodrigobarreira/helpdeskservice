@@ -2,7 +2,7 @@
 class VwChamadosController extends AppController {
 
 	var $name = 'VwChamados';
-	var $uses = array ('VwChamado');
+	var $uses = array ('VwChamado', 'ChamadoHistorico', 'Setor', 'Chamado', 'Status');
 	
 	function index() {
 		$this->VwChamado->recursive = 0;
@@ -15,8 +15,8 @@ class VwChamadosController extends AppController {
 		$this->paginate = array(
 			'limit' => 5, 
 			'conditions' => array (
-				'VwChamado.setor_id' => $this->usuarioSetor,
-				'VwChamado.status_id <> 4',
+				'VwChamado.solicitante_setor_id' => $this->usuarioSetor,
+				'VwChamado.chamado_status_id <> 4',
 			),
 			'recursive' => -1
 		);
@@ -33,8 +33,8 @@ class VwChamadosController extends AppController {
 		$this->paginate = array(
 			'limit' => 5, 
 			'conditions' => array (
-				'VwChamado.setor_id' => $this->usuarioSetor,
-				'VwChamado.status_id' => 4,
+				'VwChamado.solicitante_setor_id' => $this->usuarioSetor,
+				'VwChamado.chamado_status_id' => 4,
 			),
 			'recursive' => 2
 		);
@@ -54,7 +54,7 @@ class VwChamadosController extends AppController {
 		if ($status != null){
 			$conditions = array (
 				'VwChamado.solicitante_id' => $this->usuarioId,
-				'VwChamado.status_id' => $status
+				'VwChamado.chamado_status_id' => $status
 			);
 		}else{
 			$conditions = array(
@@ -76,9 +76,9 @@ class VwChamadosController extends AppController {
 	}
 	function pesquisar(){
 		$this->pageTitle = "Pesquisar Chamados";
-		/*pesquisar por problema, solicitante e data
+		/*pesquisar por problema, e/ou solicitante ou/e data
 		 * 
-		 * $this->paginate = array(
+		 */$this->paginate = array(
 			'limit' => 5, 
 			'conditions' => array (
 				'VwChamado.setor_id' => $this->usuarioSetor,
@@ -86,8 +86,62 @@ class VwChamadosController extends AppController {
 			),
 			'recursive' => 2
 		);
-		*/
+		/**/
 	}
+	
+	// mostra um chamado específico
+	function view_atende($id = null) {
+		
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid Chamado.', true));
+			$this->redirect(array('controller' => 'atendimento', 'action'=>'index'));
+		}
+		
+		$chamado = $this->VwChamado->read(null, $id);
+		//$setor = $this->Setor->read(null, $chamado['Problema']['setor_id']);
+		$historicos = $this->ChamadoHistorico->find('all', array(
+				'conditions' => array ('ChamadoHistorico.chamado_id' => $id),
+				'order' => 'ChamadoHistorico.id DESC'
+		));
+		$this->set(compact('chamado', 'historicos'));
+	}
+	
+	function atenderChamado($id){
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid Chamado.', true));
+			$this->redirect(array('controller' => 'atendimento', 'action'=>'index'));
+		}
+		
+		$chamado = $this->VwChamado->read(null, $id);
+		//$setor = $this->Setor->read(null, $chamado['Problema']['setor_id']);
+		$historicos = $this->ChamadoHistorico->find('all', array(
+				'conditions' => array ('ChamadoHistorico.chamado_id' => $id),
+				'order' => 'ChamadoHistorico.id DESC'
+		));
+		$areas = $this->Setor->find('list', array (
+			'order' => 'Setor.descricao ASC',
+			'conditions' => array (
+				'Setor.atende_chamado' => 1)
+		));
+		
+		//$usuarios = $this->Chamado->Usuario->find('list');
+		$problemas = $this->Chamado->Problema->find('list', array(
+			'conditions' => array(
+				'Problema.setor_id' => $chamado['VwChamado']['problema_tipo_area_id']
+			)
+		));
+		
+		$status = $this->Status->find('list', array (
+			'order' => 'Status.descricao ASC',
+			'conditions' => array (
+				'Status.id <> 3')
+		)); 
+		$this->set(compact('chamado', 'usuarios', 'areas', 'problemas', 'historicos', 'status'));
+				
+	}
+	
+	
+	
 	
 }
 ?>
