@@ -14,7 +14,7 @@ $ajax->form(array('type' => 'post',
         )
     )
 ));
-;?>
+?>
 	<fieldset>
 	<legend>Formulário de abertura de Chamado</legend>
 	<?php
@@ -80,7 +80,7 @@ $ajax->form(array('type' => 'post',
 	
 	echo $form->input('descricao_problema', array(
 			'label' => 'Descrição do Problema',
-			'style' => 'width: 620px; margin-right: 15px;',
+			'style' => 'width: 620px; margin-right: 15px; height: 50px',
 			'div' => 'campo'
 	));
 	
