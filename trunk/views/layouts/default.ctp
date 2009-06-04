@@ -33,7 +33,8 @@ if (empty($menu_selecionado)){
 
 	echo $html->css('css_helpdesk');
 	echo $html->css('menu');
-	echo $html->css('menu_style');
+	echo $html->css('menu_lateral');
+	//echo $html->css('menu_style');
 	//echo $html->css('cake.generic');
 	echo $javascript->link('prototype');
 	echo $javascript->link('scriptaculous');
@@ -65,7 +66,7 @@ if (empty($menu_selecionado)){
 						$html->tag(
 							'span',
 							$html->image(
-								'menu_add.gif', array(
+								'home.gif', array(
 									'alt' => 'Home', 
 									'align' => 'left'
 								)
