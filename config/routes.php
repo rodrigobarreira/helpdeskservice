@@ -49,7 +49,7 @@
 	Router::connect('/atendimento/chamadosEncerrados/*', array('controller' => 'vw_chamados', 'action' => 'chamadosEncerrados'));
 	Router::connect('/atendimento/alterarChamado/*', array('controller' => 'chamados', 'action' => 'edit'));
 	Router::connect('/atendimento/visualizarChamado/*', array('controller' => 'vw_chamados', 'action' => 'view_atende'));
-	Router::connect('/atendimento/atenderChamado/*', array('controller' => 'chamados', 'action' => 'atender'));
+	Router::connect('/atendimento/atenderChamado/*', array('controller' => 'vw_chamados', 'action' => 'atenderChamado'));
 	
 	/* rotas para administracao */
 	Router::connect('/admin', array('controller' => 'usuarios', 'action' => 'add', ''));
