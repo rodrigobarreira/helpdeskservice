@@ -1,22 +1,100 @@
-<?php
-/* Menu para criação e acompanhamentos de chamados destinados a um determinado usu�rio
- * Todos, desde que logados, tem acesso a esse menu
- * Funcionalides:
- * 		Abrir Chamado : Cria um novo Chamado
- * 		Meus Chamados: Lista os chamados originados do usu�rio logado
- * 		Alterar Senha: Permite ao Usu�rio trocar a sua senha
- * 
- * Este tipo de menu est� sendo implemtado para facilitar os testes da aplicação
- * um outro mais específico deve ser feito.
- */
-
-?>
-<p style="color: black;">Menu Provisório para teste das funcionalidades</p>
-<br />
-<ul class="menu">
-	<li><?php echo $html->link('Usuários','/administracao/usuarios/'); ?></li>
-	<li><?php echo $html->link('Tipo de Problema','/problemas/index'); ?></li>
-	<li><?php echo $html->link('Relat�rios','/relatorio/index');?></li>
-	<li><?php echo $html->link('Setores','/setores/index');?></li>
-	<li><?php echo $html->link('Alterar Senha','/home/alterarSenha'); ?></li>
+<div id="menu_secundario">
+<ul class="menu" "font-size: 12px;">
+	<li>
+		<?php 
+		echo $html->link(
+			$html->tag(
+				'span',
+				$html->image(
+					'add_chamado.gif', array(
+						'alt' => 'Usuários', 
+					)
+				).'Usuários',
+				array(
+					'class' => ''
+				),
+				false
+			),
+			'/admin/usuarios',
+			array(
+				'class' => ''
+			), 
+			null, 
+			false
+		);
+		?>
+	</li>
+	<li>
+		<?php
+		echo $html->link(
+			$html->tag(
+				'span',
+				$html->image(
+					'chamados.gif', array(
+						'alt' => 'Setores', 
+					)
+				).'Setores',
+				array(
+					'class' => ''
+				),
+				false
+			),
+			'/admin/setores',
+			array(
+				'class' => ''
+			), 
+			null, 
+			false
+		);
+		?>
+	</li>
+	<li>
+		<?php
+		echo $html->link(
+			$html->tag(
+				'span',
+				$html->image(
+					'chamados.gif', array(
+						'alt' => 'Tipos de Problemas', 
+					)
+				).'Tipos de Problemas',
+				array(
+					'class' => ''
+				),
+				false
+			),
+			'/admin/problemas',
+			array(
+				'class' => ''
+			), 
+			null, 
+			false
+		);
+		?>
+	</li>
+	<li>
+		<?php
+		echo $html->link(
+			$html->tag(
+				'span',
+				$html->image(
+					'chamados.gif', array(
+						'alt' => 'Relatórios', 
+					)
+				).'Relatórios',
+				array(
+					'class' => ''
+				),
+				false
+			),
+			'/admin/relatorios',
+			array(
+				'class' => ''
+			), 
+			null, 
+			false
+		);
+		?>
+	</li>
 </ul>
+</div>
