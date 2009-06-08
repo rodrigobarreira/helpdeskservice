@@ -1,21 +1,54 @@
-<?php
-/* Menu para criação e acompanhamentos de chamados destinados a um determinado usu�rio
- * Todos, desde que logados, tem acesso a esse menu
- * Funcionalides:
- * 		Abrir Chamado : Cria um novo Chamado
- * 		Meus Chamados: Lista os chamados originados do usu�rio logado
- * 		Alterar Senha: Permite ao Usu�rio trocar a sua senha
- * 
- * Este tipo de menu est� sendo implemtado para facilitar os testes da aplicação
- * um outro mais específico deve ser feito.
- */
-
-?>
-<p style="color: black;">Menu</p>
-<br />
-<ul class="menu" style="font-size: 12px;">
-	<li><?php echo $html->link('Chamados Abertos','/atendimento/chamadosAbertos'); ?></li>
-	<li><?php echo $html->link('Chamados Encerrados','/atendimento/chamadosEncerrados'); ?></li>
-	<li><?php echo $html->link('Pesquisar Chamados','/vw_chamados/pesquisar');?></li>
-	<li><?php echo $html->link('Pesquisar Usu�rios','/usuarios/pesquisar');?></li>
+<div id="menu_secundario">
+<ul class="menu" "font-size: 12px;">
+	
+	<li>
+		<?php 
+		echo $html->link(
+			$html->tag(
+				'span',
+				$html->image(
+					'add_chamado.gif', array(
+						'alt' => 'Chamados Abertos', 
+					)
+				).'Chamados Abertos',
+				array(
+					'class' => ''
+				),
+				false
+			),
+			'/atendimento/chamadosAbertos',
+			array(
+				'class' => ''
+			), 
+			null, 
+			false
+		);
+		?>
+	</li>
+	<li>
+		<?php
+		echo $html->link(
+			$html->tag(
+				'span',
+				$html->image(
+					'chamados.gif', array(
+						'alt' => 'Chamados Encerrados', 
+					)
+				).'Chamados Encerrados',
+				array(
+					'class' => ''
+				),
+				false
+			),
+			'/atendimento/chamadosEncerrados',
+			array(
+				'class' => ''
+			), 
+			null, 
+			false
+		);
+		?>
+	</li>
+	
 </ul>
+</div>
