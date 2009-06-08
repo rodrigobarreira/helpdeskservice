@@ -224,11 +224,11 @@ if (empty($menu_selecionado)){
 					}elseif($menu_selecionado == 'atendimento'){
 						$menu = 'menu_atendimento';
 					}elseif($menu_selecionado == 'admin'){
-						if ($usuarioGrupo == 3) // admin area
-							$menu = 'menu_administrador_area';
-						else{
+						//if ($usuarioGrupo == 3) // admin area
+							//$menu = 'menu_administrador_area';
+						//else{
 							$menu = 'menu_administrador_geral';
-						}
+						//}
 					}
 					echo $this->renderElement($menu);	
 					?>
