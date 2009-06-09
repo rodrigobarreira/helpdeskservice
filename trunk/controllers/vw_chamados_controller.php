@@ -11,14 +11,25 @@ class VwChamadosController extends AppController {
 	
 	function chamadosAbertos(){
 		$this->pageTitle = "Chamados Abertos";
-		 
+		
+		$conditions = array();
+		
+		if($this->usuarioGrupo == 5){
+			// administrador geral
+			$conditions = array (
+				'VwChamado.chamado_status_id = 1 or VwChamado.chamado_status_id = 3 or VwChamado.chamado_status_id = 6',	
+			);
+		}elseif($this->usuarioGrupo == 2){
+			$conditions = array (
+				'VwChamado.solicitante_setor_id' => $this->usuarioSetor,
+				'VwChamado.chamado_status_id = 1 or VwChamado.chamado_status_id = 3 or VwChamado.chamado_status_id = 6',
+			);
+		}  
 		$this->paginate = array(
 			'limit' => 5, 
-			'conditions' => array (
-				'VwChamado.solicitante_setor_id' => $this->usuarioSetor,
-				'VwChamado.chamado_status_id <> 4',
-			),
-			'recursive' => -1
+			'conditions' => $conditions,
+			'recursive' => -1,
+			'order' => array ('VwChamado.chamado_id DESC')
 		);
 		
 		
@@ -30,13 +41,24 @@ class VwChamadosController extends AppController {
 	function chamadosEncerrados(){
 		$this->pageTitle = "Chamados Encerrados";
 		
+		$conditions = array();
+		if($this->usuarioGrupo == 5){
+			
+			// administrador geral
+			$conditions = array (
+				'VwChamado.chamado_status_id =2 or VwChamado.chamado_status_id = 4 or VwChamado.chamado_status_id = 5',	
+			);
+		}elseif($this->usuarioGrupo == 2){
+			$conditions = array (
+				'VwChamado.solicitante_setor_id' => $this->usuarioSetor,
+				'VwChamado.chamado_status_id =2 or VwChamado.chamado_status_id = 4 or VwChamado.chamado_status_id = 5',
+			);
+		}  
 		$this->paginate = array(
 			'limit' => 5, 
-			'conditions' => array (
-				'VwChamado.solicitante_setor_id' => $this->usuarioSetor,
-				'VwChamado.chamado_status_id' => 4,
-			),
-			'recursive' => 2
+			'conditions' => $conditions,
+			'recursive' => -1,
+			'order' => array ('VwChamado.chamado_id DESC')
 		);
 		
 		
