@@ -3,9 +3,9 @@ class ChamadosController extends AppController {
 
 	var $name = 'Chamados';
 	//var $helpers = array('Html', 'Form'); 
-	var $uses = array('Chamado', 'Setor', 'Problema', 'ChamadoHistorico', 'Prioridade', 'Usuario');
+	//var $uses = array('Chamado', 'Setor', 'Problema', 'ChamadoHistorico', 'Prioridade', 'Usuario');
 	//var $helpers = array ('Ajax');
-	
+	var $uses = array('Chamado', 'Setor', 'ChamadoHistorico', 'Problema' , 'Prioridade'); 
 	//var $persistModel = true;
 	function index() {
 		/*s$this->paginate = array('limit' => 5, 
@@ -60,11 +60,19 @@ class ChamadosController extends AppController {
 			//}
 			
 			if ($this->Chamado->save($this->data)) {
-				$this->Session->setFlash(__('The Chamado has been saved', true));
+				$this->Session->setFlash(__('Seu chamado foi registrado com sucesso.', true), 'default', array('class' => 'messageSucess'));
 				$this->redirect(array('action'=>'index'));
 			} else {
-				$this->Session->setFlash(__('The Chamado could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Não foi possível registrar seu Chamado. Corrija os campos marcados e tente novamente.', true));
 				//$this->redirect(array('../../home/abrirChamado'));
+				
+				$problemas = $this->Problema->find('list', array (
+					'order' => 'Problema.descricao ASC',
+					'conditions' => array (
+						'Problema.setor_id' => $this->data['Chamado']['setor_id'])
+				));
+				//pr($problemas);
+				$this->set('problemas', $problemas);
 			}
 		}
 		$this->Setor->recursive = 1;
@@ -77,26 +85,37 @@ class ChamadosController extends AppController {
 		));
 		
 		//$usuarios = $this->Chamado->Usuario->find('list');
-		$problemas = $this->Chamado->Problema->find('list');
+		//$problemas = $this->Chamado->Problema->find('list');
 		
 		
 		$responsaveis = $this->Chamado->Responsavel->find('list');
-		$this->set(compact('usuarios', 'responsaveis', 'areas', 'problemas'));
+		$this->set(compact('usuarios', 'responsaveis', 'areas'));
 		//$this->render('abrirChamado');
 	}
 
 	function edit($id = null) {
 		//pr($this->data);
+		//die();
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid Chamado', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		if (!empty($this->data)) {
-			if ($this->Chamado->save($this->data)) {
-				$this->Session->setFlash(__('The Chamado has been saved', true));
-				$this->redirect(array('action'=>'index'));
-			} else {
-				$this->Session->setFlash(__('The Chamado could not be saved. Please, try again.', true));
+			if (!empty($this->data['ChamadoHistorico']['descricao'])){
+				if(empty($this->data['Chamado']['responsavel_id'])){
+					$this->data['Chamado']['responsavel_id'] = $this->usuarioId;
+				}
+				if ($this->ChamadoHistorico->saveAll($this->data)) {
+					$this->Session->setFlash('Atendimento efetuado com sucesso');
+					$this->redirect(array('controller' => 'atendimento', 'action'=>'chamadosAbertos'));
+				} else {
+					//die();
+					$this->Session->setFlash(__('O chamado não pôde ser salvo.', true));
+					$this->redirect(array('controller' => 'atendimento', 'action'=>'atenderChamado', $id));
+				}
+			}else{
+				$this->Session->setFlash('Erro ao salvar o chamado - preencha uma descrição no campo Atendimento');
+				$this->redirect(array('controller' => 'atendimento', 'action'=>'atenderChamado', $id));
 			}
 		}
 		if (empty($this->data)) {
