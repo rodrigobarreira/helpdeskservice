@@ -1,8 +1,15 @@
+<?php 
+$acao = $this->params['action'];
+$classMenuMarcado = '';
+?>
 <div id="menu_secundario">
 <ul class="menu" "font-size: 12px;">
 	
 	<li>
-		<?php 
+		<?php
+		if ($acao == 'chamadosAbertos'){
+			$classMenuMarcado = 'menuVerticalSelecionado';			
+		} 
 		echo $html->link(
 			$html->tag(
 				'span',
@@ -12,7 +19,7 @@
 					)
 				).'Chamados Abertos',
 				array(
-					'class' => ''
+					'class' => $classMenuMarcado
 				),
 				false
 			),
@@ -23,10 +30,14 @@
 			null, 
 			false
 		);
+		$classMenuMarcado ='';
 		?>
 	</li>
 	<li>
 		<?php
+		if ($acao == 'chamadosEncerrados'){
+			$classMenuMarcado = 'menuVerticalSelecionado';			
+		}
 		echo $html->link(
 			$html->tag(
 				'span',
@@ -36,7 +47,7 @@
 					)
 				).'Chamados Encerrados',
 				array(
-					'class' => ''
+					'class' => $classMenuMarcado
 				),
 				false
 			),
@@ -47,6 +58,7 @@
 			null, 
 			false
 		);
+		$classMenuMarcado ='';
 		?>
 	</li>
 	

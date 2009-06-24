@@ -117,7 +117,7 @@
 	<?php
 	if (count($historicos) > 0){
 		?>
-		<table cellpadding="0" cellspacing="0" style="margin-left: 0px; width: 630px;">
+		<table id="chamadoHistorico" cellpadding="0" cellspacing="0" style="margin-left: 0px; width: 630px; ">
 		<?php 
 		$i =0;
 		//echo '<table style="width=100%;">';
@@ -130,9 +130,9 @@
 			<tr  <?php echo $class;?> >
 			<?php 
 			//echo "<tr>";
-				echo '<td style="width:30%;">Em ' . 
+				echo '<td style="width:30%;height: auto;">Em ' . 
 				$time->dataBrasileira($historico['ChamadoHistorico']['data_hora_inicial']) . " por " . $historico['Usuario']['nome'] . "</td>";
-				echo "<td>" . $historico['ChamadoHistorico']['descricao']  . "</td>";
+				echo '<td style="width:70%;height: auto;">' . $historico['ChamadoHistorico']['descricao']  . "</td>";
 			echo "</tr>";
 		}
 		echo '</table>';

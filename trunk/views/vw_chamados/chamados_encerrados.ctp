@@ -1,11 +1,11 @@
 <?php //TODO verifica a recursividade dos chamados($chamados)
 //pr($chamados);
 ?>
-<div class="chamados index"">
+<div class="grid"">
 <table cellpadding="0" cellspacing="0">
 <tr>
 	
-	<th colspan="2"><?php echo $paginator->sort('Nº', 'chamado_id');?></th>
+	<th><?php echo $paginator->sort('Nº', 'chamado_id');?></th>
 	<th><?php echo $paginator->sort('Prioridade', 'chamado_prioridade_descricao');?></th>
 	<th><?php echo $paginator->sort('Área', 'problema_tipo_area_nome');?></th>
 	<th><?php echo $paginator->sort('Tipo de Problema', 'problema_tipo_descricao');?></th>
@@ -20,11 +20,15 @@
 <?php
 $i = 0;
 
-foreach ($chamados as $chamado){?>	
+foreach ($chamados as $chamado){
+$class = null;
+	if ($i++ % 2 == 0) {
+		$class = ' class="altrow"';
+	}
+	?>	
+
 		<tr <?php echo $class;?> >
-		<td>
 		
-		</td>
 		<td	>
 			<?php echo $html->link($chamado['VwChamado']['chamado_id'], array('controller' => 'atendimento', 'action'=>'visualizarChamado', $chamado['VwChamado']['chamado_id']));?>
 		</td>

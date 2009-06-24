@@ -1,26 +1,83 @@
+<div id="loadAjax" style="position: absolute; margin-left: 250px; display:none;">
+	<?php echo $html->image('LoadAjax.gif');?>
+</div>
 <div class="usuarios form">
-<?php echo $form->create('Usuario');?>
+<?php echo $form->create('Usuario', array('url' => '/admin/usuarios/alterar'));?>
 	<fieldset>
- 		<legend><?php __('Edit Usuario');?></legend>
+ 		
 	<?php
-		echo $form->input('id');
-		echo $form->input('grupo_id');
-		echo $form->input('setor_id');
-		echo $form->input('matricula');
-		echo $form->input('nome');
-		echo $form->input('email');
-		echo $form->input('celular');
-		echo $form->input('telefone');
-		echo $form->input('ramal');
-		echo $form->input('ativo');
-		echo $form->input('data_cadastro');
+		echo $form->input('id', array(
+			'type' => 'text',
+			'div' => array ('class' => 'campoBloqueado'),
+			
+		));
+		echo $form->input('grupo_id', array(
+			'type' => 'select',
+			'div' => array ('class' => 'campo'),
+			
+		));
+		echo $form->input('setor_id', array(
+			'type' => 'select',
+			'div' => array ('class' => 'campo')
+		));
+		echo $form->input('matricula', array(
+			'div' =>'campo'
+		));
+		echo $form->input('nome', array(
+			'div' => 'campo',
+			'style' => 'width: 300px;'
+		));
+		echo $form->input('senha', array(
+			'div' => array ('class' => 'campo'),
+			'type' => 'hidden'
+		));
+		echo $form->input('email', array(
+			'div' => array ('class' => 'campo'),
+			'style' => 'width: 220px;'
+		));
+		echo $form->input('celular', array(
+			'div' => array ('class' => 'campo')
+		));
+		echo $form->input('telefone', array(
+			'div' => array ('class' => 'campo')
+		));
+		echo $form->input('ramal', array(
+			'div' => array ('class' => 'campo'),
+			'style' => 'width: 130px;'
+		));
+		echo $form->input('ativo', array(
+			'div' => array ('class' => 'campo')
+		));
+		echo $form->input('data_cadastro', array(
+			'div' => array ('class' => 'campo'),
+			'type' => 'hidden'
+		));
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+	<fieldset style="text-align: left;">
+	
+	<div class="botao">
+	<?php 
+	echo $form->button('Cadastrar',array(
+		'type'=>'submit',
+		//'update'=>'main_conteudo',
+	    //'url' => array(
+	    //	'controller' => 'home',
+	    //    'action' => 'abrirChamado'
+	    //),
+	));
+	?>
+	</div>
+	<div class="botao">
+	<?php 
+	echo $form->button('Cancelar', array(
+		'type'=>'button', 
+		'id' => 'btnVoltar', 
+		'onClick'=>'history.go(-1)',
+	));
+	?>
+	</div>
+	</fieldset>
+	
 </div>
-<div class="actions">
-	<ul>
-		<li><?php echo $html->link(__('Delete', true), array('action'=>'delete', $form->value('Usuario.id')), null, sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Usuario.id'))); ?></li>
-		<li><?php echo $html->link(__('List Usuarios', true), array('action'=>'index'));?></li>
-	</ul>
-</div>
+

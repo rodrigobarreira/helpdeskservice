@@ -1,9 +1,36 @@
+<script type="text/javascript" language="javascript">
+
+//jQuery.noConflict();
+
+var $j = jQuery;
+
+$j(document).ready(function() {
+	/*$j("#ChamadoSetorId").change(function() {
+		var area = ($j("#ChamadoSetorId").val());
+		if (area != null){
+			$j("#ChamadoProblemaId").focus();
+		}
+	});
+
+	$j("#ChamadoProblemaId").change(function() {
+		var problema = ($j("#ChamadoProblemaId").val());
+		if (problema != null){
+			$j("#ChamadoTitulo").focus();
+		}
+	})
+	;*/
+});
+
+</script>
+
 <div id="loadAjax" style="position: absolute; margin-left: 250px; display:none;">
 	<?php echo $html->image('LoadAjax.gif');?>
 </div>
 <div  class="chamados form">
 
-<?php echo $form->create('Chamado', array('url' => array('controller' => 'home', 'action' => 'abrirChamado')));
+<?php 
+//pr($problemas);
+echo $form->create('Chamado', array('url' => array('controller' => 'home', 'action' => 'abrirChamado')));
 $ajax->form(array('type' => 'post',
     'options' => array(
         'model'=>'Chamado',
@@ -43,7 +70,8 @@ $ajax->form(array('type' => 'post',
 	    array(
 	        'url' => array( 'action' => 'ajaxListaProblemaPorArea' ),
 	    	'update' => 'problema',
-	    	'indicator' => 'loadAjax'
+	    	'indicator' => 'loadAjax',
+	    	'complete' => '$j("#ChamadoProblemaId").focus();'
 	    ) 
 	); 
 	
@@ -54,7 +82,7 @@ $ajax->form(array('type' => 'post',
 			'type' => 'select',
 			'name' => 'data[Chamado][problema_id]',
 			'id' => 'ChamadoProblemaId',
-			'options' => array(),
+			'options' => @array($problemas),
 			'div' => array ('class' => 'campo', 'id' => 'problema', ),
 			'style' => 'width: 270px;',
 	));
@@ -63,7 +91,7 @@ $ajax->form(array('type' => 'post',
 		'empty' => '',
 		'label' => 'Prioridade: ',
 		'style' => 'width: 100px;',
-		'div' => array('class' => 'campo', 'id' => 'ajax_prioridade'),
+		'div' => array('class' => 'campoBloqueado', 'id' => 'ajax_prioridade'),
 		'readonly'=> 'readonly'
 	));
 

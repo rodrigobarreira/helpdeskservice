@@ -15,7 +15,8 @@
 	    array(
 	        'url' => array( 'action' => 'ajaxPrioridade' ),
 	    	'update' => 'ajax_prioridade',
-	    	'indicator' => 'loadAjax'
+	    	'indicator' => 'loadAjax',
+	    	'complete' => '$j("#ChamadoTitulo").focus();'
 	    ) 
 	); 	
 	
