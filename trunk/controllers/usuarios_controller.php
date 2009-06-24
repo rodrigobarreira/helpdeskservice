@@ -12,7 +12,9 @@ class UsuariosController extends AppController {
 			$this->redirect(array('controller'=>'usuarios', 'action'=> 'login'));
 		}else{
 			//$this->log("array('controller'=>'chamados', 'action'=> 'index'", LOG_DEBUG);
-			$this->redirect(array('controller'=>'chamados', 'action'=> 'index'));
+			//$this->redirect(array('controller'=>'chamados', 'action'=> 'index'));
+			$this->pageTitle = "Usuários";
+			$this->set('usuarios', $this->paginate());
 		}
 	}
 
@@ -25,13 +27,14 @@ class UsuariosController extends AppController {
 	}
 
 	function add() {
+		$this->pageTitle = "Cadastro de Usuários";
 		if (!empty($this->data)) {
 			$this->Usuario->create();
 			if ($this->Usuario->save($this->data)) {
-				$this->Session->setFlash(__('The Usuario has been saved', true));
-				$this->redirect(array('action'=>'index'));
+				$this->Session->setFlash(__('Dados do Usuário salvo com sucesso!', true));
+				$this->redirect('/admin/usuarios/');
 			} else {
-				$this->Session->setFlash(__('The Usuario could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Erro ao salvar.', true));
 			}
 		}
 		$grupos = $this->Usuario->Grupo->find('list');

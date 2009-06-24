@@ -57,6 +57,11 @@ class PrioridadesController extends AppController {
 			$this->redirect(array('action'=>'index'));
 		}
 	}
-
+	
+	function getPrioridades(){
+		$this->set('dados', $this->Prioridade->find('list', array(
+			'order' => 'tempo ASC'
+		)));	
+	}
 }
 ?>

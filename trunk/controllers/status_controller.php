@@ -57,6 +57,12 @@ class StatusController extends AppController {
 			$this->redirect(array('action'=>'index'));
 		}
 	}
+	
+	function getStatus(){
+		$this->set('status', $this->Status->find('list', array(
+			'order' => 'descricao ASC'
+		)));	
+	}
 
 }
 ?>
