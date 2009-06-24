@@ -33,12 +33,12 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/views/pages/home.ctp)...
  */
-	Router::connect('/', array('controller' => 'usuarios', 'action' => 'index', 'home'));
+	//pr($this);
+	Router::connect('/', array('controller' => 'vw_chamados', 'action' => 'meusChamados', 'home'));
 	
-	
-	
-	Router::connect('/home/', array('controller' => 'vw_chamados', 'action' => 'meusChamados', 'home'));
+	Router::connect('/home/', array('controller' => 'vw_chamados', 'action' => 'meusChamados', ''));
 	Router::connect('/home/meusChamados/*', array('controller' => 'vw_chamados', 'action' => 'meusChamados', ''));
+	Router::connect('/home/gridMeusChamados/*', array('controller' => 'vw_chamados', 'action' => 'gridMeusChamados', ''));
 	Router::connect('/home/abrirChamado', array('controller' => 'chamados', 'action' => 'abrirChamado', ''));
 	Router::connect('/home/alterarSenha', array('controller' => 'usuarios', 'action' => 'alterarSenha', ''));
 	Router::connect('/home/visualizarChamado/*', array('controller' => 'chamados', 'action' => 'view_home'));
@@ -52,8 +52,9 @@
 	Router::connect('/atendimento/atenderChamado/*', array('controller' => 'vw_chamados', 'action' => 'atenderChamado'));
 	
 	/* rotas para administracao */
-	Router::connect('/admin', array('controller' => 'usuarios', 'action' => 'add', ''));
+	Router::connect('/admin', array('controller' => 'usuarios', 'action' => 'index', ''));
 	Router::connect('/admin/usuarios', array('controller' => 'usuarios', 'action' => 'index', ''));
+	Router::connect('/admin/usuarios/cadastrar/*', array('controller' => 'usuarios', 'action' => 'add', ''));
 	Router::connect('/admin/setor', array('controller'=>'setores','action'=>'index',''));
 	Router::connect('/admin/grupos',array('controller'=>'grupos','action'=>'index',''));
 	Router::connect('/admin/problemas',array('controller'=>'problemas','action'=>'index',''));
