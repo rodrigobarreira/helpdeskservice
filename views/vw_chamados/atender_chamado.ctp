@@ -31,7 +31,7 @@ $ajax->form(array('type' => 'post',
 	<legend> Dados do Chamado </legend>
 	<?php
 	
-	echo $form->input('chamado_id', array (
+	echo $form->input('id', array (
 			'value' => $chamado['VwChamado']['chamado_id'],
 			'label' => 'Número: ',
 			'style'=> 'width: 50px; ',
@@ -41,7 +41,7 @@ $ajax->form(array('type' => 'post',
 		
 	));	 
 	
-	echo $form->input('data_hora_abertura', array(
+	echo $form->input('VwChamado.abertura', array(
 			'type' => 'text',
 			'label' => 'Data de Abertura',
 			'style' => 'width: 120px;',
@@ -50,11 +50,20 @@ $ajax->form(array('type' => 'post',
 			'readonly' => 'readonly'
 	));
 	
-	echo $form->input('Usuario.id', array(
+			echo $form->input('usuario_nome', array(
 				'readonly' => 'readonly',
 				'label' => 'Solicitante',
 				'value' => $chamado['VwChamado']['solicitante_nome'],
 				'type' => 'text',
+ 				'div' => 'campoBloqueado',
+				'style' => 'width: 210px;',
+			));
+			
+			echo $form->input('usuario_id', array(
+				'readonly' => 'readonly',
+				'label' => 'Solicitante',
+				'value' => $chamado['VwChamado']['solicitante_id'],
+				'type' => 'hidden',
  				'div' => 'campoBloqueado',
 				'style' => 'width: 210px;',
 			));
@@ -120,7 +129,7 @@ $ajax->form(array('type' => 'post',
 	
 	//if ($chamado['VwChamado']['chamado_status_id'] != 3){
 		// diferente de aguardando atendimento
-		echo $form->input('responsavel_id', array(
+		echo $form->input('responsavel_nome', array(
 				'type' => 'text',
 				'label' => 'Responsável',
 				'style' => 'width: 170px;',
@@ -131,12 +140,23 @@ $ajax->form(array('type' => 'post',
 				
 		));
 		
+		echo $form->input('responsavel_id', array(
+				'type' => 'hidden',
+				'label' => 'Responsável',
+				'style' => 'width: 170px;',
+				//'options' => array ($status),
+				'value' => $chamado['VwChamado']['chamado_responsavel_id'],
+				'div' => 'campoBloqueado',
+				'readonly' => 'readonly'
+				
+		));
+		
 		$status_padrao = $chamado['VwChamado']['chamado_status_id'];
 		if ($chamado['VwChamado']['chamado_status_id'] == 3){
 			$status_padrao = 1;
 		}
 		
-		echo $form->input('Status.id', array (
+		echo $form->input('status_id', array (
 			'type' => 'select',
 			'value' => $status_padrao,
 			'label' => 'Status:',
@@ -155,7 +175,7 @@ $ajax->form(array('type' => 'post',
 			'readonly' => 'readonly'
 	));
 	
-	echo $form->input('Historico.descricao', array (
+	echo $form->input('ChamadoHistorico.descricao', array (
 			'type' => 'textarea',
 			//'value' => $chamado['VwChamado']['chamado_descricao_problema'],
 			'label' => 'Atendimento:',
@@ -163,6 +183,37 @@ $ajax->form(array('type' => 'post',
 			'style' => 'width: 618px; height: 50px;',
 			
 	));
+	
+	echo $form->input('ChamadoHistorico.data_hora_inicial', array (
+			'type' => 'hidden',
+			//'value' => $chamado['VwChamado']['chamado_descricao_problema'],
+			'label' => 'Data Inicial:',
+			'div' => 'campo',
+			'style' => 'widdth: 618px; height: 50px;',
+			'value' => date("Y-m-d H:i:s")
+			
+	));
+	
+	echo $form->input('ChamadoHistorico.usuario_id', array (
+			'type' => 'hidden',
+			//'value' => $chamado['VwChamado']['chamado_descricao_problema'],
+			//'label' => 'Data Inicial:',
+			'div' => 'campo',
+			'style' => 'widdth: 618px; height: 50px;',
+			'value' => $usuarioId
+			
+	));
+	
+	echo $form->input('ChamadoHistorico.chamado_id', array (
+			'type' => 'hidden',
+			//'value' => $chamado['VwChamado']['chamado_descricao_problema'],
+			//'label' => 'Data Inicial:',
+			'div' => 'campo',
+			'style' => 'widdth: 618px; height: 50px;',
+			'value' => $chamado['VwChamado']['chamado_id']
+			
+	));
+	
 	
 	if ($chamado['VwChamado']['chamado_status_id'] == 4){
 		// igual a encerrada
@@ -228,11 +279,12 @@ $ajax->form(array('type' => 'post',
 	<fieldset style="text-align: left;">
 	<div class="botao">
 	<?php
-		echo $form->button('Salvar', array(
-			'type'=>'button', 
+		echo $form->submit('Salvar', array(
+			//'type'=>'button', 
 			'id' => 'btnSalvar', 
 			//'onClick'=> 'alterarChamado('.$chamado['VwChamado']['chamado_id'].')',
-			'onClick'=> '(location.href="'.$html->url(array('controller' => 'chamados', 'action' => 'save', $chamado['VwChamado']['chamado_id'])).'")'
+			//'onClick'=> '(location.href="'.$html->url(array('controller' => 'chamados', 'action' => 'save', $chamado['VwChamado']['chamado_id'])).'")'
+			'div' => false
 			
 		));
 	?>

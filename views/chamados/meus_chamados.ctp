@@ -8,9 +8,6 @@ echo $ajax->remoteFunction(array(
 ?>
 </script>
 
-<div id="loadAjax" style="position: absolute; margin-left: 250px;">
-	<?php echo $html->image('LoadAjax.gif');?>
-</div>
 
 <div id="chamadosAbertos" style ="width: 100%">
 </div>

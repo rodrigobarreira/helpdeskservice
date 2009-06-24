@@ -11,7 +11,7 @@ $paginator->options(
 ));
 
 ?>
-<div id ="chamadosAbertos" class="chamados index"">
+<div id ="chamadosAbertos" class="grid"">
 <table cellpadding="0" cellspacing="0">
 <tr>
 	
@@ -23,8 +23,9 @@ $paginator->options(
 	<th><?php echo $paginator->sort('Solicitante', 'solicitante_nome');?></th>
 	<th><?php echo $paginator->sort('Data Abertura', 'chamado_abertura');?></th>
 	<th><?php echo $paginator->sort('Data Limite', 'chamado_limite');?></th>
-	<th><?php echo $paginator->sort('Responsável', 'chamado_responsavel_nome');?></th>
 	<th><?php echo $paginator->sort('Status', 'chamado_status_descricao');?></th>
+	<th><?php echo $paginator->sort('Responsável', 'chamado_responsavel_nome');?></th>
+	
 	
 </tr>
 <?php
@@ -52,14 +53,14 @@ foreach ($chamados as $chamado){
 	$minutos_limite = $chamado['VwChamado']['chamado_prioridade_tempo'];
 	
 	$tempo_decorrido_em_porcentagem =  ($minutos_decorridos / $minutos_limite) * 100;
-		
-	if ($tempo_decorrido_em_porcentagem <= 0){
+
+	if ($tempo_decorrido_em_porcentagem > 100){
 		$style = 'style="background-color: red"';	
-	}elseif ($tempo_decorrido_em_porcentagem > 70 && $tempo_decorrido_em_porcentagem < 100){
+	}elseif ($tempo_decorrido_em_porcentagem >= 70 && $tempo_decorrido_em_porcentagem <= 100){
 		$style = 'style="background-color: yellow"';   
 	}else{
 		//passou do horário limite 
-		$style = 'style="background-color: red; width: 5px;"';
+		$style = 'style="background-color: green; width: 5px;"';
 	}
 
 	$class = null;
@@ -103,10 +104,10 @@ foreach ($chamados as $chamado){
 			?>
 		</td>
 		<td>
-			<?php echo $chamado['VwChamado']['chamado_responsavel_nome']; ?>
+			<?php echo $chamado['VwChamado']['chamado_status_descricao']; ?>
 		</td>
 		<td>
-			<?php echo $chamado['VwChamado']['chamado_status_descricao']; ?>
+			<?php echo $chamado['VwChamado']['chamado_responsavel_nome']; ?>
 		</td>
 	</tr>
 	

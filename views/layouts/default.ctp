@@ -36,9 +36,12 @@ if (empty($menu_selecionado)){
 	echo $html->css('menu_lateral');
 	//echo $html->css('menu_style');
 	//echo $html->css('cake.generic');
+	
+	echo $javascript->link('jquery/jquery');
+	
 	echo $javascript->link('prototype');
 	echo $javascript->link('scriptaculous');
-	//echo $javascript->link('jquery/jquery-1.3.1.min');
+	
 	echo $scripts_for_layout;
 	?>
 </head>
@@ -49,8 +52,7 @@ if (empty($menu_selecionado)){
 	<div id="main_pagina">
 	
 		<div id="topo_pagina">
-			<div id="topo_logo"><h1 id="logo_sistema"><a href="#"><span>Logo sistema</span></a></h1></div>
-			
+			<div id="topo_logo"><h1 id="logo_sistema"><a href="<?php echo $html->url('/');?>"><span>Logo sistema</span></a></h1></div>
 			<div id="div_menu_topo">
 				<ul>
 				<li>
@@ -195,7 +197,7 @@ if (empty($menu_selecionado)){
 			<div id="row_topo">
 				<div id="div_titulos_secoes"><h1><?php echo $title_for_layout; ?></h1></div>	
 				<div id="div_usuario">
-					<p class="txt_geral">Bem-vindo: 
+					<p class="txt_geral">Usuário: 
 						<strong><?php e($usuarioNome)?></strong>
 						<?php echo $html->link(
 							$html->image('bt_sair.gif', array('alt' => 'Clique aqui para fazer logout', 'border' => '0')),
@@ -229,6 +231,9 @@ if (empty($menu_selecionado)){
 						//else{
 							$menu = 'menu_administrador_geral';
 						//}
+					}else{
+						// menu padrão
+						$menu = 'menu_home';
 					}
 					echo $this->renderElement($menu);	
 					?>

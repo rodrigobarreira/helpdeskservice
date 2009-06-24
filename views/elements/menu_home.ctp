@@ -1,3 +1,4 @@
+
 <?php
 /* Menu para criação e acompanhamentos de chamados destinados a um determinado usu�rio
  * Todos, desde que logados, tem acesso a esse menu
@@ -10,12 +11,17 @@
  * um outro mais específico deve ser feito.
  */
 
+$acao = $this->params['action'];
+$classMenuMarcado = '';
 ?>
 <div id="menu_secundario">
 <ul class="menu" "font-size: 12px;">
 	
 	<li>
-		<?php 
+		<?php
+		if ($acao == 'abrirChamado'){
+			$classMenuMarcado = 'menuVerticalSelecionado';			
+		} 
 		echo $html->link(
 			$html->tag(
 				'span',
@@ -25,7 +31,7 @@
 					)
 				).'Abrir Chamado',
 				array(
-					'class' => ''
+					'class' => $classMenuMarcado
 				),
 				false
 			),
@@ -36,10 +42,14 @@
 			null, 
 			false
 		);
+		$classMenuMarcado = '';
 		?>
 	</li>
 	<li>
 		<?php
+		if ($acao == 'meusChamados'){
+			$classMenuMarcado = 'menuVerticalSelecionado';			
+		}
 		echo $html->link(
 			$html->tag(
 				'span',
@@ -49,7 +59,7 @@
 					)
 				).'Meus Chamados',
 				array(
-					'class' => ''
+					'class' => $classMenuMarcado
 				),
 				false
 			),
@@ -60,11 +70,14 @@
 			null, 
 			false
 		);
+		$classMenuMarcado = '';
 		?>
 	</li>
 	<li>
 		<?php 
-	
+		if ($acao == 'alterarSenha'){
+			$classMenuMarcado = 'menuVerticalSelecionado';			
+		}
 		echo $html->link(
 			$html->tag(
 				'span',
@@ -74,7 +87,7 @@
 					)
 				).'Alterar Senha',
 				array(
-					'class' => ''
+					'class' => $classMenuMarcado
 				),
 				false
 			),
@@ -85,6 +98,35 @@
 			null, 
 			false
 		);
+		$classMenuMarcado = '';
+		?>
+	</li>
+	<li>
+		<?php
+		if ($acao == 'gridMeusChamados'){
+			$classMenuMarcado = 'menuVerticalSelecionado';			
+		}
+		echo $html->link(
+			$html->tag(
+				'span',
+				$html->image(
+					'chamados.gif', array(
+						'alt' => 'Meus Chamados', 
+					)
+				).'Grid Meus Chamados',
+				array(
+					'class' => $classMenuMarcado
+				),
+				false
+			),
+			'/home/gridMeusChamados',
+			array(
+				'class' => ''
+			), 
+			null, 
+			false
+		);
+		$classMenuMarcado = '';
 		?>
 	</li>
 </ul>

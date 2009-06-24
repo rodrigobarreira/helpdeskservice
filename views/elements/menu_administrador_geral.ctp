@@ -1,7 +1,17 @@
+<?php
+//pr($this->params); 
+$acao = $this->params['action'];
+$controller = $this->params['controller'];
+$classMenuMarcado = '';
+
+?>
 <div id="menu_secundario">
 <ul class="menu" "font-size: 12px;">
 	<li>
 		<?php 
+		if ($controller == 'usuarios'){
+			$classMenuMarcado = 'menuVerticalSelecionado';			
+		}
 		echo $html->link(
 			$html->tag(
 				'span',
@@ -11,7 +21,7 @@
 					)
 				).'Usuários',
 				array(
-					'class' => ''
+					'class' => $classMenuMarcado
 				),
 				false
 			),
@@ -22,10 +32,14 @@
 			null, 
 			false
 		);
+		$classMenuMarcado = '';
 		?>
 	</li>
 	<li>
 		<?php
+		if ($acao == 'chamadosAbertos'){
+			$classMenuMarcado = 'menuVerticalSelecionado';			
+		}
 		echo $html->link(
 			$html->tag(
 				'span',
@@ -35,7 +49,7 @@
 					)
 				).'Setores',
 				array(
-					'class' => ''
+					'class' => $classMenuMarcado
 				),
 				false
 			),
@@ -46,10 +60,14 @@
 			null, 
 			false
 		);
+		$classMenuMarcado = '';
 		?>
 	</li>
 	<li>
 		<?php
+		if ($acao == 'chamadosAbertos'){
+			$classMenuMarcado = 'menuVerticalSelecionado';			
+		}
 		echo $html->link(
 			$html->tag(
 				'span',
@@ -59,7 +77,7 @@
 					)
 				).'Tipos de Problemas',
 				array(
-					'class' => ''
+					'class' => $classMenuMarcado
 				),
 				false
 			),
@@ -70,10 +88,14 @@
 			null, 
 			false
 		);
+		$classMenuMarcado = '';
 		?>
 	</li>
 	<li>
 		<?php
+		if ($acao == 'chamadosAbertos'){
+			$classMenuMarcado = 'menuVerticalSelecionado';			
+		}
 		echo $html->link(
 			$html->tag(
 				'span',
@@ -83,7 +105,7 @@
 					)
 				).'Relatórios',
 				array(
-					'class' => ''
+					'class' => $classMenuMarcado
 				),
 				false
 			),
@@ -94,6 +116,7 @@
 			null, 
 			false
 		);
+		$classMenuMarcado = '';
 		?>
 	</li>
 </ul>
