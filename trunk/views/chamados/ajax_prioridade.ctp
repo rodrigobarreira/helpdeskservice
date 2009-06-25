@@ -1,4 +1,4 @@
-<?php 
+<?php
 echo $form->input('prioridade_id', array (
 	'empty' => '',
 	'label' => 'Prioridade: ',
@@ -7,5 +7,5 @@ echo $form->input('prioridade_id', array (
 	'readonly'=> 'readonly',
 	'value' =>$prioridade['Prioridade']['descricao'],
 ));
-	
+
 ?>

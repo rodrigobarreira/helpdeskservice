@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 $st = array();
 foreach($dados as $chave => $valor){
-	$st[$chave] = utf8_decode($valor);
+	$st[$chave] = ($valor);
 }
 
 echo $form->input('prioridade', array(
@@ -11,9 +11,9 @@ echo $form->input('prioridade', array(
 	'empty' => false,
 	'label' => false,
 	'id' => 'valor',
-	'style' => 'clear: right;',
+	'style' => 'clear: right; margin-left: 10px',
 	'div' => false,
-	//'class' => 'campo'
+//'class' => 'campo'
 ));
 
 ?>

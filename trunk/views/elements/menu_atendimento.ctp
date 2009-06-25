@@ -1,66 +1,62 @@
-<?php 
+<?php
 $acao = $this->params['action'];
 $classMenuMarcado = '';
 ?>
 <div id="menu_secundario">
-<ul class="menu" "font-size: 12px;">
-	
-	<li>
-		<?php
-		if ($acao == 'chamadosAbertos'){
-			$classMenuMarcado = 'menuVerticalSelecionado';			
-		} 
-		echo $html->link(
-			$html->tag(
+<ul class="menu""font-size: 12px;">
+
+	<li><?php
+	if ($acao == 'chamadosAbertos'){
+		$classMenuMarcado = 'menuVerticalSelecionado';
+	}
+	echo $html->link(
+	$html->tag(
 				'span',
-				$html->image(
-					'add_chamado.gif', array(
+	$html->image(
+					'folder_open_add.png', array(
 						'alt' => 'Chamados Abertos', 
-					)
-				).'Chamados Abertos',
-				array(
+	)
+	).'Chamados Abertos',
+	array(
 					'class' => $classMenuMarcado
-				),
-				false
-			),
+	),
+	false
+	),
 			'/atendimento/chamadosAbertos',
-			array(
+	array(
 				'class' => ''
-			), 
-			null, 
-			false
-		);
-		$classMenuMarcado ='';
-		?>
-	</li>
-	<li>
-		<?php
-		if ($acao == 'chamadosEncerrados'){
-			$classMenuMarcado = 'menuVerticalSelecionado';			
-		}
-		echo $html->link(
-			$html->tag(
-				'span',
-				$html->image(
-					'chamados.gif', array(
-						'alt' => 'Chamados Encerrados', 
-					)
-				).'Chamados Encerrados',
-				array(
-					'class' => $classMenuMarcado
 				),
+				null,
 				false
-			),
+				);
+				$classMenuMarcado ='';
+				?></li>
+	<li><?php
+	if ($acao == 'chamadosEncerrados'){
+		$classMenuMarcado = 'menuVerticalSelecionado';
+	}
+	echo $html->link(
+	$html->tag(
+				'span',
+	$html->image(
+					'folder_open_orange.png', array(
+						'alt' => 'Chamados Encerrados', 
+	)
+	).'Chamados Encerrados',
+	array(
+					'class' => $classMenuMarcado
+	),
+	false
+	),
 			'/atendimento/chamadosEncerrados',
-			array(
+	array(
 				'class' => ''
-			), 
-			null, 
-			false
-		);
-		$classMenuMarcado ='';
-		?>
-	</li>
-	
+				),
+				null,
+				false
+				);
+				$classMenuMarcado ='';
+				?></li>
+
 </ul>
 </div>

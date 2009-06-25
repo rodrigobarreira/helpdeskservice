@@ -1,15 +1,11 @@
-;<?php die() ?>
-; SVN FILE: $Id: config.ini.php 3 2006-04-25 01:59:44Z phpnut $
-;/**
-; * Short description for file.
-; *
-; * Long description for file
-; *
-; * PHP versions 4 and 5
-; *
-; * CakePHP Test Suite <https://trac.cakephp.org/wiki/Developement/TestSuite>
+;
+<?php die() ?>
+; SVN FILE: $Id: config.ini.php 3 2006-04-25 01:59:44Z phpnut $ ;/** ; *
+Short description for file. ; * ; * Long description for file ; * ; *
+PHP versions 4 and 5 ; * ; * CakePHP Test Suite
+<https: //trac.cakephp.org/wiki/Developement/TestSuite>
 ; * Copyright (c) 2006, Larry E. Masters Shorewood, IL. 60431
-; * Author(s): Larry E. Masters aka PhpNut <phpnut@gmail.com>
+; * Author(s): Larry E. Masters aka PhpNut <phpnut @gmail.com>
 ; *
 ; * Portions modifiied from WACT Test Suite
 ; * Author(s): Harry Fuecks
@@ -22,7 +18,7 @@
 ; *  Redistributions of files must retain the above copyright notice.
 ; *
 ; * @filesource
-; * @author       Larry E. Masters aka PhpNut <phpnut@gmail.com>
+; * @author       Larry E. Masters aka PhpNut <phpnut @gmail.com>
 ; * @copyright    Copyright (c) 2006, Larry E. Masters Shorewood, IL. 60431
 ; * @link         http://www.phpnut.com/projects/
 ; * @package      tests

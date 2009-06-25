@@ -36,7 +36,7 @@
 /**
  * Short description
  */
-	SimpleTestOptions::ignore('CakeWebTestCase');
+SimpleTestOptions::ignore('CakeWebTestCase');
 
 /**
  * Short description for class.
