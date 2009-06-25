@@ -1,4 +1,4 @@
-<?php 
+<?php
 /* SVN FILE: $Id$ */
 /* Problema Test cases generated on: 2009-04-30 21:04:28 : 1241137708*/
 App::import('Model', 'Problema');
@@ -31,7 +31,7 @@ class ProblemaTestCase extends CakeTestCase {
 			'descricao'  => 'Lorem ipsum dolor sit amet',
 			'sla_id'  => 1,
 			'setor_id'  => 1
-			));
+		));
 		$this->assertEqual($results, $expected);
 	}
 }

@@ -1,4 +1,4 @@
-<?php 
+<?php
 /* SVN FILE: $Id$ */
 /* Avaliacao Test cases generated on: 2009-04-30 21:04:39 : 1241137959*/
 App::import('Model', 'Avaliacao');
@@ -31,7 +31,7 @@ class AvaliacaoTestCase extends CakeTestCase {
 			'data_hora'  => '2009-04-30 21:32:39',
 			'nivel'  => 1,
 			'chamado_id'  => 1
-			));
+		));
 		$this->assertEqual($results, $expected);
 	}
 }

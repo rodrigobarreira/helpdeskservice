@@ -63,9 +63,9 @@ class ProblemasController extends AppController {
 			$this->redirect(array('action'=>'index'));
 		}
 	}
-	
+
 	function ajaxListaProblemas($setor_id){
-		
+
 	}
 
 }

@@ -20,8 +20,8 @@ class Status extends AppModel {
 								'exclusive' => '',
 								'finderQuery' => '',
 								'counterQuery' => ''
-			)
-	);
+								)
+								);
 
 }
 ?>

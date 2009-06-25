@@ -1,4 +1,4 @@
-<?php 
+<?php
 /* SVN FILE: $Id$ */
 /* GruposController Test cases generated on: 2009-04-30 21:04:45 : 1241138745*/
 App::import('Controller', 'Grupos');

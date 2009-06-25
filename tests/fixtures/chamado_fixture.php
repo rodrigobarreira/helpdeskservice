@@ -1,4 +1,4 @@
-<?php 
+<?php
 /* SVN FILE: $Id$ */
 /* Chamado Fixture generated on: 2009-04-30 21:04:29 : 1241137829*/
 
@@ -18,7 +18,7 @@ class ChamadoFixture extends CakeTestFixture {
 			'data_hora_encerramento' => array('type'=>'datetime', 'null' => true, 'default' => NULL),
 			'responsavel_id' => array('type'=>'integer', 'null' => true, 'default' => NULL, 'key' => 'index'),
 			'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'fk_chamados_status' => array('column' => 'status_id', 'unique' => 0), 'fk_chamados_sub_problemas' => array('column' => 'problema_id', 'unique' => 0), 'fk_chamados_usuarios' => array('column' => 'usuario_id', 'unique' => 0), 'fk_chamados_usuarios1' => array('column' => 'responsavel_id', 'unique' => 0), 'aberto_por' => array('column' => 'aberto_por', 'unique' => 0))
-			);
+	);
 	var $records = array(array(
 			'id'  => 1,
 			'problema_id'  => 1,
@@ -53,6 +53,6 @@ class ChamadoFixture extends CakeTestFixture {
 			'status_id'  => 1,
 			'data_hora_encerramento'  => '2009-04-30 21:30:29',
 			'responsavel_id'  => 1
-			));
+	));
 }
 ?>

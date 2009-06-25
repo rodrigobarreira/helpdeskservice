@@ -1,4 +1,4 @@
-<?php 
+<?php
 /* SVN FILE: $Id$ */
 /* UsuariosController Test cases generated on: 2009-04-30 21:04:49 : 1241138869*/
 App::import('Controller', 'Usuarios');
@@ -18,8 +18,8 @@ class UsuariosControllerTest extends CakeTestCase {
 	function testUsuariosControllerInstance() {
 		$this->assertTrue(is_a($this->Usuarios, 'xxUsuariosController'), "Aqui não passou!");
 	}
-	
-	
+
+
 	function tearDown() {
 		unset($this->Usuarios);
 	}

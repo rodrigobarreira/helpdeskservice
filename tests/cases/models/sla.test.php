@@ -1,4 +1,4 @@
-<?php 
+<?php
 /* SVN FILE: $Id$ */
 /* Sla Test cases generated on: 2009-04-30 21:04:46 : 1241137666*/
 App::import('Model', 'Sla');
@@ -31,7 +31,7 @@ class SlaTestCase extends CakeTestCase {
 			'tempo'  => 1,
 			'descricao'  => 'Lorem ipsum dolor sit amet'
 			));
-		$this->assertEqual($results, $expected);
+			$this->assertEqual($results, $expected);
 	}
 }
 ?>

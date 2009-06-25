@@ -57,6 +57,13 @@ class GruposController extends AppController {
 			$this->redirect(array('action'=>'index'));
 		}
 	}
-
+	function getGrupos(){
+		$this->set('dados', $this->Grupo->find('list', array(
+			'order' => 'descricao ASC',
+			'conditions' => array(
+				//'atende_chamado' => 1 
+		)
+		)));
+	}
 }
 ?>

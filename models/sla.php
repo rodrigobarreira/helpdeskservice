@@ -20,7 +20,7 @@ class Sla extends AppModel {
 								'exclusive' => '',
 								'finderQuery' => '',
 								'counterQuery' => ''
-			),
+								),
 			'Setor' => array('className' => 'Setor',
 								'foreignKey' => 'sla_id',
 								'dependent' => false,
@@ -32,8 +32,8 @@ class Sla extends AppModel {
 								'exclusive' => '',
 								'finderQuery' => '',
 								'counterQuery' => ''
-			)
-	);
+								)
+								);
 
 }
 ?>

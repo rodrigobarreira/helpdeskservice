@@ -1,4 +1,4 @@
-<?php 
+<?php
 /* SVN FILE: $Id$ */
 /* ChamadoHistorico Fixture generated on: 2009-04-30 21:04:27 : 1241137887*/
 
@@ -13,7 +13,7 @@ class ChamadoHistoricoFixture extends CakeTestFixture {
 			'usuario_id' => array('type'=>'integer', 'null' => false, 'default' => NULL, 'key' => 'index'),
 			'descricao' => array('type'=>'text', 'null' => true, 'default' => NULL),
 			'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'fk_chamado_historicos_chamados' => array('column' => 'chamado_id', 'unique' => 0), 'fk_chamado_historicos_usuarios' => array('column' => 'usuario_id', 'unique' => 0))
-			);
+	);
 	var $records = array(array(
 			'id'  => 1,
 			'data_hora_incial'  => '2009-04-30 21:31:27',
@@ -32,6 +32,6 @@ class ChamadoHistoricoFixture extends CakeTestFixture {
 									litora luctus suspendisse sed id luctus ut. Pede volutpat quam vitae, ut ornare wisi. Velit dis tincidunt,
 									pede vel eleifend nec curabitur dui pellentesque, volutpat taciti aliquet vivamus viverra, eget tellus ut
 									feugiat lacinia mauris sed, lacinia et felis.'
-			));
+									));
 }
 ?>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 /* SVN FILE: $Id$ */
 /* Status Test cases generated on: 2009-04-30 21:04:49 : 1241137609*/
 App::import('Model', 'Status');
@@ -30,7 +30,7 @@ class StatusTestCase extends CakeTestCase {
 			'id'  => 1,
 			'descricao'  => 'Lorem ipsum dolor sit amet'
 			));
-		$this->assertEqual($results, $expected);
+			$this->assertEqual($results, $expected);
 	}
 }
 ?>

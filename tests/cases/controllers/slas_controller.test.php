@@ -1,4 +1,4 @@
-<?php 
+<?php
 /* SVN FILE: $Id$ */
 /* SlasController Test cases generated on: 2009-04-30 21:04:53 : 1241138813*/
 App::import('Controller', 'Slas');
