@@ -3,14 +3,14 @@ class DATABASE_CONFIG {
 
 	var $default = array(
 		'driver' => 'mysql',
-		'persistent' => false,
+		'persistent' => true,
 		'host' => 'localhost',
 		'login' => 'root',
-		'password' => '',
+		'password' => 'root',
 		'database' => 'banco_helpdesk',
-		'encoding' => 'iso-8859-1', 
+		'encoding' => 'utf-8', 
 	);
-	
+
 	/*var $test = array(
 		'driver' => 'mysql',
 		'persistent' => false,
@@ -19,8 +19,8 @@ class DATABASE_CONFIG {
 		'password' => '',
 		'database' => 'test_banco_helpdesk',
 		'prefix' => '',
-	);*/
-	
+		);*/
+
 	var $test_suite = array(
 		'driver' => 'mysql',
 		'persistent' => false,

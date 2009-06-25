@@ -1,4 +1,4 @@
-<?php 
+<?php
 /* SVN FILE: $Id$ */
 /* StatusController Test cases generated on: 2009-04-30 21:04:29 : 1241138849*/
 App::import('Controller', 'Status');

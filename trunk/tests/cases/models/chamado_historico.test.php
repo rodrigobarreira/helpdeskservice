@@ -1,4 +1,4 @@
-<?php 
+<?php
 /* SVN FILE: $Id$ */
 /* ChamadoHistorico Test cases generated on: 2009-04-30 21:04:28 : 1241137888*/
 App::import('Model', 'ChamadoHistorico');
@@ -44,8 +44,8 @@ class ChamadoHistoricoTestCase extends CakeTestCase {
 									litora luctus suspendisse sed id luctus ut. Pede volutpat quam vitae, ut ornare wisi. Velit dis tincidunt,
 									pede vel eleifend nec curabitur dui pellentesque, volutpat taciti aliquet vivamus viverra, eget tellus ut
 									feugiat lacinia mauris sed, lacinia et felis.'
-			));
-		$this->assertEqual($results, $expected);
+									));
+									$this->assertEqual($results, $expected);
 	}
 }
 ?>

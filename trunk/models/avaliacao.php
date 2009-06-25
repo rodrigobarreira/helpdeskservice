@@ -14,8 +14,8 @@ class Avaliacao extends AppModel {
 								'conditions' => '',
 								'fields' => '',
 								'order' => ''
-			)
-	);
+								)
+								);
 
 }
 ?>

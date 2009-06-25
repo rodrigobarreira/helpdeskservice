@@ -1,4 +1,4 @@
-<?php 
+<?php
 /* SVN FILE: $Id$ */
 /* Usuario Fixture generated on: 2009-04-30 21:04:55 : 1241137495*/
 
@@ -19,7 +19,7 @@ class UsuarioFixture extends CakeTestFixture {
 			'ativo' => array('type'=>'string', 'null' => false, 'default' => 'S', 'length' => 1),
 			'data_cadastro' => array('type'=>'datetime', 'null' => false, 'default' => NULL),
 			'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'matricula' => array('column' => 'matricula', 'unique' => 1), 'fk_usuarios_grupos' => array('column' => 'grupo_id', 'unique' => 0), 'fk_usuarios_setores' => array('column' => 'setor_id', 'unique' => 0), 'matricula_2' => array('column' => 'matricula', 'unique' => 0))
-			);
+	);
 	var $records = array(array(
 			'id'  => 1,
 			'grupo_id'  => 1,

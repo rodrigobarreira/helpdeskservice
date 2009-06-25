@@ -1,4 +1,4 @@
-<?php 
+<?php
 /* SVN FILE: $Id$ */
 /* SetoresController Test cases generated on: 2009-04-30 21:04:15 : 1241138775*/
 App::import('Controller', 'Setores');

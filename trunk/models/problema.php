@@ -7,7 +7,7 @@ class Problema extends AppModel {
 		'sla_id' => array('numeric'),
 		'setor_id' => array('numeric')
 	);
-	
+
 	var $recursive = 1;
 	var $displayField = 'descricao';
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -17,16 +17,16 @@ class Problema extends AppModel {
 								'conditions' => '',
 								'fields' => '',
 								'order' => ''
-			),
+								),
 			'Setor' => array('className' => 'Setor',
 								'foreignKey' => 'setor_id',
 								'conditions' => '',
 								'fields' => '',
 								'order' => ''
-			)
-	);
+								)
+								);
 
-	var $hasMany = array(
+								var $hasMany = array(
 			'Chamado' => array('className' => 'Chamado',
 								'foreignKey' => 'problema_id',
 								'dependent' => false,
@@ -38,8 +38,8 @@ class Problema extends AppModel {
 								'exclusive' => '',
 								'finderQuery' => '',
 								'counterQuery' => ''
-			)
-	);
+								)
+								);
 
 }
 ?>

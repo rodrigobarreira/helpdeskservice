@@ -1,4 +1,4 @@
-<?php 
+<?php
 /* SVN FILE: $Id$ */
 /* Grupo Test cases generated on: 2009-04-30 21:04:23 : 1241136023*/
 App::import('Model', 'Grupo');
@@ -13,7 +13,7 @@ class GrupoTestCase extends CakeTestCase {
 	var $Grupo = null;
 	//var $fixtures = array('app.grupo');
 	var $fixtures = array('app.usuario', 'app.grupo');
-	
+
 
 	function start() {
 		parent::start();
@@ -33,7 +33,7 @@ class GrupoTestCase extends CakeTestCase {
 			'id'  => 1,
 			'descricao'  => 'Lorem ipsum dolor sit amet'
 			));
-		$this->assertEqual($results, $expected);
+			$this->assertEqual($results, $expected);
 	}
 }
 ?>

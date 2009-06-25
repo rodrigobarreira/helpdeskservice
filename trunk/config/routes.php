@@ -33,39 +33,47 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/views/pages/home.ctp)...
  */
-	//pr($this);
-	Router::connect('/', array('controller' => 'vw_chamados', 'action' => 'meusChamados', 'home'));
-	
-	Router::connect('/home/', array('controller' => 'vw_chamados', 'action' => 'meusChamados', ''));
-	Router::connect('/home/meusChamados/*', array('controller' => 'vw_chamados', 'action' => 'meusChamados', ''));
-	Router::connect('/home/gridMeusChamados/*', array('controller' => 'vw_chamados', 'action' => 'gridMeusChamados', ''));
-	Router::connect('/home/abrirChamado', array('controller' => 'chamados', 'action' => 'abrirChamado', ''));
-	Router::connect('/home/alterarSenha', array('controller' => 'usuarios', 'action' => 'alterarSenha', ''));
-	Router::connect('/home/visualizarChamado/*', array('controller' => 'chamados', 'action' => 'view_home'));
-	
-	/* rotas para atendimento */
-	Router::connect('/atendimento', array('controller' => 'vw_chamados', 'action' => 'chamadosAbertos', ''));
-	Router::connect('/atendimento/chamadosAbertos/*', array('controller' => 'vw_chamados', 'action' => 'chamadosAbertos',''));
-	Router::connect('/atendimento/chamadosEncerrados/*', array('controller' => 'vw_chamados', 'action' => 'chamadosEncerrados'));
-	Router::connect('/atendimento/alterarChamado/*', array('controller' => 'chamados', 'action' => 'edit'));
-	Router::connect('/atendimento/visualizarChamado/*', array('controller' => 'vw_chamados', 'action' => 'view_atende'));
-	Router::connect('/atendimento/atenderChamado/*', array('controller' => 'vw_chamados', 'action' => 'atenderChamado'));
-	
-	/* rotas para administracao */
-	Router::connect('/admin', array('controller' => 'usuarios', 'action' => 'index', ''));
-	Router::connect('/admin/usuarios', array('controller' => 'usuarios', 'action' => 'index', ''));
-	Router::connect('/admin/usuarios/cadastrar/*', array('controller' => 'usuarios', 'action' => 'add', ''));
-	Router::connect('/admin/setor', array('controller'=>'setores','action'=>'index',''));
-	Router::connect('/admin/grupos',array('controller'=>'grupos','action'=>'index',''));
-	Router::connect('/admin/problemas',array('controller'=>'problemas','action'=>'index',''));
-	//Router::connect('/admin/relatorio',array('controller'=>'relatorio','action'=>'index',''));
+//pr($this);
+Router::connect('/', array('controller' => 'vw_chamados', 'action' => 'meusChamados', 'home'));
+
+Router::connect('/home/index', array('controller' => 'vw_chamados', 'action' => 'meusChamados', ''));
+Router::connect('/home/', array('controller' => 'vw_chamados', 'action' => 'meusChamados', ''));
+Router::connect('/home/meusChamados/*', array('controller' => 'vw_chamados', 'action' => 'meusChamados', ''));
+Router::connect('/home/gridMeusChamados/*', array('controller' => 'vw_chamados', 'action' => 'gridMeusChamados', ''));
+Router::connect('/home/abrirChamado', array('controller' => 'chamados', 'action' => 'abrirChamado', ''));
+Router::connect('/home/alterarSenha', array('controller' => 'usuarios', 'action' => 'alterarSenha', ''));
+Router::connect('/home/visualizarChamado/*', array('controller' => 'chamados', 'action' => 'view_home'));
+
+/* rotas para atendimento */
+Router::connect('/atendimento', array('controller' => 'vw_chamados', 'action' => 'chamadosAbertos', ''));
+Router::connect('/atendimento/chamadosAbertos/*', array('controller' => 'vw_chamados', 'action' => 'chamadosAbertos',''));
+Router::connect('/atendimento/chamadosEncerrados/*', array('controller' => 'vw_chamados', 'action' => 'chamadosEncerrados'));
+Router::connect('/atendimento/alterarChamado/*', array('controller' => 'chamados', 'action' => 'edit'));
+Router::connect('/atendimento/visualizarChamado/*', array('controller' => 'vw_chamados', 'action' => 'view_atende'));
+Router::connect('/atendimento/atenderChamado/*', array('controller' => 'vw_chamados', 'action' => 'atenderChamado'));
+
+/* rotas para administracao */
+Router::connect('/admin', array('controller' => 'usuarios', 'action' => 'index', ''));
+Router::connect('/admin/usuarios', array('controller' => 'usuarios', 'action' => 'index', ''));
+Router::connect('/admin/usuarios/index/*', array('controller' => 'usuarios', 'action' => 'index', ''));
+Router::connect('/admin/usuarios/adicionar/*', array('controller' => 'usuarios', 'action' => 'add', ''));
+Router::connect('/admin/usuarios/alterar/*', array('controller' => 'usuarios', 'action' => 'edit', ));
+Router::connect('/admin/usuarios/excluir/*', array('controller' => 'usuarios', 'action' => 'delete', ));
+Router::connect('/admin/setores', array('controller' => 'setores', 'action' => 'index', ''));
+Router::connect('/admin/setores/index/*', array('controller' => 'setores', 'action' => 'index', ''));
+Router::connect('/admin/setores/adicionar/*', array('controller' => 'setores', 'action' => 'add', ''));
+Router::connect('/admin/setores/alterar/*', array('controller' => 'setores', 'action' => 'edit', ));
+Router::connect('/admin/setores/excluir/*', array('controller' => 'setores', 'action' => 'delete', ));
+Router::connect('/admin/grupos',array('controller'=>'grupos','action'=>'index',''));
+Router::connect('/admin/problemas',array('controller'=>'problemas','action'=>'index',''));
+//Router::connect('/admin/relatorio',array('controller'=>'relatorio','action'=>'index',''));
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */
-	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 /**
  * Then we connect url '/test' to our test controller. This is helpful in
  * developement.
  */
-	Router::connect('/tests', array('controller' => 'tests', 'action' => 'index'));
+Router::connect('/tests', array('controller' => 'tests', 'action' => 'index'));
 ?>

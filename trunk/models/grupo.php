@@ -6,7 +6,7 @@ class Grupo extends AppModel {
 		'id' => array('notempty'),
 		'descricao' => array('notempty')
 	);
-	
+
 	var $displayField = 'descricao';
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -22,8 +22,8 @@ class Grupo extends AppModel {
 								'exclusive' => '',
 								'finderQuery' => '',
 								'counterQuery' => ''
-			)
-	);
+								)
+								);
 
 }
 ?>
