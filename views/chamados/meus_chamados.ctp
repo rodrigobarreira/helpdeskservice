@@ -9,5 +9,4 @@ echo $ajax->remoteFunction(array(
 </script>
 
 
-<div id="chamadosAbertos" style ="width: 100%">
-</div>
+<div id="chamadosAbertos" style="width: 100%"></div>

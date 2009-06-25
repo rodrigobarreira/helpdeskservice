@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-	echo $form->input('problema_id', array (
+echo $form->input('problema_id', array (
 			'label' => 'Tipo de Problema',
 			'type' => 'select',
 			'name' => 'data[Chamado][problema_id]',
@@ -9,15 +9,15 @@
 			'div' => false,
 			'style' => 'width: 270px;',
 			'empty' => ''
-	));
-	//ajax
-	echo $ajax->observeField( 'ChamadoProblemaId', 
-	    array(
+			));
+			//ajax
+			echo $ajax->observeField( 'ChamadoProblemaId',
+			array(
 	        'url' => array( 'action' => 'ajaxPrioridade' ),
 	    	'update' => 'ajax_prioridade',
 	    	'indicator' => 'loadAjax',
 	    	'complete' => '$j("#ChamadoTitulo").focus();'
-	    ) 
-	); 	
-	
-?>
+	    	)
+	    	);
+
+	    	?>

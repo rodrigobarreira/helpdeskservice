@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $st = array();
 foreach($status as $chave => $valor){
@@ -11,9 +11,9 @@ echo $form->input('status', array(
 	'empty' => false,
 	'label' => false,
 	'id' => 'valor',
-	'style' => 'clear: right;',
+	'style' => 'clear: right; margin-left: 10px',
 	'div' => false,
-	//'class' => 'campo'
+//'class' => 'campo'
 ));
 
 ?>

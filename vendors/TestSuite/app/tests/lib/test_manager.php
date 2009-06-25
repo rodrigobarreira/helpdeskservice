@@ -336,13 +336,13 @@ class HtmlTestManager extends TestManager {
 			$buffer = "<p>Available Core Test Groups:</p>\n<ul>";
 		}
 		$buffer .= !class_exists('CakeDummyTestClass')
-										?   "<li><a href='/tests/?group=all$userApp'>All tests</a></li>\n"
-										: "<li><a href='" . $manager->getBaseURL() . "?group=all$userApp'>All tests</a></li>\n";
+		?   "<li><a href='/tests/?group=all$userApp'>All tests</a></li>\n"
+		: "<li><a href='" . $manager->getBaseURL() . "?group=all$userApp'>All tests</a></li>\n";
 
 		foreach ($groupTests as $groupTest) {
 			$buffer .= !class_exists('CakeDummyTestClass')
-											?   "<li><a href='/tests/groups/?group={$groupTest}" . "{$userApp}'>" . $groupTest . "</a></li>\n"
-											: "<li><a href='" . $manager->getBaseURL() . "?group={$groupTest}" . "{$userApp}'>" . $groupTest . "</a></li>\n";
+			?   "<li><a href='/tests/groups/?group={$groupTest}" . "{$userApp}'>" . $groupTest . "</a></li>\n"
+			: "<li><a href='" . $manager->getBaseURL() . "?group={$groupTest}" . "{$userApp}'>" . $groupTest . "</a></li>\n";
 		}
 		$buffer  .=  "</ul>\n";
 		return $buffer;
@@ -366,8 +366,8 @@ class HtmlTestManager extends TestManager {
 		}
 		foreach ($testCases as $testCaseFile => $testCase) {
 			$buffer .= !class_exists('CakeDummyTestClass')
-											?   "<li><a href='cases?case=" . urlencode($testCase) . $userApp ."'>" . $testCase . "</a></li>\n"
-											: "<li><a href='" . $manager->getBaseURL() . "?case=" . urlencode($testCase) . $userApp ."'>" . $testCase . "</a></li>\n";
+			?   "<li><a href='cases?case=" . urlencode($testCase) . $userApp ."'>" . $testCase . "</a></li>\n"
+			: "<li><a href='" . $manager->getBaseURL() . "?case=" . urlencode($testCase) . $userApp ."'>" . $testCase . "</a></li>\n";
 		}
 		$buffer  .=  "</ul>\n";
 		return $buffer;
@@ -430,12 +430,12 @@ class XmlTestManager extends HtmlTestManager {
 		}
 
 		foreach ($testCases as $testCaseFile => $testCase) {
-            $properties["title"]=$testCase;
-            $properties["description"]=$testCase;
-            $properties["link"]='http://'.$_SERVER['SERVER_NAME']. $manager->getBaseURL()."?case=" . urlencode($testCase) . "&amp;output=xml" . $userApp;
-            // Comment this out for performance?
-            $properties["dc:date"]=gmdate("Y-m-d\TH:i:sO",filemtime($testCaseFile));
-            $rss->additem($properties);
+			$properties["title"]=$testCase;
+			$properties["description"]=$testCase;
+			$properties["link"]='http://'.$_SERVER['SERVER_NAME']. $manager->getBaseURL()."?case=" . urlencode($testCase) . "&amp;output=xml" . $userApp;
+			// Comment this out for performance?
+			$properties["dc:date"]=gmdate("Y-m-d\TH:i:sO",filemtime($testCaseFile));
+			$rss->additem($properties);
 		}
 		$rss->writeRss($output);
 		return $output;

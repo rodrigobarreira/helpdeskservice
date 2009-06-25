@@ -1,123 +1,115 @@
 <?php
-//pr($this->params); 
+//pr($this->params);
 $acao = $this->params['action'];
 $controller = $this->params['controller'];
 $classMenuMarcado = '';
 
 ?>
 <div id="menu_secundario">
-<ul class="menu" "font-size: 12px;">
-	<li>
-		<?php 
-		if ($controller == 'usuarios'){
-			$classMenuMarcado = 'menuVerticalSelecionado';			
-		}
-		echo $html->link(
-			$html->tag(
+<ul class="menu""font-size: 12px;">
+	<li><?php 
+	if ($controller == 'usuarios'){
+		$classMenuMarcado = 'menuVerticalSelecionado';
+	}
+	echo $html->link(
+	$html->tag(
 				'span',
-				$html->image(
-					'add_chamado.gif', array(
+	$html->image(
+					'user.png', array(
 						'alt' => 'Usuários', 
-					)
-				).'Usuários',
-				array(
+	)
+	).'Usuários',
+	array(
 					'class' => $classMenuMarcado
-				),
-				false
-			),
+	),
+	false
+	),
 			'/admin/usuarios',
-			array(
+	array(
 				'class' => ''
-			), 
-			null, 
-			false
-		);
-		$classMenuMarcado = '';
-		?>
-	</li>
-	<li>
-		<?php
-		if ($acao == 'chamadosAbertos'){
-			$classMenuMarcado = 'menuVerticalSelecionado';			
-		}
-		echo $html->link(
-			$html->tag(
+				),
+				null,
+				false
+				);
+				$classMenuMarcado = '';
+				?></li>
+	<li><?php
+	if ($acao == 'chamadosAbertos'){
+		$classMenuMarcado = 'menuVerticalSelecionado';
+	}
+	echo $html->link(
+	$html->tag(
 				'span',
-				$html->image(
-					'chamados.gif', array(
+	$html->image(
+					'package.png', array(
 						'alt' => 'Setores', 
-					)
-				).'Setores',
-				array(
+	)
+	).'Setores',
+	array(
 					'class' => $classMenuMarcado
-				),
-				false
-			),
+	),
+	false
+	),
 			'/admin/setores',
-			array(
+	array(
 				'class' => ''
-			), 
-			null, 
-			false
-		);
-		$classMenuMarcado = '';
-		?>
-	</li>
-	<li>
-		<?php
-		if ($acao == 'chamadosAbertos'){
-			$classMenuMarcado = 'menuVerticalSelecionado';			
-		}
-		echo $html->link(
-			$html->tag(
-				'span',
-				$html->image(
-					'chamados.gif', array(
-						'alt' => 'Tipos de Problemas', 
-					)
-				).'Tipos de Problemas',
-				array(
-					'class' => $classMenuMarcado
 				),
+				null,
 				false
-			),
-			'/admin/problemas',
-			array(
-				'class' => ''
-			), 
-			null, 
-			false
-		);
-		$classMenuMarcado = '';
-		?>
-	</li>
-	<li>
-		<?php
-		if ($acao == 'chamadosAbertos'){
-			$classMenuMarcado = 'menuVerticalSelecionado';			
-		}
-		echo $html->link(
-			$html->tag(
+				);
+				$classMenuMarcado = '';
+				?></li>
+	<li><?php
+	if ($acao == 'chamadosAbertos'){
+		$classMenuMarcado = 'menuVerticalSelecionado';
+	}
+	echo $html->link(
+	$html->tag(
 				'span',
-				$html->image(
+	$html->image(
+					'attachment.png', array(
+						'alt' => 'Tipos de Problemas', 
+	)
+	).'Tipos de Problemas',
+	array(
+					'class' => $classMenuMarcado
+	),
+	false
+	),
+			'/admin/problemas',
+	array(
+				'class' => ''
+				),
+				null,
+				false
+				);
+				$classMenuMarcado = '';
+				?></li>
+	<?php /*
+	if ($acao == 'chamadosAbertos'){
+		$classMenuMarcado = 'menuVerticalSelecionado';
+	}
+	echo $html->link(
+	$html->tag(
+				'span',
+	$html->image(
 					'chamados.gif', array(
 						'alt' => 'Relatórios', 
-					)
-				).'Relatórios',
-				array(
+	)
+	).'Relatórios',
+	array(
 					'class' => $classMenuMarcado
-				),
-				false
-			),
+	),
+	false
+	),
 			'/admin/relatorios',
-			array(
+	array(
 				'class' => ''
-			), 
-			null, 
-			false
-		);
-		$classMenuMarcado = '';
-		?>
-	</li>
+				),
+				null,
+				false
+				);
+				$classMenuMarcado = '';
+				*/?>
 </ul>
 </div>

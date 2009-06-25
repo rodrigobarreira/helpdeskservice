@@ -42,21 +42,21 @@
  */
 class CakeHtmlReporter extends HtmlReporter {
 
-/**
- *    Does nothing yet. The first output will
- *    be sent on the first test start. For use
- *    by a web browser.
- *    @access public
- */
+	/**
+	 *    Does nothing yet. The first output will
+	 *    be sent on the first test start. For use
+	 *    by a web browser.
+	 *    @access public
+	 */
 	function CakeHtmlReporter($character_set = 'ISO-8859-1') {
 		parent::HtmlReporter($character_set);
 	}
-/**
- *    Paints the top of the web page setting the
- *    title to the name of the starting test.
- *    @param string $test_name      Name class of test.
- *    @access public
- */
+	/**
+	 *    Paints the top of the web page setting the
+	 *    title to the name of the starting test.
+	 *    @param string $test_name      Name class of test.
+	 *    @access public
+	 */
 	function paintHeader($test_name) {
 		$this->sendNoCacheHeaders();
 		print "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n";
@@ -77,24 +77,24 @@ class CakeHtmlReporter extends HtmlReporter {
 		print "<h2>$test_name</h2>\n";
 		flush();
 	}
-/**
- * Paints the end of the test with a summary of
- * the passes and failures.
- *  @param string $test_name Name class of test.
- * @access public
- *
- */
+	/**
+	 * Paints the end of the test with a summary of
+	 * the passes and failures.
+	 *  @param string $test_name Name class of test.
+	 * @access public
+	 *
+	 */
 	function paintFooter($test_name) {
-    	$colour = ($this->getFailCount() + $this->getExceptionCount() > 0 ? "red" : "green");
-    	print "<div style=\"";
-    	print "padding: 8px; margin-top: 1em; background-color: $colour; color: white;";
-    	print "\">";
-    	print $this->getTestCaseProgress() . "/" . $this->getTestCaseCount();
-    	print " test cases complete:\n";
-    	print "<strong>" . $this->getPassCount() . "</strong> passes, ";
-    	print "<strong>" . $this->getFailCount() . "</strong> fails and ";
-    	print "<strong>" . $this->getExceptionCount() . "</strong> exceptions.";
-    	print "</div>\n";
+		$colour = ($this->getFailCount() + $this->getExceptionCount() > 0 ? "red" : "green");
+		print "<div style=\"";
+		print "padding: 8px; margin-top: 1em; background-color: $colour; color: white;";
+		print "\">";
+		print $this->getTestCaseProgress() . "/" . $this->getTestCaseCount();
+		print " test cases complete:\n";
+		print "<strong>" . $this->getPassCount() . "</strong> passes, ";
+		print "<strong>" . $this->getFailCount() . "</strong> fails and ";
+		print "<strong>" . $this->getExceptionCount() . "</strong> exceptions.";
+		print "</div>\n";
 	}
 }
 

@@ -44,19 +44,19 @@ class CakeDummyTestClass
 
 if (!defined('DS'))
 {
-    define('DS', DIRECTORY_SEPARATOR);
+	define('DS', DIRECTORY_SEPARATOR);
 }
 
 if (!defined('ROOT'))
 {
-//define('ROOT', 'FULL PATH TO DIRECTORY WHERE APP DIRECTORY IS LOCATED DO NOT ADD A TRAILING DIRECTORY SEPARATOR';
-    define('ROOT', dirname(dirname(dirname(dirname(__FILE__)))).DS);
+	//define('ROOT', 'FULL PATH TO DIRECTORY WHERE APP DIRECTORY IS LOCATED DO NOT ADD A TRAILING DIRECTORY SEPARATOR';
+	define('ROOT', dirname(dirname(dirname(dirname(__FILE__)))).DS);
 }
 
 if (!defined('APP_DIR'))
 {
-//define('APP_DIR', 'DIRECTORY NAME OF APPLICATION';
-    define ('APP_DIR', basename(dirname(dirname(dirname(__FILE__)))).DS);
+	//define('APP_DIR', 'DIRECTORY NAME OF APPLICATION';
+	define ('APP_DIR', basename(dirname(dirname(dirname(__FILE__)))).DS);
 }
 
 /**
@@ -65,14 +65,14 @@ if (!defined('APP_DIR'))
  */
 if (!defined('CAKE_CORE_INCLUDE_PATH'))
 {
-//define ('CAKE_CORE_INCLUDE_PATH', FULL PATH TO DIRECTORY WHERE CAKE CORE IS INSTALLED DO NOT ADD A TRAILING DIRECTORY SEPARATOR';
-    define('CAKE_CORE_INCLUDE_PATH', ROOT);
+	//define ('CAKE_CORE_INCLUDE_PATH', FULL PATH TO DIRECTORY WHERE CAKE CORE IS INSTALLED DO NOT ADD A TRAILING DIRECTORY SEPARATOR';
+	define('CAKE_CORE_INCLUDE_PATH', ROOT);
 }
 
 
 if (!defined('WEBROOT_DIR'))
 {
-    define ('WEBROOT_DIR', basename(dirname(dirname(__FILE__))));
+	define ('WEBROOT_DIR', basename(dirname(dirname(__FILE__))));
 }
 
 define('WWW_ROOT', dirname(dirname(__FILE__)));
@@ -80,22 +80,22 @@ define('WWW_ROOT', dirname(dirname(__FILE__)));
 ini_set('include_path',ini_get('include_path').PATH_SEPARATOR.CAKE_CORE_INCLUDE_PATH.PATH_SEPARATOR.ROOT.DS.APP_DIR.DS);
 
 
-    require_once 'cake'.DS.'basics.php';
-    require_once 'cake'.DS.'config'.DS.'paths.php';
-    require_once TESTS . 'test_paths.php';
-    require_once TESTS . 'lib'.DS.'test_manager.php';
-    vendor('simpletest'.DS.'reporter');
+require_once 'cake'.DS.'basics.php';
+require_once 'cake'.DS.'config'.DS.'paths.php';
+require_once TESTS . 'test_paths.php';
+require_once TESTS . 'lib'.DS.'test_manager.php';
+vendor('simpletest'.DS.'reporter');
 
-    if (!isset(  $_SERVER['SERVER_NAME'] ))
-    {
-        $_SERVER['SERVER_NAME'] = '';
-    }
+if (!isset(  $_SERVER['SERVER_NAME'] ))
+{
+	$_SERVER['SERVER_NAME'] = '';
+}
 
-    if (empty( $_GET['output']))
-    {
-        TestManager::setOutputFromIni(TESTS . 'config.ini.php');
-        $_GET['output'] = TEST_OUTPUT;
-    }
+if (empty( $_GET['output']))
+{
+	TestManager::setOutputFromIni(TESTS . 'config.ini.php');
+	$_GET['output'] = TEST_OUTPUT;
+}
 
 /**
  *
@@ -105,153 +105,153 @@ define('CAKE_TEST_OUTPUT_HTML',1);
 define('CAKE_TEST_OUTPUT_XML',2);
 define('CAKE_TEST_OUTPUT_TEXT',3);
 
-    if ( isset($_GET['output']) && $_GET['output'] == 'xml' )
-    {
-        define('CAKE_TEST_OUTPUT', CAKE_TEST_OUTPUT_XML);
-    }
-    elseif  ( isset($_GET['output']) && $_GET['output'] == 'html' )
-    {
-        define('CAKE_TEST_OUTPUT', CAKE_TEST_OUTPUT_HTML);
-    }
-    else
-    {
-        define('CAKE_TEST_OUTPUT', CAKE_TEST_OUTPUT_TEXT);
-    }
-
-    function & CakeTestsGetReporter()
-    {
-        static $Reporter = NULL;
-        if ( !$Reporter )
-        {
-            switch ( CAKE_TEST_OUTPUT )
-            {
-                case CAKE_TEST_OUTPUT_XML:
-                    vendor('simpletest'.DS.'xml');
-                    $Reporter = new XmlReporter();
-                break;
-
-                case CAKE_TEST_OUTPUT_HTML:
-                    require_once TESTS . 'lib'.DS.'cake_reporter.php';
-                    $Reporter = new CakeHtmlReporter();
-                break;
-
-                default:
-                    $Reporter = new TextReporter();
-                break;
-            }
-        }
-        return $Reporter;
-    }
-
-    function CakePHPTestRunMore()
-    {
-        switch ( CAKE_TEST_OUTPUT )
-        {
-            case CAKE_TEST_OUTPUT_XML:
-            break;
-            case CAKE_TEST_OUTPUT_HTML:
-                $link = !class_exists('CakeDummyTestClass')
-                    ?   "<p><a href='/tests/'>Run more tests</a></p>\n"
-                    :
-                        "<p><a href='" . $_SERVER['PHP_SELF'] . "'>Run more tests</a></p>\n";
-                echo $link;
-            break;
-
-            case CAKE_TEST_OUTPUT_TEXT:
-            default:
-            break;
-        }
-    }
-
-    function CakePHPTestCaseList()
-    {
-        switch ( CAKE_TEST_OUTPUT )
-        {
-            case CAKE_TEST_OUTPUT_XML:
-                if (isset($_GET['app']))
-                {
-                    echo XmlTestManager::getTestCaseList(APP_TEST_CASES);
-                }
-                else
-                {
-                    echo XmlTestManager::getTestCaseList(CORE_TEST_CASES);
-                }
-            break;
-
-            case CAKE_TEST_OUTPUT_HTML:
-                if (isset($_GET['app']))
-                {
-                    echo HtmlTestManager::getTestCaseList(APP_TEST_CASES);
-                }
-                else
-                {
-                    echo HtmlTestManager::getTestCaseList(CORE_TEST_CASES);
-                }
-            break;
-
-            case CAKE_TEST_OUTPUT_TEXT:
-            default:
-                if (isset($_GET['app']))
-                {
-                    echo TextTestManager::getTestCaseList(APP_TEST_CASES);
-                }
-                else
-                {
-                    echo TextTestManager::getTestCaseList(CORE_TEST_CASES);
-                }
-            break;
-    }
+if ( isset($_GET['output']) && $_GET['output'] == 'xml' )
+{
+	define('CAKE_TEST_OUTPUT', CAKE_TEST_OUTPUT_XML);
+}
+elseif  ( isset($_GET['output']) && $_GET['output'] == 'html' )
+{
+	define('CAKE_TEST_OUTPUT', CAKE_TEST_OUTPUT_HTML);
+}
+else
+{
+	define('CAKE_TEST_OUTPUT', CAKE_TEST_OUTPUT_TEXT);
 }
 
-    function CakePHPTestGroupTestList()
-    {
-        switch ( CAKE_TEST_OUTPUT )
-        {
-            case CAKE_TEST_OUTPUT_XML:
-                if (isset($_GET['app']))
-                {
-                    echo XmlTestManager::getGroupTestList(APP_TEST_GROUPS);
-                }
-                else
-                {
-                    echo XmlTestManager::getGroupTestList(CORE_TEST_GROUPS);
-                }
-            break;
+function & CakeTestsGetReporter()
+{
+	static $Reporter = NULL;
+	if ( !$Reporter )
+	{
+		switch ( CAKE_TEST_OUTPUT )
+		{
+			case CAKE_TEST_OUTPUT_XML:
+				vendor('simpletest'.DS.'xml');
+				$Reporter = new XmlReporter();
+				break;
 
-            case CAKE_TEST_OUTPUT_HTML:
-                if (isset($_GET['app']))
-                {
-                    echo HtmlTestManager::getGroupTestList(APP_TEST_GROUPS);
-                }
-                else
-                {
-                    echo HtmlTestManager::getGroupTestList(CORE_TEST_GROUPS);
-                }
-            break;
+			case CAKE_TEST_OUTPUT_HTML:
+				require_once TESTS . 'lib'.DS.'cake_reporter.php';
+				$Reporter = new CakeHtmlReporter();
+				break;
 
-            case CAKE_TEST_OUTPUT_TEXT:
-            default:
-                if (isset($_GET['app']))
-                {
-                    echo TextTestManager::getGroupTestList(APP_TEST_GROUPS);
-                }
-                else
-                {
-                    echo TextTestManager::getGroupTestList(CORE_TEST_GROUPS);
-                }
-            break;
-        }
-    }
+			default:
+				$Reporter = new TextReporter();
+				break;
+		}
+	}
+	return $Reporter;
+}
 
-    function CakePHPTestHeader()
-    {
-        switch ( CAKE_TEST_OUTPUT )
-        {
-            case CAKE_TEST_OUTPUT_XML:
-                header(' content-Type: text/xml; charset="utf-8"');
-            break;
-            case CAKE_TEST_OUTPUT_HTML:
-        $header = <<<EOF
+function CakePHPTestRunMore()
+{
+	switch ( CAKE_TEST_OUTPUT )
+	{
+		case CAKE_TEST_OUTPUT_XML:
+			break;
+		case CAKE_TEST_OUTPUT_HTML:
+			$link = !class_exists('CakeDummyTestClass')
+			?   "<p><a href='/tests/'>Run more tests</a></p>\n"
+			:
+                        "<p><a href='" . $_SERVER['PHP_SELF'] . "'>Run more tests</a></p>\n";
+			echo $link;
+			break;
+
+		case CAKE_TEST_OUTPUT_TEXT:
+		default:
+			break;
+	}
+}
+
+function CakePHPTestCaseList()
+{
+	switch ( CAKE_TEST_OUTPUT )
+	{
+		case CAKE_TEST_OUTPUT_XML:
+			if (isset($_GET['app']))
+			{
+				echo XmlTestManager::getTestCaseList(APP_TEST_CASES);
+			}
+			else
+			{
+				echo XmlTestManager::getTestCaseList(CORE_TEST_CASES);
+			}
+			break;
+
+		case CAKE_TEST_OUTPUT_HTML:
+			if (isset($_GET['app']))
+			{
+				echo HtmlTestManager::getTestCaseList(APP_TEST_CASES);
+			}
+			else
+			{
+				echo HtmlTestManager::getTestCaseList(CORE_TEST_CASES);
+			}
+			break;
+
+		case CAKE_TEST_OUTPUT_TEXT:
+		default:
+			if (isset($_GET['app']))
+			{
+				echo TextTestManager::getTestCaseList(APP_TEST_CASES);
+			}
+			else
+			{
+				echo TextTestManager::getTestCaseList(CORE_TEST_CASES);
+			}
+			break;
+	}
+}
+
+function CakePHPTestGroupTestList()
+{
+	switch ( CAKE_TEST_OUTPUT )
+	{
+		case CAKE_TEST_OUTPUT_XML:
+			if (isset($_GET['app']))
+			{
+				echo XmlTestManager::getGroupTestList(APP_TEST_GROUPS);
+			}
+			else
+			{
+				echo XmlTestManager::getGroupTestList(CORE_TEST_GROUPS);
+			}
+			break;
+
+		case CAKE_TEST_OUTPUT_HTML:
+			if (isset($_GET['app']))
+			{
+				echo HtmlTestManager::getGroupTestList(APP_TEST_GROUPS);
+			}
+			else
+			{
+				echo HtmlTestManager::getGroupTestList(CORE_TEST_GROUPS);
+			}
+			break;
+
+		case CAKE_TEST_OUTPUT_TEXT:
+		default:
+			if (isset($_GET['app']))
+			{
+				echo TextTestManager::getGroupTestList(APP_TEST_GROUPS);
+			}
+			else
+			{
+				echo TextTestManager::getGroupTestList(CORE_TEST_GROUPS);
+			}
+			break;
+	}
+}
+
+function CakePHPTestHeader()
+{
+	switch ( CAKE_TEST_OUTPUT )
+	{
+		case CAKE_TEST_OUTPUT_XML:
+			header(' content-Type: text/xml; charset="utf-8"');
+			break;
+		case CAKE_TEST_OUTPUT_HTML:
+			$header = <<<EOF
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml">
         <head>
@@ -262,26 +262,26 @@ define('CAKE_TEST_OUTPUT_TEXT',3);
         <body>
 
 EOF;
-                echo $header;
-            break;
-            case CAKE_TEST_OUTPUT_TEXT:
-            default:
-                header(' content-type: text/plain');
-            break;
-        }
-    }
+			echo $header;
+			break;
+		case CAKE_TEST_OUTPUT_TEXT:
+		default:
+			header(' content-type: text/plain');
+			break;
+	}
+}
 
-    function CakePHPTestSuiteHeader()
-    {
-        switch ( CAKE_TEST_OUTPUT )
-        {
-            case CAKE_TEST_OUTPUT_XML:
-            break;
+function CakePHPTestSuiteHeader()
+{
+	switch ( CAKE_TEST_OUTPUT )
+	{
+		case CAKE_TEST_OUTPUT_XML:
+			break;
 
-            case CAKE_TEST_OUTPUT_HTML:
-                $groups = !class_exists('CakeDummyTestClass') ? 'groups' : $_SERVER['PHP_SELF'].'?show=groups';
-                $cases = !class_exists('CakeDummyTestClass') ? 'cases' : $_SERVER['PHP_SELF'].'?show=cases';
-                $suiteHeader = <<<EOD
+		case CAKE_TEST_OUTPUT_HTML:
+			$groups = !class_exists('CakeDummyTestClass') ? 'groups' : $_SERVER['PHP_SELF'].'?show=groups';
+			$cases = !class_exists('CakeDummyTestClass') ? 'cases' : $_SERVER['PHP_SELF'].'?show=cases';
+			$suiteHeader = <<<EOD
 
 <div id="wrapper">
     <div id="header">
@@ -293,25 +293,25 @@ EOF;
 	<p><a href='$groups'>Core Test Groups</a>  ||   <a href='$cases'>Core Test Cases</a></p>
 	<p><a href='$groups&amp;app=true'>App Test Groups</a>  ||   <a href='$cases&amp;app=true'>App Test Cases</a></p>
 EOD;
-            echo $suiteHeader;
-            break;
+			echo $suiteHeader;
+			break;
 
-            case CAKE_TEST_OUTPUT_TEXT:
-            default:
-            break;
-        }
-    }
+		case CAKE_TEST_OUTPUT_TEXT:
+		default:
+			break;
+	}
+}
 
 
-    function CakePHPTestSuiteFooter()
-    {
-        switch ( CAKE_TEST_OUTPUT )
-        {
-            case CAKE_TEST_OUTPUT_XML:
-            break;
+function CakePHPTestSuiteFooter()
+{
+	switch ( CAKE_TEST_OUTPUT )
+	{
+		case CAKE_TEST_OUTPUT_XML:
+			break;
 
-            case CAKE_TEST_OUTPUT_HTML:
-                $footer = <<<EOD
+		case CAKE_TEST_OUTPUT_HTML:
+			$footer = <<<EOD
   </div>
 <div id="footer">
 <p>
@@ -338,49 +338,49 @@ EOD;
 </body>
 </html>
 EOD;
-                echo $footer;
-            break;
+			echo $footer;
+			break;
 
-            case CAKE_TEST_OUTPUT_TEXT:
-            default:
-            break;
-        }
-    }
+		case CAKE_TEST_OUTPUT_TEXT:
+		default:
+			break;
+	}
+}
 
 
 if (isset($_GET['group']))
 {
-    if ('all' == $_GET['group'])
-    {
-        TestManager::runAllTests(CakeTestsGetReporter());
-    }
-    else
-    {
-        if (isset($_GET['app']))
-        {
-        TestManager::runGroupTest(ucfirst($_GET['group']),
-                                  APP_TEST_GROUPS,
-                                  CakeTestsGetReporter());
-        }
-        else
-        {
-        TestManager::runGroupTest(ucfirst($_GET['group']),
-                                  CORE_TEST_GROUPS,
-                                  CakeTestsGetReporter());
-        }
-    }
+	if ('all' == $_GET['group'])
+	{
+		TestManager::runAllTests(CakeTestsGetReporter());
+	}
+	else
+	{
+		if (isset($_GET['app']))
+		{
+			TestManager::runGroupTest(ucfirst($_GET['group']),
+			APP_TEST_GROUPS,
+			CakeTestsGetReporter());
+		}
+		else
+		{
+			TestManager::runGroupTest(ucfirst($_GET['group']),
+			CORE_TEST_GROUPS,
+			CakeTestsGetReporter());
+		}
+	}
 
-    CakePHPTestRunMore();
-    CakePHPTestSuiteFooter();
-    exit();
+	CakePHPTestRunMore();
+	CakePHPTestSuiteFooter();
+	exit();
 }
 
 if (isset($_GET['case']))
 {
-    TestManager::runTestCase($_GET['case'], CakeTestsGetReporter());
-    CakePHPTestRunMore();
-    CakePHPTestSuiteFooter();
-    exit();
+	TestManager::runTestCase($_GET['case'], CakeTestsGetReporter());
+	CakePHPTestRunMore();
+	CakePHPTestSuiteFooter();
+	exit();
 }
 
 CakePHPTestHeader();
@@ -388,11 +388,11 @@ CakePHPTestSuiteHeader();
 
 if (isset($_GET['show']) && $_GET['show'] == 'cases')
 {
-    CakePHPTestCaseList();
+	CakePHPTestCaseList();
 }
 else
 {
-    CakePHPTestGroupTestList();
+	CakePHPTestGroupTestList();
 }
 CakePHPTestSuiteFooter();
 

@@ -1,15 +1,13 @@
 <style>
-	
-	.flexigrid div.fbutton .add
-		{
-			background: url(../js/jquery/flexigrid/css/images/add.png) no-repeat center left;
-		}	
+.flexigrid div.fbutton .add {
+	background: url(../js/jquery/flexigrid/css/images/add.png) no-repeat
+		center left;
+}
 
-	.flexigrid div.fbutton .delete
-		{
-			background: url(../js/jquery/flexigrid/css/images/close.png) no-repeat center left;
-		}	
-
+.flexigrid div.fbutton .delete {
+	background: url(../js/jquery/flexigrid/css/images/close.png) no-repeat
+		center left;
+}
 </style>
 
 <?php
@@ -24,7 +22,8 @@ echo $html->css('../js/jquery/flexigrid/css/flexigrid/flexigrid.css');
 //Debugger::dump($grid_chamados);
 //pr($grid_chamados)
 ?>
-<table id="flex1" style="display:none"></table>
+<table id="flex1"
+	style="display: none"></table>
 <script type="text/javascript">
 //alert("TESTE");
 

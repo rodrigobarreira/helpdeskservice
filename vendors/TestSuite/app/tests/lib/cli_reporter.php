@@ -33,21 +33,21 @@
  * @lastmodified $Date: 2006-05-28 05:33:04 -0500 (Sun, 28 May 2006) $
  * @license      http://www.opensource.org/licenses/opengroup.php The Open Group Test Suite License
  */
-	if (! defined('ST_FAILDETAIL_SEPARATOR')) {
-	    define('ST_FAILDETAIL_SEPARATOR', "->");
-	}
+if (! defined('ST_FAILDETAIL_SEPARATOR')) {
+	define('ST_FAILDETAIL_SEPARATOR', "->");
+}
 
-	if (! defined('ST_FAILS_RETURN_CODE')) {
-	    define('ST_FAILS_RETURN_CODE', 1);
-	}
+if (! defined('ST_FAILS_RETURN_CODE')) {
+	define('ST_FAILS_RETURN_CODE', 1);
+}
 
-	if (version_compare(phpversion(), '4.3.0', '<') ||
-	    php_sapi_name() == 'cgi') {
-	    define('STDOUT', fopen('php://stdout', 'w'));
-	    define('STDERR', fopen('php://stderr', 'w'));
-	    register_shutdown_function(
-	        create_function('', 'fclose(STDOUT); fclose(STDERR); return true;'));
-	}
+if (version_compare(phpversion(), '4.3.0', '<') ||
+php_sapi_name() == 'cgi') {
+	define('STDOUT', fopen('php://stdout', 'w'));
+	define('STDERR', fopen('php://stderr', 'w'));
+	register_shutdown_function(
+	create_function('', 'fclose(STDOUT); fclose(STDERR); return true;'));
+}
 
 /**
  * Minimal command line test displayer. Writes fail details to STDERR. Returns 0
@@ -66,9 +66,9 @@ class CLIReporter extends SimpleReporter {
 	function setFailDetailSeparator($separator) {
 		$this->faildetail_separator = $separator;
 	}
-/**
- * Return a formatted faildetail for printing.
- */
+	/**
+	 * Return a formatted faildetail for printing.
+	 */
 	function &_paintTestFailDetail(&$message) {
 		$buffer = '';
 		$faildetail = $this->getTestList();
@@ -77,23 +77,23 @@ class CLIReporter extends SimpleReporter {
 		$buffer .= $this->faildetail_separator . "$message\n";
 		return $buffer;
 	}
-/**
- * Paint fail faildetail to STDERR.
- */
+	/**
+	 * Paint fail faildetail to STDERR.
+	 */
 	function paintFail($message) {
 		parent::paintFail($message);
 		fwrite(STDERR, 'FAIL' . $this->faildetail_separator . $this->_paintTestFailDetail($message));
 	}
-/**
- * Paint exception faildetail to STDERR.
- */
+	/**
+	 * Paint exception faildetail to STDERR.
+	 */
 	function paintException($message) {
 		parent::paintException($message);
 		fwrite(STDERR, 'EXCEPTION' . $this->faildetail_separator . $this->_paintTestFailDetail($message));
 	}
-/**
- * Paint a footer with test case name, timestamp, counts of fails and exceptions.
- */
+	/**
+	 * Paint a footer with test case name, timestamp, counts of fails and exceptions.
+	 */
 	function paintFooter($test_name) {
 		$buffer = $this->getTestCaseProgress() . '/' . $this->getTestCaseCount() . ' test cases complete: ';
 

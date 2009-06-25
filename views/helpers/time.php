@@ -35,34 +35,34 @@
  * @subpackage	cake.cake.libs.view.helpers
  */
 class TimeHelper extends AppHelper {
-/**
- * Converts given time (in server's time zone) to user's local time, given his/her offset from GMT.
- *
- * @param string $server_time UNIX timestamp
- * @param int $user_offset User's offset from GMT (in hours)
- * @return string UNIX timestamp
- */
+	/**
+	 * Converts given time (in server's time zone) to user's local time, given his/her offset from GMT.
+	 *
+	 * @param string $server_time UNIX timestamp
+	 * @param int $user_offset User's offset from GMT (in hours)
+	 * @return string UNIX timestamp
+	 */
 	function convert($serverTime, $userOffset) {
 		$serverOffset = $this->serverOffset();
 		$gmtTime = $serverTime - $serverOffset;
 		$userTime = $gmtTime + $userOffset * (60*60);
 		return $userTime;
 	}
-/**
- * Returns server's offset from GMT in seconds.
- *
- * @return int Offset
- */
+	/**
+	 * Returns server's offset from GMT in seconds.
+	 *
+	 * @return int Offset
+	 */
 	function serverOffset() {
-		return date('Z', time());	
+		return date('Z', time());
 	}
-/**
- * Returns a UNIX timestamp, given either a UNIX timestamp or a valid strtotime() date string.
- *
- * @param string $dateString Datetime string
- * @param int $userOffset User's offset from GMT (in hours)
- * @return string Formatted date string
- */
+	/**
+	 * Returns a UNIX timestamp, given either a UNIX timestamp or a valid strtotime() date string.
+	 *
+	 * @param string $dateString Datetime string
+	 * @param int $userOffset User's offset from GMT (in hours)
+	 * @return string Formatted date string
+	 */
 	function fromString($dateString, $userOffset = null) {
 		if (is_integer($dateString) || is_numeric($dateString)) {
 			$date = intval($dateString);
@@ -74,13 +74,13 @@ class TimeHelper extends AppHelper {
 		}
 		return $date;
 	}
-/**
- * Returns a nicely formatted date string for given Datetime string.
- *
- * @param string $dateString Datetime string or Unix timestamp
- * @param int $userOffset User's offset from GMT (in hours)
- * @return string Formatted date string
- */
+	/**
+	 * Returns a nicely formatted date string for given Datetime string.
+	 *
+	 * @param string $dateString Datetime string or Unix timestamp
+	 * @param int $userOffset User's offset from GMT (in hours)
+	 * @return string Formatted date string
+	 */
 	function nice($dateString = null, $userOffset = null) {
 		if ($dateString != null) {
 			$date = $this->fromString($dateString, $userOffset);
@@ -91,18 +91,18 @@ class TimeHelper extends AppHelper {
 		$ret = date("D, M jS Y, H:i", $date);
 		return $this->output($ret);
 	}
-/**
- * Returns a formatted descriptive date string for given datetime string.
- *
- * If the given date is today, the returned string could be "Today, 16:54".
- * If the given date was yesterday, the returned string could be "Yesterday, 16:54".
- * If $dateString's year is the current year, the returned string does not
- * include mention of the year.
- *
- * @param string $dateString Datetime string or Unix timestamp
- * @param int $userOffset User's offset from GMT (in hours)
- * @return string Described, relative date string
- */
+	/**
+	 * Returns a formatted descriptive date string for given datetime string.
+	 *
+	 * If the given date is today, the returned string could be "Today, 16:54".
+	 * If the given date was yesterday, the returned string could be "Yesterday, 16:54".
+	 * If $dateString's year is the current year, the returned string does not
+	 * include mention of the year.
+	 *
+	 * @param string $dateString Datetime string or Unix timestamp
+	 * @param int $userOffset User's offset from GMT (in hours)
+	 * @return string Described, relative date string
+	 */
 	function niceShort($dateString = null, $userOffset = null) {
 		$date = $dateString ? $this->fromString($dateString, $userOffset) : time();
 
@@ -118,15 +118,15 @@ class TimeHelper extends AppHelper {
 
 		return $this->output($ret);
 	}
-/**
- * Returns a partial SQL string to search for all records between two dates.
- *
- * @param string $dateString Datetime string or Unix timestamp
- * @param string $end Datetime string or Unix timestamp
- * @param string $fieldName Name of database field to compare with
- * @param int $userOffset User's offset from GMT (in hours)
- * @return string Partial SQL string.
- */
+	/**
+	 * Returns a partial SQL string to search for all records between two dates.
+	 *
+	 * @param string $dateString Datetime string or Unix timestamp
+	 * @param string $end Datetime string or Unix timestamp
+	 * @param string $fieldName Name of database field to compare with
+	 * @param int $userOffset User's offset from GMT (in hours)
+	 * @return string Partial SQL string.
+	 */
 	function daysAsSql($begin, $end, $fieldName, $userOffset = null) {
 		$begin = $this->fromString($begin, $userOffset);
 		$end = $this->fromString($end, $userOffset);
@@ -136,89 +136,89 @@ class TimeHelper extends AppHelper {
 		$ret  ="($fieldName >= '$begin') AND ($fieldName <= '$end')";
 		return $this->output($ret);
 	}
-/**
- * Returns a partial SQL string to search for all records between two times
- * occurring on the same day.
- *
- * @param string $dateString Datetime string or Unix timestamp
- * @param string $fieldName Name of database field to compare with
- * @param int $userOffset User's offset from GMT (in hours)
- * @return string Partial SQL string.
- */
+	/**
+	 * Returns a partial SQL string to search for all records between two times
+	 * occurring on the same day.
+	 *
+	 * @param string $dateString Datetime string or Unix timestamp
+	 * @param string $fieldName Name of database field to compare with
+	 * @param int $userOffset User's offset from GMT (in hours)
+	 * @return string Partial SQL string.
+	 */
 	function dayAsSql($dateString, $fieldName, $userOffset = null) {
 		$date = $this->fromString($dateString, $userOffset);
 		$ret = $this->daysAsSql($dateString, $dateString, $fieldName);
 		return $this->output($ret);
 	}
-/**
- * Returns true if given datetime string is today.
- *
- * @param string $dateString Datetime string or Unix timestamp
- * @param int $userOffset User's offset from GMT (in hours)
- * @return boolean True if datetime string is today
- */
+	/**
+	 * Returns true if given datetime string is today.
+	 *
+	 * @param string $dateString Datetime string or Unix timestamp
+	 * @param int $userOffset User's offset from GMT (in hours)
+	 * @return boolean True if datetime string is today
+	 */
 	function isToday($dateString, $userOffset = null) {
 		$date = $this->fromString($dateString, $userOffset);
 		return date('Y-m-d', $date) == date('Y-m-d', time());
 	}
-/**
- * Returns true if given datetime string is within this week
- * @param string $dateString
- * @param int $userOffset User's offset from GMT (in hours)
- * @return boolean True if datetime string is within current week
- */
+	/**
+	 * Returns true if given datetime string is within this week
+	 * @param string $dateString
+	 * @param int $userOffset User's offset from GMT (in hours)
+	 * @return boolean True if datetime string is within current week
+	 */
 	function isThisWeek($dateString, $userOffset = null) {
 		$date = $this->fromString($dateString, $userOffset);
 		return date('W Y', $date) == date('W Y', time());
 	}
-/**
- * Returns true if given datetime string is within this month
- * @param string $dateString
- * @param int $userOffset User's offset from GMT (in hours)
- * @return boolean True if datetime string is within current month
- */
+	/**
+	 * Returns true if given datetime string is within this month
+	 * @param string $dateString
+	 * @param int $userOffset User's offset from GMT (in hours)
+	 * @return boolean True if datetime string is within current month
+	 */
 	function isThisMonth($dateString, $userOffset = null) {
 		$date = $this->fromString($dateString);
 		return date('m Y',$date) == date('m Y', time());
 	}
-/**
- * Returns true if given datetime string is within current year.
- *
- * @param string $dateString Datetime string or Unix timestamp
- * @return boolean True if datetime string is within current year
- */
+	/**
+	 * Returns true if given datetime string is within current year.
+	 *
+	 * @param string $dateString Datetime string or Unix timestamp
+	 * @return boolean True if datetime string is within current year
+	 */
 	function isThisYear($dateString, $userOffset = null) {
 		$date = $this->fromString($dateString, $userOffset);
 		return  date('Y', $date) == date('Y', time());
 	}
-/**
- * Returns true if given datetime string was yesterday.
- *
- * @param string $dateString Datetime string or Unix timestamp
- * @param int $userOffset User's offset from GMT (in hours)
- * @return boolean True if datetime string was yesterday
- */
+	/**
+	 * Returns true if given datetime string was yesterday.
+	 *
+	 * @param string $dateString Datetime string or Unix timestamp
+	 * @param int $userOffset User's offset from GMT (in hours)
+	 * @return boolean True if datetime string was yesterday
+	 */
 	function wasYesterday($dateString, $userOffset = null) {
 		$date = $this->fromString($dateString, $userOffset);
 		return date('Y-m-d', $date) == date('Y-m-d', strtotime('yesterday'));
 	}
-/**
- * Returns true if given datetime string is tomorrow.
- *
- * @param string $dateString Datetime string or Unix timestamp
- * @param int $userOffset User's offset from GMT (in hours)
- * @return boolean True if datetime string was yesterday
- */
+	/**
+	 * Returns true if given datetime string is tomorrow.
+	 *
+	 * @param string $dateString Datetime string or Unix timestamp
+	 * @param int $userOffset User's offset from GMT (in hours)
+	 * @return boolean True if datetime string was yesterday
+	 */
 	function isTomorrow($dateString, $userOffset = null) {
 		$date = $this->fromString($dateString, $userOffset);
 		return date('Y-m-d', $date) == date('Y-m-d', strtotime('tomorrow'));
 	}
-/**
- * Returns the quart
- * @param string $dateString
- * @param boolean $range if true returns a range in Y-m-d format
- * @return boolean True if datetime string is within current week
- */
+	/**
+	 * Returns the quart
+	 * @param string $dateString
+	 * @param boolean $range if true returns a range in Y-m-d format
+	 * @return boolean True if datetime string is within current week
+	 */
 	function toQuarter($dateString, $range = false) {
 		$time = $this->fromString($dateString);
 		$date = ceil(date('m', $time) / 3);
@@ -247,64 +247,64 @@ class TimeHelper extends AppHelper {
 		}
 		return $this->output($date);
 	}
-/**
- * Returns a UNIX timestamp from a textual datetime description. Wrapper for PHP function strtotime().
- *
- * @param string $dateString Datetime string to be represented as a Unix timestamp
- * @param int $userOffset User's offset from GMT (in hours)
- * @return integer Unix timestamp
- */
+	/**
+	 * Returns a UNIX timestamp from a textual datetime description. Wrapper for PHP function strtotime().
+	 *
+	 * @param string $dateString Datetime string to be represented as a Unix timestamp
+	 * @param int $userOffset User's offset from GMT (in hours)
+	 * @return integer Unix timestamp
+	 */
 	function toUnix($dateString, $userOffset = null) {
 		$ret = $this->fromString($dateString, $userOffset);
 		return $this->output($ret);
 	}
-/**
- * Returns a date formatted for Atom RSS feeds.
- *
- * @param string $dateString Datetime string or Unix timestamp
- * @param int $userOffset User's offset from GMT (in hours)
- * @return string Formatted date string
- */
+	/**
+	 * Returns a date formatted for Atom RSS feeds.
+	 *
+	 * @param string $dateString Datetime string or Unix timestamp
+	 * @param int $userOffset User's offset from GMT (in hours)
+	 * @return string Formatted date string
+	 */
 	function toAtom($dateString, $userOffset = null) {
 		$date = $this->fromString($dateString, $userOffset);
 		$ret = date('Y-m-d\TH:i:s\Z', $date);
 		return $this->output($ret);
 	}
-/**
- * Formats date for RSS feeds
- *
- * @param string $dateString Datetime string or Unix timestamp
- * @param int $userOffset User's offset from GMT (in hours)
- * @return string Formatted date string
- */
+	/**
+	 * Formats date for RSS feeds
+	 *
+	 * @param string $dateString Datetime string or Unix timestamp
+	 * @param int $userOffset User's offset from GMT (in hours)
+	 * @return string Formatted date string
+	 */
 	function toRSS($dateString, $userOffset = null) {
 		$date = $this->fromString($dateString, $userOffset);
 		$ret = date("r", $date);
 		return $this->output($ret);
 	}
-/**
- * Returns either a relative date or a formatted date depending
- * on the difference between the current time and given datetime.
- * $datetime should be in a <i>strtotime</i>-parsable format, like MySQL's datetime datatype.
- *
- * Options:
- *  'format' => a fall back format if the relative time is longer than the duration specified by end
- *  'end' =>  The end of relative time telling
- *  'userOffset' => Users offset from GMT (in hours)
- *
- * Relative dates look something like this:
- *	3 weeks, 4 days ago
- *	15 seconds ago
- * Formatted dates look like this:
- *	on 02/18/2004
- *
- * The returned string includes 'ago' or 'on' and assumes you'll properly add a word
- * like 'Posted ' before the function output.
- *
- * @param string $dateString Datetime string or Unix timestamp
- * @param array $options Default format if timestamp is used in $dateString
- * @return string Relative time string.
- */
+	/**
+	 * Returns either a relative date or a formatted date depending
+	 * on the difference between the current time and given datetime.
+	 * $datetime should be in a <i>strtotime</i>-parsable format, like MySQL's datetime datatype.
+	 *
+	 * Options:
+	 *  'format' => a fall back format if the relative time is longer than the duration specified by end
+	 *  'end' =>  The end of relative time telling
+	 *  'userOffset' => Users offset from GMT (in hours)
+	 *
+	 * Relative dates look something like this:
+	 *	3 weeks, 4 days ago
+	 *	15 seconds ago
+	 * Formatted dates look like this:
+	 *	on 02/18/2004
+	 *
+	 * The returned string includes 'ago' or 'on' and assumes you'll properly add a word
+	 * like 'Posted ' before the function output.
+	 *
+	 * @param string $dateString Datetime string or Unix timestamp
+	 * @param array $options Default format if timestamp is used in $dateString
+	 * @return string Relative time string.
+	 */
 	function timeAgoInWords($dateTime, $options = array()) {
 		$userOffset = null;
 		if (is_array($options) && isset($options['userOffset'])) {
@@ -460,26 +460,26 @@ class TimeHelper extends AppHelper {
 		}
 		return $this->output($relative_date);
 	}
-/**
- * Alias for timeAgoInWords
- *
- * @param mixed $dateTime Datetime string (strtotime-compatible) or Unix timestamp
- * @param mixed $options Default format string, if timestamp is used in $dateTime, or an array of options to be passed
- *						 on to timeAgoInWords().
- * @return string Relative time string.
- * @see		TimeHelper::timeAgoInWords
- */
+	/**
+	 * Alias for timeAgoInWords
+	 *
+	 * @param mixed $dateTime Datetime string (strtotime-compatible) or Unix timestamp
+	 * @param mixed $options Default format string, if timestamp is used in $dateTime, or an array of options to be passed
+	 *						 on to timeAgoInWords().
+	 * @return string Relative time string.
+	 * @see		TimeHelper::timeAgoInWords
+	 */
 	function relativeTime($dateTime, $options = array()) {
 		return $this->timeAgoInWords($dateTime, $options);
 	}
-/**
- * Returns true if specified datetime was within the interval specified, else false.
- *
- * @param mixed $timeInterval the numeric value with space then time type. Example of valid types: 6 hours, 2 days, 1 minute.
- * @param mixed $dateString the datestring or unix timestamp to compare
- * @param int $userOffset User's offset from GMT (in hours)
- * @return bool
- */
+	/**
+	 * Returns true if specified datetime was within the interval specified, else false.
+	 *
+	 * @param mixed $timeInterval the numeric value with space then time type. Example of valid types: 6 hours, 2 days, 1 minute.
+	 * @param mixed $dateString the datestring or unix timestamp to compare
+	 * @param int $userOffset User's offset from GMT (in hours)
+	 * @return bool
+	 */
 	function wasWithinLast($timeInterval, $dateString, $userOffset = null) {
 		$tmp = r(' ', '', $timeInterval);
 		if (is_numeric($tmp)) {
@@ -495,12 +495,12 @@ class TimeHelper extends AppHelper {
 
 		return false;
 	}
-/**
- * Returns gmt, given either a UNIX timestamp or a valid strtotime() date string.
- *
- * @param string $dateString Datetime string
- * @return string Formatted date string
- */
+	/**
+	 * Returns gmt, given either a UNIX timestamp or a valid strtotime() date string.
+	 *
+	 * @param string $dateString Datetime string
+	 * @return string Formatted date string
+	 */
 	function gmt($string = null) {
 		if ($string != null) {
 			$string = $this->fromString($string);
@@ -518,15 +518,15 @@ class TimeHelper extends AppHelper {
 		$return = gmmktime($hour, $minute, $second, $month, $day, $year);
 		return $return;
 	}
-/**
- * Returns a UNIX timestamp, given either a UNIX timestamp or a valid strtotime() date string.
- *
- * @param string $format date format string. defaults to 'd-m-Y'
- * @param string $dateString Datetime string
- * @param boolean $invalid flag to ignore results of fromString == false
- * @param int $userOffset User's offset from GMT (in hours)
- * @return string Formatted date string
- */
+	/**
+	 * Returns a UNIX timestamp, given either a UNIX timestamp or a valid strtotime() date string.
+	 *
+	 * @param string $format date format string. defaults to 'd-m-Y'
+	 * @param string $dateString Datetime string
+	 * @param boolean $invalid flag to ignore results of fromString == false
+	 * @param int $userOffset User's offset from GMT (in hours)
+	 * @return string Formatted date string
+	 */
 	function format($format = 'd-m-Y', $date, $invalid = false, $userOffset = null) {
 		$date = $this->fromString($date, $userOffset);
 		if ($date === false && $invalid !== false) {
@@ -534,18 +534,18 @@ class TimeHelper extends AppHelper {
 		}
 		return date($format, $date);
 	}
-	
+
 	function dataCompleta(){
 		$dia = array('domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 
 				'quinta-feira', 'sexta-feira', 'sábado' );
 
 		$mes = array('janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 
 				'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro');
-		
+
 		return $dia[date("w")]. ", ". date("d"). " de ". $mes[abs(date("m"))-1]. " de ". date("Y");
-				
+
 	}
-	
+
 	function dataBrasileira($data = null){
 		if ($data == false){
 			$data = date ('d-m-Y H:i:s');
@@ -555,7 +555,7 @@ class TimeHelper extends AppHelper {
 			$mes = substr($data, 5, 2);
 			$dia = substr($data, 8, 2);
 			$hora = substr($data, 11);
-			
+				
 			return $dia."-".$mes."-".$ano." ".$hora;
 		}
 	}

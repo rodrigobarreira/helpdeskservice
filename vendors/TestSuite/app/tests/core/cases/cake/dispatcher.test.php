@@ -26,8 +26,8 @@
  * @lastmodified $Date: 2006-05-28 05:33:04 -0500 (Sun, 28 May 2006) $
  * @license      http://www.opensource.org/licenses/opengroup.php The Open Group Test Suite License
  */
-	require_once LIBS.'neat_array.php';
-	require_once CAKE.'dispatcher.php';
+require_once LIBS.'neat_array.php';
+require_once CAKE.'dispatcher.php';
 /**
  * Short description for class.
  *
